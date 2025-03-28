@@ -137,17 +137,26 @@
                                         <div class="flex items-center gap-x-2">
                                             
                                             <!-- Botão Editar -->
-                                            <a href="{{ route('products.edit') }}"
+                                            <a href=""
                                                 class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
-                                                data-modal-toggle="crud-modal">
+                                                data-modal-toggle="form-e">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil h-4 w-4">
                                                     <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
                                                     <path d="m15 5 4 4" />
                                                 </svg>
                                             </a>
 
+
                                             <!-- Botão Excluir -->
-                                            <a href="" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background h-10 w-10 text-destructive hover:text-destructive hover:bg-destructive/10">
+                                            <form id="formExcluir{{$product->id}}" action="{{ route('products-destroy',['id'=>$product->id])}}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="inline-flex items-center justify-center gap-2 whitespace-nowrap 
+                                                rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none 
+                                                focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none 
+                                                disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border 
+                                                border-input bg-background h-10 w-10 text-destructive hover:text-destructive hover:bg-destructive/10" 
+                                                onclick="confirmarExclusao(event, {{$product->id}})">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 h-4 w-4">
                                                     <path d="M3 6h18" />
                                                     <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
@@ -155,7 +164,8 @@
                                                     <line x1="10" x2="10" y1="11" y2="17" />
                                                     <line x1="14" x2="14" y1="11" y2="17" />
                                                 </svg>
-                                            </a>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                     </td>

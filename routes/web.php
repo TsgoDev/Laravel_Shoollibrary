@@ -25,6 +25,5 @@ Route::middleware([
 // Rotas products (Autenticada)
 Route::middleware(['auth'])->group(function () {
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-    Route::get('/products/edit', [ProductController::class, 'edit'])->name('products.edit');
-    
+    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products-destroy');
 });

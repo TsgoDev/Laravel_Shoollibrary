@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -50,16 +51,23 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request) {}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Busca o produto pelo ID
+        $products = Product::find($id);
+
+        if ($products) {
+            // Deleta o produto
+            $products->delete();
+            return redirect()->route('products.index');
+        }
+
+        // Caso o produto não seja encontrado
+        return redirect()->route('products.index')->with('error', 'Produto não encontrado.');
     }
 }
