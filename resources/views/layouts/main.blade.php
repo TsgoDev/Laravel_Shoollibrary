@@ -7,13 +7,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 
 </head>
+
 <body>
     <header>
         @livewire('navigation-menu') <!-- Inclui a barra de navegação -->
@@ -28,6 +27,8 @@
         @yield('product') <!-- Renderiza o conteúdo da página -->
     </main>
 </body>
- <!-- Modal site flowbite -->
+<!-- Modal site flowbite -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/sweetalert.js"></script>
 </html>

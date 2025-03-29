@@ -13,12 +13,11 @@ class Product extends Model
     protected $table = 'products';
 
     // Definindo os campos que podem ser atribuídos em massa (mass assignment)
-    protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'image',
-        'stock_quantity',
-        'status',
+    protected $fillable = ['name', 'description', 'category', 'price', 'image', 'status'];
+
+    // Adicionando cast para o campo 'status' para garantir que seja tratado como um inteiro
+    protected $casts = [
+        'status' => 'boolean',
     ];
+
 }

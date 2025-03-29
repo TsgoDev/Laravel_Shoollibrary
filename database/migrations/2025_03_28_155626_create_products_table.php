@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('description'); // Descrição
             $table->decimal('price', 10, 2); // Preço
             $table->string('image')->nullable(); // Imagem (opcional)
-            $table->integer('stock_quantity'); // Quantidade em estoque
             $table->boolean('status')->default(true); // Ativo/Inativo
             $table->timestamps(); // created_at e updated_at
         });

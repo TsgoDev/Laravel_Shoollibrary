@@ -12,7 +12,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderBy('created_at', 'desc')->get();
         return view('products.index', compact('products'));
     }
 
@@ -29,7 +29,36 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            // Validação dos dados
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'category' => 'required|string',
+                'price' => 'required|numeric',
+                'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Aceita apenas imagens de até 2MB
+                'status' => 'required|in:0,1', // Garantir que o valor seja 0 ou 1
+            ]);
+
+            // Upload da imagem
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('images/products', 'public'); // Salva em storage/app/public/images/products
+            } else {
+                $imagePath = null;
+            }
+    
+            // Criar produto no banco de dados
+            $product = Product::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'category' => $request->category,
+                'price' => $request->price,
+                'image' => $imagePath, // Caminho salvo no banco
+                'status' => $request->status,
+            ]);
+    
+            return redirect()->back()->with('success', 'Produto cadastrado com sucesso!');
+        }
     }
 
     /**

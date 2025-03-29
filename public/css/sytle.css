@@ -11,6 +11,13 @@ body{
     --body-color: #f3f4f6;
 }
 
+.container {
+    width: 96%;
+    margin-left: 3%;
+}
+.container #searchInput {
+    margin-left: 3%;
+}
 
 /* O conteúdo da página (main) */
 main {
