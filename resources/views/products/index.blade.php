@@ -18,8 +18,8 @@
             <div class="flex items-center gap-x-3 mb-6">
                 <h2 class="text-lg font-medium text-gray-800 white:text-white">Produtos</h2>
                 <span
-                class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">{{ count($products) }}
-                registros</span>
+                    class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">{{ count($products) }}
+                    registros</span>
             </div>
             <div class="flex flex-col">
                 <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -106,16 +106,18 @@
                                                 class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
                                                 {{ $product->id }}
                                             </td>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
+                                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
                                                 @if ($product->image)
-                                                <img src="{{ asset('storage/' . $product->image) }}" alt="Imagem do produto" class="w-12 h-12 object-cover rounded-lg">
-
+                                                    <img src="{{ asset('storage/' . $product->image) }}" 
+                                                         alt="Imagem do produto" 
+                                                         class="w-12 h-12 object-cover rounded-lg">
                                                 @else
-                                                    <span class="text-sm text-gray-500 white:text-gray-400">Sem
-                                                    imagem</span>
+                                                    <img src="{{ asset('storage/images/products/default.jpg') }}" 
+                                                         alt="Imagem padrão" 
+                                                         class="w-12 h-12 object-cover rounded-lg">
                                                 @endif
-                                            </td>
+                                            </td>                                            
+                                            
                                             <td
                                                 class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
                                                 {{ $product->name }}
