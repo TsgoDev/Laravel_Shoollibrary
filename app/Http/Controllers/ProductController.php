@@ -36,7 +36,7 @@ class ProductController extends Controller
                 'description' => 'nullable|string',
                 'category' => 'required|string',
                 'price' => 'required|numeric',
-                'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Aceita apenas imagens de até 2MB
+                'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048', // Aceita apenas imagens de até 2MB
                 'status' => 'required|in:0,1', // Garantir que o valor seja 0 ou 1
             ]);
 

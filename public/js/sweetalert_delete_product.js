@@ -1,3 +1,4 @@
+// Sweetalert excluir produto página index
 function confirmarExclusao(event, jogoId){
     event.preventDefault();
 

@@ -12,7 +12,7 @@
                         Novo Produto
                     </h3>
                     <p class="text-sm font-normal text-gray-500 white:text-gray-400">
-                        Preencha os detalhes do produto abaixo
+                    Preencha os detalhes do produto abaixo
                     </p>
                 </div>
                 <button type="button"
@@ -43,8 +43,9 @@
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Preço</label>
                         <input type="number" name="price" id="price"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            placeholder="$12,00" required="">
+                            required="">
                     </div>
+                    
                     <div class="col-span-2 sm:col-span-1">
                         <label for="category"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Categoria</label>
@@ -70,9 +71,12 @@
                     </div>
                     <div class="col-span-2">
                         <label for="image" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Foto
-                            do Produto</label>
+                        do Produto</label>
                         <input type="file" name="image" id="image"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500">
+                        <p class="text-sm font-normal text-gray-500 white:text-gray-400">
+                        Formato de imagem aceito: JPG, JPEG, PNG, WEBP.
+                        </p>
                     </div>
 
                     <!-- Radio para Status Disponível (Lado a Lado) -->
