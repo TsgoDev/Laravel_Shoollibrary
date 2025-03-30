@@ -30,6 +30,14 @@
 <!-- Modal site flowbite -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.money').mask('000.000.000.000.000,00', {reverse: true});
+    });
+</script>
+
 <script src="/js/sweetalert_delete_product.js"></script>
 <script src="/js/search_product.js"></script>
 </html>

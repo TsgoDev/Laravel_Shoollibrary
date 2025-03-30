@@ -28,14 +28,18 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        {
+    { {
+            // Converte a máscara brasileira (1.234,56) para o formato correto (1234.56)
+            $request->merge([
+                'price' => str_replace(['.', ','], ['', '.'], $request->price)
+            ]);
+
             // Validação dos dados
             $request->validate([
                 'name' => 'required|string|max:255',
                 'description' => 'nullable|string',
                 'category' => 'required|string',
-                'price' => 'required|numeric',
+                'price' => 'required|numeric|min:0|max:99999999.99',
                 'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048', // Aceita apenas imagens de até 2MB
                 'status' => 'required|in:0,1', // Garantir que o valor seja 0 ou 1
             ]);
@@ -46,7 +50,7 @@ class ProductController extends Controller
             } else {
                 $imagePath = null;
             }
-    
+
             // Criar produto no banco de dados
             $product = Product::create([
                 'name' => $request->name,
@@ -56,7 +60,7 @@ class ProductController extends Controller
                 'image' => $imagePath, // Caminho salvo no banco
                 'status' => $request->status,
             ]);
-    
+
             return redirect()->back()->with('success', 'Produto cadastrado com sucesso!');
         }
     }

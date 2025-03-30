@@ -106,18 +106,17 @@
                                                 class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
                                                 {{ $product->id }}
                                             </td>
-                                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
                                                 @if ($product->image)
-                                                    <img src="{{ asset('storage/' . $product->image) }}" 
-                                                         alt="Imagem do produto" 
-                                                         class="w-12 h-12 object-cover rounded-lg">
+                                                    <img src="{{ asset('storage/' . $product->image) }}"
+                                                        alt="Imagem do produto" class="w-12 h-12 object-cover rounded-lg">
                                                 @else
-                                                    <img src="{{ asset('storage/images/products/default.jpg') }}" 
-                                                         alt="Imagem padrão" 
-                                                         class="w-12 h-12 object-cover rounded-lg">
+                                                    <img src="{{ asset('storage/images/products/default.jpg') }}"
+                                                        alt="Imagem padrão" class="w-12 h-12 object-cover rounded-lg">
                                                 @endif
-                                            </td>                                            
-                                            
+                                            </td>
+
                                             <td
                                                 class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
                                                 {{ $product->name }}
