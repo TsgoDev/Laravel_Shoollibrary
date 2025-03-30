@@ -61,7 +61,7 @@ class ProductController extends Controller
                 'status' => $request->status,
             ]);
 
-            return redirect()->back()->with('success', 'Produto cadastrado com sucesso!');
+            return back()->with('message', 'Produto cadastrado com sucesso!');
         }
     }
 

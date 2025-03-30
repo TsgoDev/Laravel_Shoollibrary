@@ -7,10 +7,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+    
+    <!-- Incluindo o SweetAlert 2.1.2 no cabeçalho -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    
+    <!-- Vite CSS & JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
     @livewireStyles
-
 </head>
 
 <body>
@@ -26,18 +30,27 @@
     <main>
         @yield('product') <!-- Renderiza o conteúdo da página -->
     </main>
-</body>
-<!-- Modal site flowbite -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('.money').mask('000.000.000.000.000,00', {reverse: true});
-    });
-</script>
 
-<script src="/js/sweetalert_delete_product.js"></script>
-<script src="/js/search_product.js"></script>
+    <!-- Modal site flowbite -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+
+    <!-- Incluindo o SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Jquery e outros scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <!-- Script de máscaras -->
+    <script>
+        $(document).ready(function() {
+            $('.money').mask('000.000.000.000.000,00', {reverse: true});
+        });
+    </script>
+
+    <!-- Seus scripts customizados -->
+    <script src="/js/sweetalert_delete_product.js"></script>
+    <script src="/js/search_product.js"></script>
+</body>
+
 </html>

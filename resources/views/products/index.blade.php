@@ -109,11 +109,11 @@
                                             <td
                                                 class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
                                                 @if ($product->image)
-                                                    <img src="{{ asset('storage/' . $product->image) }}" alt="Imagem do produto"
-                                                        class="w-12 h-12 object-cover rounded-lg">
+                                                    <img src="{{ asset('storage/' . $product->image) }}"
+                                                        alt="Imagem do produto" class="w-12 h-12 object-cover rounded-lg">
                                                 @else
                                                     <span class="text-sm text-gray-500 white:text-gray-400">Sem
-                                                    imagem</span>
+                                                        imagem</span>
                                                 @endif
                                             </td>
 
@@ -202,5 +202,24 @@
                 </div>
             </div>
             @include('products.create_product')
+            <!-----SweetAlert-Insert product------->
+            @if (Session::has('message'))
+                <script>
+                    swal({
+                        title: "Mensagem",
+                        text: "{{ Session::get('message') }}",
+                        icon: "success",
+                        buttons: {
+                            confirm: {
+                                text: "OK",
+                                value: true,
+                                visible: true,
+                                className: "btn btn-success",
+                                closeModal: true
+                            }
+                        }
+                    });
+                </script>
+            @endif
         </section>
     @endsection
