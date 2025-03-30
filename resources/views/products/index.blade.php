@@ -109,11 +109,11 @@
                                             <td
                                                 class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
                                                 @if ($product->image)
-                                                    <img src="{{ asset('storage/' . $product->image) }}"
-                                                        alt="Imagem do produto" class="w-12 h-12 object-cover rounded-lg">
+                                                    <img src="{{ asset('storage/' . $product->image) }}" alt="Imagem do produto"
+                                                        class="w-12 h-12 object-cover rounded-lg">
                                                 @else
-                                                    <img src="{{ asset('storage/images/products/default.jpg') }}"
-                                                        alt="Imagem padrão" class="w-12 h-12 object-cover rounded-lg">
+                                                    <span class="text-sm text-gray-500 white:text-gray-400">Sem
+                                                    imagem</span>
                                                 @endif
                                             </td>
 

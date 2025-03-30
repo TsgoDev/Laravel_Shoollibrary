@@ -36,7 +36,7 @@
                         do Produto</label>
                         <input type="text" name="name" id="name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="100">
+                            required="" maxlength="100" placeholder="Ex: Molho pomodoro">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
                         <label for="price"
@@ -67,7 +67,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Descrição</label>
                         <textarea id="description" name="description" rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500"
-                            placeholder="Descrição do produto" maxlength="500"></textarea>
+                            placeholder="Ex: Molho de tomate italiano clássico, preparado com tomates maduros." maxlength="500" rows="3"></textarea>
                     </div>
                     <div class="col-span-2">
                         <label for="image" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Foto
