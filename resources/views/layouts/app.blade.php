@@ -31,9 +31,9 @@
         {{ $slot }}
     </main>
 
-    <!-- Page Content Product -->
+    <!-- Page Content-->
     <main>
-        @yield('Content') <!-- Renderiza o conteúdo da página -->
+        @yield('Content') <!--Nenhum conteúdo está sendo renderizado no momento---->
     </main>
 
     @stack('modals')
