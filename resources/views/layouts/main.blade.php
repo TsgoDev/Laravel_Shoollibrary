@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     
@@ -15,22 +16,25 @@
     <!-- Vite CSS & JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
+    <!-- Styles -->
     @livewireStyles
 </head>
 
 <body>
     <header>
-        @livewire('navigation-menu') <!-- Inclui a barra de navegação -->
+        @livewire('navigation-menu') <!-- Inclui o navbar de navegação -->
     </header>
 
     <aside>
-        @include('layouts.sidebar') <!-- Inclui a sidebar -->
+        @include('layouts.sidebar') <!-- Inclui menu sidebar Meraki UI -->
     </aside>
 
-    <!-- Page Content -->
+
+    <!-- Page Content index Product -->
     <main>
-        @yield('product') <!-- Renderiza o conteúdo da página -->
+        @yield('Content') <!-- Renderiza o conteúdo da página -->
     </main>
+
 
     <!-- Modal site flowbite -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
@@ -48,7 +52,8 @@
             $('.money').mask('000.000.000.000.000,00', {reverse: true});
         });
     </script>
-
+    
+    @livewireScripts
     <!-- Seus scripts customizados -->
     <script src="/js/sweetalert_delete_product.js"></script>
     <script src="/js/checkbox_status_product.js"></script>
