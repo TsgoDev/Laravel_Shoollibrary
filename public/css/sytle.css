@@ -11,13 +11,20 @@ body{
     --body-color: #f3f4f6;
 }
 
-.container {
-    width: 96%;
-    margin-left: 3%;
+/* Adicione esta classe ao elemento pai da tabela */
+.table-container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    padding: 20px; /* Mantém o espaçamento original */
 }
-.container #searchInput {
-    margin-left: 3%;
+
+/* Ajuste a tabela para ocupar espaço dinamicamente */
+.table-container table {
+    max-width: 100%; /* Garante responsividade */
+    width: 80%; /* Ajuste conforme necessário */
+    margin: 0 auto; /* Mantém centralização em fallback */
 }
+
 
 /* O conteúdo da página (main) */
 main {
@@ -34,6 +41,14 @@ aside {
     width: 67px; /* Largura da sidebar */
     height: 100vh; /* Altura da sidebar, ocupando toda a tela */
     border: 1px solid #ddd; /* Borda suave na tabela */
+}
+
+/* Adicione media queries para telas grandes */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px; /* Limite máximo */
+        margin: 0 auto; /* Centraliza o container */
+    }
 }
 
 

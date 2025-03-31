@@ -129,8 +129,7 @@
                                                     <img src="{{ asset('storage/' . $product->image) }}"
                                                         alt="Imagem do produto" class="w-12 h-12 object-cover rounded-lg">
                                                 @else
-                                                    <span class="text-sm text-gray-500 white:text-gray-400">Sem
-                                                        imagem</span>
+                                                    <span class="text-sm text-gray-500 white:text-gray-400">Sem imagem</span>
                                                 @endif
                                             </td>
 
