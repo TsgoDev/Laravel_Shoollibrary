@@ -1,3 +1,4 @@
+// Estrutura Sweetalert cadastrar produto página index
 swal({
     title: "Mensagem",
     text: "{{ Session::get('message') }}",

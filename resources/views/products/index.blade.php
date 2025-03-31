@@ -85,17 +85,34 @@
                                             </button>
                                         </th>
                                         <th scope="col"
-                                            class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                            class="px-2 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
                                             <button class="flex items-center gap-x-2">
-                                                <span>Status</span>
+                                                <span>Ativo/Inativo</span>
                                                 <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <!-- SVG do ícone de ordenação -->
                                                 </svg>
                                             </button>
                                         </th>
-                                        <th scope="col" class="relative py-3.5 px-4">
-                                            <span class="sr-only">Ações</span>
+                                        <th scope="col"
+                                            class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                            <button class="flex items-center gap-x-2">
+                                                <span>Situação</span>
+                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- SVG do ícone de ordenação -->
+                                                </svg>
+                                            </button>
+                                        </th>
+                                        <th scope="col"
+                                            class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                            <button class="flex items-center gap-x-2">
+                                                <span>Ação</span>
+                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- SVG do ícone de ordenação -->
+                                                </svg>
+                                            </button>
                                         </th>
                                     </tr>
                                 </thead>
@@ -133,21 +150,35 @@
                                                 class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
                                                 R$ {{ number_format($product->price, 2, ',', '.') }}
                                             </td>
+                                            <!----Checkbox---->
                                             <td
                                                 class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
+                                                <label class="inline-flex items-center mb-5 cursor-pointer">
+                                                    <input type="checkbox" class="sr-only peer"
+                                                        id="statusCheckbox{{ $product->id }}" data-id="{{ $product->id }}"
+                                                        @if ($product->status) checked @endif>
+                                                    <div
+                                                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600">
+                                                    </div>
+                                                </label>
+                                            </td>
+
+                                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300"
+                                                data-status-id="{{ $product->id }}">
                                                 <div
                                                     class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 
                                                     {{ $product->status ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
                                                     <span
                                                         class="h-1.5 w-1.5 rounded-full 
-                                                    {{ $product->status ? 'bg-emerald-600' : 'bg-red-600' }}"></span>
-                                                    <span
+                                                    {{ $product->status ? 'bg-emerald-600' : 'bg-red-600' }}">
+                                                    </span> <span
                                                         class="text-sm font-semibold 
                                                     {{ $product->status ? 'text-emerald-600 white:text-emerald-600' : 'text-red-600 white:text-red-300' }}">
                                                         {{ $product->status ? 'Disponível' : 'Indisponível' }}
                                                     </span>
                                                 </div>
                                             </td>
+
                                             <td class="px-4 py-4 text-sm whitespace-nowrap">
                                                 <div class="flex items-center gap-x-2">
                                                     <!-- Botão Editar -->
@@ -202,7 +233,7 @@
                 </div>
             </div>
             @include('products.create_product')
-            <!-----SweetAlert-Insert product------->
+            <!-----SweetAlert Insert product------->
             @if (Session::has('message'))
                 <script>
                     swal({

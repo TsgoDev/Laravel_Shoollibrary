@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Function listar produtos no index.
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class ProductController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Function salvar produto no banco.
      */
     public function store(Request $request)
     { {
@@ -64,6 +64,27 @@ class ProductController extends Controller
             return back()->with('message', 'Produto cadastrado com sucesso!');
         }
     }
+
+
+    /**
+     * Function Atualizar status do produto pelo checkbox
+     */
+    public function updateStatus(Request $request, Product $product)
+    {
+        // Validando a entrada de status
+        $request->validate([
+            'status' => 'required|boolean',
+        ]);
+
+        // Atualizando o status do produto
+        $product->status = $request->status;
+        $product->save();
+
+        // Retornando a resposta JSON
+        return response()->json(['success' => true]);
+    }
+
+
 
     /**
      * Display the specified resource.

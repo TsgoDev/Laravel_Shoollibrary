@@ -26,9 +26,13 @@ Route::middleware([
 Route::middleware(['auth'])->group(function () {
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
-    //----Excluir product
+    //----Excluir produto
     Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products-destroy');
-    //----Salvar product
+
+    //----Salvar produto
     Route::post('/products', [ProductController::class, 'store'])->name('products-store');
+    
+    //----Atualizar status do produto
+    Route::post('/products/update-status/{product}', [ProductController::class, 'updateStatus'])->name('products.updateStatus');
 
 });

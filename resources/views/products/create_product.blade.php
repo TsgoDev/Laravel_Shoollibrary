@@ -1,5 +1,6 @@
 <!-----Modal create products------->
-<div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div id="crud-modal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm"></div>
         <!-- Modal content -->
@@ -12,7 +13,7 @@
                         Novo Produto
                     </h3>
                     <p class="text-sm font-normal text-gray-500 white:text-gray-400">
-                    Preencha os detalhes do produto abaixo
+                        Preencha os detalhes do produto abaixo
                     </p>
                 </div>
                 <button type="button"
@@ -33,7 +34,7 @@
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome
-                        do Produto</label>
+                            do Produto</label>
                         <input type="text" name="name" id="name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             required="" maxlength="100" placeholder="Ex: Molho pomodoro">
@@ -45,7 +46,7 @@
                             class="money bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             required="">
                     </div>
-                    
+
                     <div class="col-span-2 sm:col-span-1">
                         <label for="category"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Categoria</label>
@@ -69,13 +70,14 @@
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-blue-500 white:focus:border-blue-500"
                             placeholder="Ex: Molho de tomate italiano clássico, preparado com tomates maduros." maxlength="500" rows="3"></textarea>
                     </div>
+
                     <div class="col-span-2">
                         <label for="image" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Foto
-                        do Produto</label>
+                            do Produto</label>
                         <input type="file" name="image" id="image"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500">
                         <p class="text-sm font-normal text-gray-500 white:text-gray-400">
-                        Formato de imagem aceito: JPG, JPEG, PNG, WEBP.
+                            Formato de imagem aceito: JPG, JPEG, PNG, WEBP.
                         </p>
                     </div>
 
