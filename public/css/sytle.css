@@ -9,40 +9,34 @@ body{
     background-color: var(--body-color);
     transition: var(--tran-05);
     --body-color: #f3f4f6;
-}
-
-/* Adicione esta classe ao elemento pai da tabela */
-.table-container {
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    padding: 20px; /* Mantém o espaçamento original */
-}
-
-/* Ajuste a tabela para ocupar espaço dinamicamente */
-.table-container table {
-    max-width: 100%; /* Garante responsividade */
-    width: 80%; /* Ajuste conforme necessário */
-    margin: 0 auto; /* Mantém centralização em fallback */
-}
-
-
-/* O conteúdo da página (main) */
-main {
+    }
+    
+    .container {
+    width: 96%;
+    margin-left: 3%;
+    }
+    .container #searchInput {
+    margin-left: 3%;
+    }
+    
+    /* O conteúdo da página (main) */
+    main {
     margin-left: 20px; /* Margem para não sobrepor a sidebar */
     padding: 20px; /* Adiciona algum espaço ao redor do conteúdo */
     background-color: #f3f4f6; /* Cor de fundo para o conteúdo */
-}
-
-/* Sidebar */
-aside {
+    }
+    
+    /* Sidebar */
+    aside {
     position: fixed;
     top: 0;
     left: 0;
     width: 67px; /* Largura da sidebar */
     height: 100vh; /* Altura da sidebar, ocupando toda a tela */
     border: 1px solid #ddd; /* Borda suave na tabela */
-}
-
+    }
+    
+    
 /* Adicione media queries para telas grandes */
 @media (min-width: 1920px) {
     .container {
