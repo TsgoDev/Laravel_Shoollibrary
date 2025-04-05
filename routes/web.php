@@ -36,3 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/products/update-status/{product}', [ProductController::class, 'updateStatus'])->name('products.updateStatus');
 
 });
+
+//----------Página 404------------>
+Route::fallback(function () {
+    return view('layouts.404');
+});
