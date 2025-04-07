@@ -1,255 +1,265 @@
 @extends('layouts.main')
 
 @section('product')
-    <div class="container mx-auto mt-5 p-6">
-        <!-- Input Pesquisa -->
-        <div class="mb-4 flex items-center gap-4 px-4">
-            <input type="text" id="searchInput"
-                class="w-full max-w-md px-3 py-2 border border-gray-600 rounded-lg bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
-                placeholder="Buscar produtos...">
-            <!-- Botão Novo Produto -->
-            <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                class="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition">
-                + Novo Produto
-            </button>
+<div class="container mx-auto mt-5 p-6">
+    <!-- Input Pesquisa -->
+    <div class="mb-4 flex items-center gap-4 px-4">
+        <input type="text" id="searchInput"
+            class="w-full max-w-md px-3 py-2 border border-gray-600 rounded-lg bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
+            placeholder="Buscar produtos...">
+        <!-- Botão Novo Produto -->
+        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+            class="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition">
+            + Novo Produto
+        </button>
+    </div>
+    <!-- Tabela -->
+    <section class="container px-4 mx-auto">
+        <div class="flex items-center gap-x-3 mb-6">
+            <h2 class="text-lg font-medium text-gray-800 white:text-white">Produtos</h2>
+            <span
+                class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">{{ count($products) }}
+                registros</span>
         </div>
-        <!-- Tabela -->
-        <section class="container px-4 mx-auto">
-            <div class="flex items-center gap-x-3 mb-6">
-                <h2 class="text-lg font-medium text-gray-800 white:text-white">Produtos</h2>
-                <span
-                    class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">{{ count($products) }}
-                    registros</span>
-            </div>
-            <div class="flex flex-col">
-                <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                        <div class="overflow-hidden border border-gray-200 white:border-gray-700 md:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-200 white:divide-gray-700">
-                                <thead class="bg-gray-50 white:bg-gray-800">
-                                    <tr>
-                                        <th scope="col"
-                                            class="py-3.5 px-4 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                            <div class="flex items-center gap-x-3">
-                                                <span>ID</span>
+        <div class="flex flex-col">
+            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                    <div class="overflow-hidden border border-gray-200 white:border-gray-700 md:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200 white:divide-gray-700">
+                            <thead class="bg-gray-50 white:bg-gray-800">
+                                <tr>
+                                    <th scope="col"
+                                        class="py-3.5 px-4 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <div class="flex items-center gap-x-3">
+                                            <span>ID</span>
+                                        </div>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-2">
+                                            <span>Imagem</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <!-- SVG do ícone de ordenação -->
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-2">
+                                            <span>Nome</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <!-- SVG do ícone de ordenação -->
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-2">
+                                            <span>Descrição</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <!-- SVG do ícone de ordenação -->
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-2">
+                                            <span>Categoria</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <!-- SVG do ícone de ordenação -->
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-2">
+                                            <span>Preço</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <!-- SVG do ícone de ordenação -->
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-2 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-2">
+                                            <span>Ativo/Inativo</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <!-- SVG do ícone de ordenação -->
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-2">
+                                            <span>Situação</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <!-- SVG do ícone de ordenação -->
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-2">
+                                            <span>Ação</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <!-- SVG do ícone de ordenação -->
+                                            </svg>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200 white:divide-gray-700 white:bg-gray-900">
+                                @foreach ($products as $product)
+                                <tr>
+                                    <td
+                                        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
+                                        {{ $product->id }}
+                                    </td>
+                                    <td
+                                        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
+                                        @if ($product->image)
+                                        <img src="{{ asset('storage/' . $product->image) }}"
+                                            alt="Imagem do produto" class="w-12 h-12 object-cover rounded-lg">
+                                        @else
+                                        <div class="flex items-center gap-x-2">
+                                            <div class="flex items-center justify-center w-8 h-8 text-blue-500 bg-blue-100 rounded-full white:bg-gray-800">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1." stroke="currentColor" class="w-5 h-5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                                                </svg>
                                             </div>
-                                        </th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                            <button class="flex items-center gap-x-2">
-                                                <span>Imagem</span>
-                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <!-- SVG do ícone de ordenação -->
-                                                </svg>
-                                            </button>
-                                        </th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                            <button class="flex items-center gap-x-2">
-                                                <span>Nome</span>
-                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <!-- SVG do ícone de ordenação -->
-                                                </svg>
-                                            </button>
-                                        </th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                            <button class="flex items-center gap-x-2">
-                                                <span>Descrição</span>
-                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <!-- SVG do ícone de ordenação -->
-                                                </svg>
-                                            </button>
-                                        </th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                            <button class="flex items-center gap-x-2">
-                                                <span>Categoria</span>
-                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <!-- SVG do ícone de ordenação -->
-                                                </svg>
-                                            </button>
-                                        </th>
-                                        <th scope="col"
-                                            class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                            <button class="flex items-center gap-x-2">
-                                                <span>Preço</span>
-                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <!-- SVG do ícone de ordenação -->
-                                                </svg>
-                                            </button>
-                                        </th>
-                                        <th scope="col"
-                                            class="px-2 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                            <button class="flex items-center gap-x-2">
-                                                <span>Ativo/Inativo</span>
-                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <!-- SVG do ícone de ordenação -->
-                                                </svg>
-                                            </button>
-                                        </th>
-                                        <th scope="col"
-                                            class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                            <button class="flex items-center gap-x-2">
-                                                <span>Situação</span>
-                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <!-- SVG do ícone de ordenação -->
-                                                </svg>
-                                            </button>
-                                        </th>
-                                        <th scope="col"
-                                            class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                            <button class="flex items-center gap-x-2">
-                                                <span>Ação</span>
-                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <!-- SVG do ícone de ordenação -->
-                                                </svg>
-                                            </button>
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-white divide-y divide-gray-200 white:divide-gray-700 white:bg-gray-900">
-                                    @foreach ($products as $product)
-                                        <tr>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                                {{ $product->id }}
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                                @if ($product->image)
-                                                    <img src="{{ asset('storage/' . $product->image) }}"
-                                                        alt="Imagem do produto" class="w-12 h-12 object-cover rounded-lg">
-                                                @else
-                                                    <span class="text-sm text-gray-500 white:text-gray-400">Sem imagem</span>
-                                                @endif
-                                            </td>
 
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                                {{ $product->name }}
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm text-gray-500 white:text-gray-400 whitespace-nowrap">
-                                                {{ $product->description }}
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm text-gray-500 white:text-gray-400 whitespace-nowrap">
-                                                {{ $product->category }}
-                                            </td>
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                                R$ {{ number_format($product->price, 2, ',', '.') }}
-                                            </td>
-                                            <!----Checkbox---->
-                                            <td
-                                                class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                                <label class="inline-flex items-center mb-5 cursor-pointer">
-                                                    <input type="checkbox" class="sr-only peer"
-                                                        id="statusCheckbox{{ $product->id }}" data-id="{{ $product->id }}"
-                                                        @if ($product->status) checked @endif>
-                                                    <div
-                                                        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600">
-                                                    </div>
-                                                </label>
-                                            </td>
+                                            <div>
+                                                <h2 class="font-normal text-gray-800 dark:text-white ">App inspiration.png</h2>
+                                            </div>
+                                        </div>
+                                        @endif
+                                    </td>
 
-                                            <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300"
-                                                data-status-id="{{ $product->id }}">
-                                                <div
-                                                    class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 
+                                    <td
+                                        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
+                                        {{ $product->name }}
+                                    </td>
+                                    <td
+                                        class="px-4 py-4 text-sm text-gray-500 white:text-gray-400 whitespace-nowrap">
+                                        {{ $product->description }}
+                                    </td>
+                                    <td
+                                        class="px-4 py-4 text-sm text-gray-500 white:text-gray-400 whitespace-nowrap">
+                                        {{ $product->category }}
+                                    </td>
+                                    <td
+                                        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
+                                        R$ {{ number_format($product->price, 2, ',', '.') }}
+                                    </td>
+                                    <!----Checkbox---->
+                                    <td
+                                        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
+                                        <label class="inline-flex items-center mb-5 cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer"
+                                                id="statusCheckbox{{ $product->id }}" data-id="{{ $product->id }}"
+                                                @if ($product->status) checked @endif>
+                                            <div
+                                                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600">
+                                            </div>
+                                        </label>
+                                    </td>
+
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300"
+                                        data-status-id="{{ $product->id }}">
+                                        <div
+                                            class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 
                                                     {{ $product->status ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
-                                                    <span
-                                                        class="h-1.5 w-1.5 rounded-full 
+                                            <span
+                                                class="h-1.5 w-1.5 rounded-full 
                                                     {{ $product->status ? 'bg-emerald-600' : 'bg-red-600' }}">
-                                                    </span> <span
-                                                        class="text-sm font-semibold 
+                                            </span> <span
+                                                class="text-sm font-semibold 
                                                     {{ $product->status ? 'text-emerald-600 white:text-emerald-600' : 'text-red-600 white:text-red-300' }}">
-                                                        {{ $product->status ? 'Disponível' : 'Indisponível' }}
-                                                    </span>
-                                                </div>
-                                            </td>
+                                                {{ $product->status ? 'Disponível' : 'Indisponível' }}
+                                            </span>
+                                        </div>
+                                    </td>
 
-                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                <div class="flex items-center gap-x-2">
-                                                    <!-- Botão Editar -->
-                                                    <a href=""
-                                                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                            height="24" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" class="lucide lucide-pencil h-4 w-4">
-                                                            <path
-                                                                d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                                            <path d="m15 5 4 4" />
-                                                        </svg>
-                                                    </a>
-                                                    <!-- Botão Excluir -->
-                                                    <form id="formExcluir{{ $product->id }}"
-                                                        action="{{ route('products-destroy', ['id' => $product->id]) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" title="Excluir"
-                                                            class="inline-flex items-center justify-center gap-2 whitespace-nowrap 
+                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                        <div class="flex items-center gap-x-2">
+                                            <!-- Botão Editar -->
+                                            <a href=""
+                                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                    height="24" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                    stroke-linejoin="round" class="lucide lucide-pencil h-4 w-4">
+                                                    <path
+                                                        d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                                    <path d="m15 5 4 4" />
+                                                </svg>
+                                            </a>
+                                            <!-- Botão Excluir -->
+                                            <form id="formExcluir{{ $product->id }}"
+                                                action="{{ route('products-destroy', ['id' => $product->id]) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" title="Excluir"
+                                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap 
                                                             rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none 
                                                             focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none 
                                                             disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border 
                                                             border-input bg-background h-10 w-10 text-destructive hover:text-destructive hover:bg-destructive/10"
-                                                            onclick="confirmarExclusao(event, {{ $product->id }})">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="red" stroke-width="1.5" stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                class="lucide lucide-trash2 h-4 w-4">
-                                                                <path d="M3 6h18" />
-                                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                                                                <line x1="10" x2="10" y1="11"
-                                                                    y2="17" />
-                                                                <line x1="14" x2="14" y1="11"
-                                                                    y2="17" />
-                                                            </svg>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                                    onclick="confirmarExclusao(event, {{ $product->id }})">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                        stroke="red" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        class="lucide lucide-trash2 h-4 w-4">
+                                                        <path d="M3 6h18" />
+                                                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                                        <line x1="10" x2="10" y1="11"
+                                                            y2="17" />
+                                                        <line x1="14" x2="14" y1="11"
+                                                            y2="17" />
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            @include('products.create_product')
-            <!-----SweetAlert Insert product------->
-            @if (Session::has('message'))
-                <script>
-                    swal({
-                        title: "Mensagem",
-                        text: "{{ Session::get('message') }}",
-                        icon: "success",
-                        buttons: {
-                            confirm: {
-                                text: "OK",
-                                value: true,
-                                visible: true,
-                                className: "btn btn-success",
-                                closeModal: true
-                            }
-                        }
-                    });
-                </script>
-            @endif
-        </section>
+        </div>
+        @include('products.create_product')
+        <!-----SweetAlert Insert product------->
+        @if (Session::has('message'))
+        <script>
+            swal({
+                title: "Mensagem",
+                text: "{{ Session::get('message') }}",
+                icon: "success",
+                buttons: {
+                    confirm: {
+                        text: "OK",
+                        value: true,
+                        visible: true,
+                        className: "btn btn-success",
+                        closeModal: true
+                    }
+                }
+            });
+        </script>
+        @endif
+    </section>
     @endsection

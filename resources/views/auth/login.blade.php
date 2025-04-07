@@ -2,7 +2,7 @@
     <x-authentication-card>
         <x-slot name="logo">
             <!-- Logo -->
-            <img class="w-[3%] h-auto mx-auto" src="/img/logo.svg" alt="Logo do sistema">
+            <img class="w-[3%] h-auto mx-auto" src="/img/logo-laravel.svg" alt="Logo do sistema">
 
         </x-slot>
 
