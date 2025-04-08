@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const searchTerm = searchInput.value.toLowerCase().trim();
 
         tableRows.forEach(row => {
-            const productName = row.querySelector("td:nth-child(3)").textContent.toLowerCase();
+            const productName = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
             
             if (productName.includes(searchTerm)) {
                 row.style.display = "table-row";

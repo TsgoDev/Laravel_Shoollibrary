@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AutorController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,18 +23,23 @@ Route::middleware([
     })->name('dashboard');
 });
 
-// Rotas products (Autenticada)
+// Rotas (Autenticada)
 Route::middleware(['auth'])->group(function () {
-    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
+    // View autores
+    Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
+
+    //----Excluir autores
+    Route::delete('/autores/{id}', [AutorController::class, 'destroy'])->name('autores-destroy');
 
     //----Excluir produto
-    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products-destroy');
+    //Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products-destroy');
 
     //----Salvar produto
-    Route::post('/products', [ProductController::class, 'store'])->name('products-store');
+    //Route::post('/products', [ProductController::class, 'store'])->name('products-store');
     
     //----Atualizar status do produto
-    Route::post('/products/update-status/{product}', [ProductController::class, 'updateStatus'])->name('products.updateStatus');
+    //Route::post('/products/update-status/{product}', [ProductController::class, 'updateStatus'])->name('products.updateStatus');
 
 });
 

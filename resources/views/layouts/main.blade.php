@@ -32,7 +32,7 @@
 
     <!-- Page Content index Product -->
     <main>
-        @yield('product') <!-- Renderiza o conteúdo da página index -->
+        @yield('content') <!-- Renderiza o conteúdo da página index -->
     </main>
 
 
