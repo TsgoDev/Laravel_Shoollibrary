@@ -17,9 +17,9 @@
     <!-- Tabela -->
     <section class="container px-7 mx-auto">
         <div class="flex items-center gap-x-3 mb-6">
-            <span
-            class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">{{ count($autores) }}
-            registros</span>
+            <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">
+                {{ count($autores) }} registros
+            </span>
         </div>
 
         <div class="flex flex-col">
@@ -96,23 +96,25 @@
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                         <div class="flex items-center gap-x-2">
                                             <!-- Botão Editar -->
-                                            <button type="submit" title="Editar"
-                                                data-modal-target="crud-modal-edit" 
+                                            <a href="{{ route('autores.edit', ['id' => $autor->id]) }}">
+                                                <button type="button"
+                                                data-modal-target="crud-modal-edit"
                                                 data-modal-toggle="crud-modal-edit"
                                                 class="inline-flex items-center justify-center gap-2 whitespace-nowrap 
                                                 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none 
                                                 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none 
                                                 disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border 
                                                 border-input bg-background h-10 w-10 text-destructive hover:text-destructive hover:bg-destructive/10">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                    height="24" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round" class="lucide lucide-pencil h-4 w-4">
-                                                    <path
-                                                    d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                                    <path d="m15 5 4 4" />
-                                                </svg>
-                                            </button>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" class="lucide lucide-pencil h-4 w-4">
+                                                        <path
+                                                            d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                                        <path d="m15 5 4 4" />
+                                                    </svg>
+                                                </button>
+                                            </a>
                                         </div>
                                     </td>
                                     </td>
@@ -126,5 +128,5 @@
         </div>
     </section>
     @include('autores.form_create_autor')
-    @include('autores.form_edite_autor')
+    @include('autores.form_edite_autor') 
     @endsection

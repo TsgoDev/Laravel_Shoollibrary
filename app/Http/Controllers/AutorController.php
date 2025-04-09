@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AutorController extends Controller
 {
     /**
-     * Function Listar todos autores
+     * Listar todos autores
      */
     public function index() {
         $autores = Autor::orderBy('created_at', 'desc')->get();
@@ -17,12 +17,12 @@ class AutorController extends Controller
     
 
     /**
-     * Function Editar autores
+     * Editar autores
      */
-    public function edit(string $id){
+    public function edit($id){
 
     $autor = Autor::findOrFail($id);
-    return view('autores.index', compact('autor'));
+    return view('autores.form_edite_autor', compact('autor'));
         
     }
 

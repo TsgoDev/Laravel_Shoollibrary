@@ -21,7 +21,7 @@ body{
     
     /* O conteúdo da página (main) */
     main {
-    margin-left: 20px; /* Margem para não sobrepor a sidebar */
+    margin-left: 60px; /* Margem para não sobrepor a sidebar */
     padding: 20px; /* Adiciona algum espaço ao redor do conteúdo */
     background-color: #f3f4f6; /* Cor de fundo para o conteúdo */
     }
@@ -31,7 +31,7 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    width: 67px; /* Largura da sidebar */
+    width: 60px; /* Largura da sidebar */
     height: 100vh; /* Altura da sidebar, ocupando toda a tela */
     border: 1px solid #ddd; /* Borda suave na tabela */
     }
