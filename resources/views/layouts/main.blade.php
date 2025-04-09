@@ -57,7 +57,7 @@
     <!-- Seus scripts customizados -->
     <script src="/js/sweetalert_delete_product.js"></script>
     <script src="/js/checkbox_status_product.js"></script>
-    <script src="/js/search_product.js"></script>
+    <script src="/js/search_autores.js"></script>
 </body>
 
 </html>

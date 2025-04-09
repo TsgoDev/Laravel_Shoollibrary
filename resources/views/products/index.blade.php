@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('product')
+@section('content')
 <div class="container mx-auto mt-5 p-6">
     <!-- Input Pesquisa -->
     <div class="mb-4 flex items-center gap-4 px-4">
@@ -241,7 +241,6 @@
                 </div>
             </div>
         </div>
-        @include('form_create_autor')
         <!-----SweetAlert Insert autor------->
         @if (Session::has('message'))
         <script>

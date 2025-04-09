@@ -26,11 +26,25 @@ Route::middleware([
 // Rotas (Autenticada)
 Route::middleware(['auth'])->group(function () {
 
-    // View autores
+    // Home Page
     Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
 
+
+    // Edit autor
+    Route::get('autores/{id}', [AutorController::class, 'edit'])->where('id', '[0-9]+')->name('autores-edit');
+
+
+    //-----Update autor
+    Route::put('autores/{id}', [AutorController::class, 'update'])->where('id', '[0-9]+')->name('autores-update');
+
+    
+
+
+
+    //Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
     //----Excluir autores
-    Route::delete('/autores/{id}', [AutorController::class, 'destroy'])->name('autores-destroy');
+    //Route::delete('/autores/{id}', [AutorController::class, 'destroy'])->name('autores-destroy');
 
     //----Excluir produto
     //Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products-destroy');
@@ -43,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-//----------Página 404------------>
+//----------Page 404------------>
 Route::fallback(function () {
     return view('layouts.404');
 });

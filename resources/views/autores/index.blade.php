@@ -7,21 +7,21 @@
         <input type="text" id="searchInput"
             class="w-full max-w-md px-3 py-2 border border-gray-600 rounded-lg bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
             placeholder="Buscar autores...">
-        <!-- Botão Novo Produto -->
-        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+        <!-- Botão Novo Autor -->
+        <button data-modal-target="crud-modal-create" data-modal-toggle="crud-modal-create"
             class="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition">
-            + Novo Produto
+            + Adicionar
         </button>
     </div>
 
     <!-- Tabela -->
-    <section class="container px-4 mx-auto">
+    <section class="container px-7 mx-auto">
         <div class="flex items-center gap-x-3 mb-6">
-            <h2 class="text-lg font-medium text-gray-800 white:text-white">Autores</h2>
             <span
-                class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">{{ count($autores) }}
-                registros</span>
+            class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">{{ count($autores) }}
+            registros</span>
         </div>
+
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -49,13 +49,13 @@
                                         <button class="flex items-center gap-x-2">
                                             <span>Situação</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">  
+                                                xmlns="http://www.w3.org/2000/svg">
                                             </svg>
                                         </button>
                                     </th>
                                     <th scope="col"
-                                        class="px-2 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                        <button class="flex items-center gap-x-2">
+                                        class="px-5 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-50">
                                             <span>Ação</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@
                                         class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
                                         {{ $autor->nome_autor }}
                                     </td>
-                                    
+
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300"
                                         data-status-id="{{ $autor->id }}">
                                         <div
@@ -96,45 +96,23 @@
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                         <div class="flex items-center gap-x-2">
                                             <!-- Botão Editar -->
-                                            <a href=""
-                                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10">
+                                            <button type="submit" title="Editar"
+                                                data-modal-target="crud-modal-edit" 
+                                                data-modal-toggle="crud-modal-edit"
+                                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap 
+                                                rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none 
+                                                focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none 
+                                                disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border 
+                                                border-input bg-background h-10 w-10 text-destructive hover:text-destructive hover:bg-destructive/10">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                     height="24" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                     stroke-linejoin="round" class="lucide lucide-pencil h-4 w-4">
                                                     <path
-                                                        d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                                                    d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
                                                     <path d="m15 5 4 4" />
                                                 </svg>
-                                            </a>
-                                            <!-- Botão Excluir -->
-                                            <form id="formExcluir{{ $autor->id }}"
-                                                action=""
-                                                method="POST">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" title="Excluir"
-                                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap 
-                                                            rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none 
-                                                            focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none 
-                                                            disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border 
-                                                            border-input bg-background h-10 w-10 text-destructive hover:text-destructive hover:bg-destructive/10"
-                                                    onclick="confirmarExclusao(event,)">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="red" stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        class="lucide lucide-trash2 h-4 w-4">
-                                                        <path d="M3 6h18" />
-                                                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                                                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                                                        <line x1="10" x2="10" y1="11"
-                                                            y2="17" />
-                                                        <line x1="14" x2="14" y1="11"
-                                                            y2="17" />
-                                                    </svg>
-                                                </button>
-                                            </form>
+                                            </button>
                                         </div>
                                     </td>
                                     </td>
@@ -146,4 +124,7 @@
                 </div>
             </div>
         </div>
-        @endsection
+    </section>
+    @include('autores.form_create_autor')
+    @include('autores.form_edite_autor')
+    @endsection

@@ -6,6 +6,7 @@ if (!function_exists('getPageTitle')) {
         $titles = [
             'dashboard' => 'Painel de Controle',
             'products.index' => 'Produtos',
+            'autores.index' => 'Autores',
             'profile.edit' => 'Perfil',
             'orders.index' => 'Pedidos',
         ];

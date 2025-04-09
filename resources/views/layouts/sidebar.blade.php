@@ -60,7 +60,7 @@
                         </a>
 
                         <a class="flex items-center px-3 py-2 dark:text-black transition-colors duration-300 transform rounded-lg dark:dark:text-black-200 
-                        hover:bg-gray-100 dark:hover:dark:text-black-200 hover:dark:text-black-700" href="#">
+                        hover:bg-gray-100 dark:hover:dark:text-black-200 hover:dark:text-black-700" href="/autores">
 
                             <span class="text-sm font-medium">Autores</span>
                         </a>
