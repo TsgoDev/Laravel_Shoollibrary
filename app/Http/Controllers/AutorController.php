@@ -21,8 +21,12 @@ class AutorController extends Controller
      */
     public function edit($id){
 
-    $autor = Autor::findOrFail($id);
-    return view('autores.form_edite_autor', compact('autor'));
+        $autor = Autor::findOrFail($id);
+        return response()->json([
+            'id' => $autor->id,
+            'nome_autor' => $autor->nome_autor,
+            'status_autor' => $autor->status_autor,
+        ]);
         
     }
 

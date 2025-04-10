@@ -81,7 +81,7 @@
                                         data-status-id="{{ $autor->id }}">
                                         <div
                                             class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 
-                                                    {{ $autor->status_autor ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
+                                                {{ $autor->status_autor ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
                                             <span
                                                 class="h-1.5 w-1.5 rounded-full 
                                                     {{ $autor->status_autor ? 'bg-emerald-600' : 'bg-red-600' }}">
@@ -96,25 +96,16 @@
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                         <div class="flex items-center gap-x-2">
                                             <!-- Botão Editar -->
-                                            <a href="{{ route('autores.edit', ['id' => $autor->id]) }}">
-                                                <button type="button"
+                                            <button type="button"
+                                                class="btn-editar-autor px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                                                data-id="{{ $autor->id }}"
+                                                data-nome="{{ $autor->nome_autor }}"
+                                                data-status="{{ $autor->status_autor }}"
+                                                data-url="{{ route('autores.json', ['id' => $autor->id]) }}"
                                                 data-modal-target="crud-modal-edit"
-                                                data-modal-toggle="crud-modal-edit"
-                                                class="inline-flex items-center justify-center gap-2 whitespace-nowrap 
-                                                rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none 
-                                                focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none 
-                                                disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border 
-                                                border-input bg-background h-10 w-10 text-destructive hover:text-destructive hover:bg-destructive/10">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24" fill="none"
-                                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" class="lucide lucide-pencil h-4 w-4">
-                                                        <path
-                                                            d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
-                                                        <path d="m15 5 4 4" />
-                                                    </svg>
-                                                </button>
-                                            </a>
+                                                data-modal-toggle="crud-modal-edit">
+                                                Editar
+                                            </button>
                                         </div>
                                     </td>
                                     </td>
@@ -128,5 +119,32 @@
         </div>
     </section>
     @include('autores.form_create_autor')
-    @include('autores.form_edite_autor') 
+    @include('autores.form_edite_autor')
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.btn-editar-autor').forEach(button => {
+                button.addEventListener('click', async function() {
+                    const autorId = this.dataset.id;
+
+                    try {
+                        const response = await fetch(`/autores/${autorId}/json`);
+                        const autor = await response.json();
+
+                        // Preenche os campos do modal corretamente
+                        const modal = document.querySelector('#form-editar-autor');
+                        modal.querySelector('#name').value = autor.nome_autor;
+                        modal.querySelector('#autor_id').value = autor.id;
+                        modal.querySelector('#situacao').value = autor.status_autor;
+                        modal.action = `/autores/${autor.id}`;
+
+                        // Atualiza a action do formulário
+                        document.getElementById('form-editar-autor').action = `/autores/${autor.id}`;
+                    } catch (error) {
+                        console.error('Erro ao buscar dados do autor:', error);
+                        alert('Erro ao carregar dados do autor.');
+                    }
+                });
+            });
+        });
+    </script>
     @endsection

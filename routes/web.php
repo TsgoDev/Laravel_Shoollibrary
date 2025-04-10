@@ -31,7 +31,11 @@ Route::middleware(['auth'])->group(function () {
 
 
     // Edit autor
-    Route::get('autores/{id}', [AutorController::class, 'edit'])->where('id', '[0-9]+')->name('autores.edit');
+    Route::get('autores/{id}/json', [AutorController::class, 'edit'])->name('autores.json');
+
+
+
+
 
 
     //-----Update autor
