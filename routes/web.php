@@ -29,20 +29,11 @@ Route::middleware(['auth'])->group(function () {
     // Home Page
     Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
 
-
     // Edit autor
     Route::get('autores/{id}/json', [AutorController::class, 'edit'])->name('autores.json');
 
-
-
-
-
-
     //-----Update autor
     Route::put('autores/{id}', [AutorController::class, 'update'])->where('id', '[0-9]+')->name('autores-update');
-
-    
-
 
 
     //Route::get('/products', [ProductController::class, 'index'])->name('products.index');

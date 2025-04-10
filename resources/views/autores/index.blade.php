@@ -54,7 +54,7 @@
                                         </button>
                                     </th>
                                     <th scope="col"
-                                        class="px-5 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
                                         <button class="flex items-center gap-x-50">
                                             <span>Ação</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none"
