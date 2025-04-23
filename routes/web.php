@@ -32,8 +32,8 @@ Route::middleware(['auth'])->group(function () {
     // Edit autor
     Route::get('autores/{id}/json', [AutorController::class, 'edit'])->name('autores.json');
 
-    //-----Update autor
-    Route::put('autores/{id}', [AutorController::class, 'update'])->where('id', '[0-9]+')->name('autores-update');
+    //----Salvar produto
+    Route::post('/autores', [AutorController::class, 'store'])->name('autores-store');
 
 
     //Route::get('/products', [ProductController::class, 'index'])->name('products.index');
