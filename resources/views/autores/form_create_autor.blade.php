@@ -30,15 +30,15 @@
                 @csrf
                 <div class="grid gap-4 mb-6 grid-cols-2">
                     <div class="col-span-2">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome do autor</label>
+                        <label for="nome_autor" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome do autor</label>
                         <input type="text" name="nome_autor" id="nome_autor"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                        required="" maxlength="100" placeholder="Ex: Machado de Assis">
+                        required="" maxlength="100" placeholder="Ex: Machado de Assis" autocomplete="nome_autor">
                     </div>
 
                     <!-- Select com cor branca e largura reduzida -->
                     <div class="col-span-2">
-                        <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
+                        <label for="status_autor" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
                         <select id="status_autor" name="status_autor"
                             class="bg-white text-black border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5">
                             <option selected>Escolha um opção</option>
