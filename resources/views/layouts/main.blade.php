@@ -49,16 +49,15 @@
 
     <!-- Script de máscaras -->
     <script>
-        $(document).ready(function() {
-            $('.money').mask('000.000.000.000.000,00', {reverse: true});
-        });
+    $(document).ready(function() {
+        $('.phone_with_ddd').mask('(00) 0000-00000'); // Mascara telefone
+    });
     </script>
     
     @livewireScripts
     <!-- Seus scripts customizados -->
-    <script src="/js/sweetalert_delete_product.js"></script>
-    <script src="/js/checkbox_status_product.js"></script>
     <script src="/js/search_autores.js"></script>
+    <script src="/js/preencher_input_autor_edit.js"></script>
 </body>
 
 </html>

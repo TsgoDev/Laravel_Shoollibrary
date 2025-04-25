@@ -12,19 +12,22 @@ body{
     }
     
     .container {
-    width: 96%;
-    margin-left: 3%;
-    }
-    .container #searchInput {
-    margin-left: 3%;
+        width: 90%;
+        margin: 0 auto;
+        padding: 1rem;
     }
     
-    /* O conteúdo da página (main) */
-    main {
-    margin-left: 60px; /* Margem para não sobrepor a sidebar */
-    padding: 20px; /* Adiciona algum espaço ao redor do conteúdo */
-    background-color: #f3f4f6; /* Cor de fundo para o conteúdo */
+    .container #searchInput {
+        margin-left: 5%;
     }
+    
+    
+    main {
+        margin-left: 200px; /* Aumenta a distância da sidebar */
+        padding: 20px;
+        background-color: #f3f4f6;
+    }
+    
     
     /* Sidebar */
     aside {

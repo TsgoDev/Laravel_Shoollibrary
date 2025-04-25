@@ -29,11 +29,14 @@ Route::middleware(['auth'])->group(function () {
     // Home Page
     Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
 
-    // Edit autor
+    //----Editar
     Route::get('autores/{id}/json', [AutorController::class, 'edit'])->name('autores.json');
 
-    //----Salvar produto
+    //----Salvar
     Route::post('/autores', [AutorController::class, 'store'])->name('autores-store');
+
+    //---Update
+    Route::put('/autores/{id}', [AutorController::class, 'update'])->name('autores-update');
 
 
     //Route::get('/products', [ProductController::class, 'index'])->name('products.index');

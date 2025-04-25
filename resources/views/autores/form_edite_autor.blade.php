@@ -25,7 +25,7 @@
                 </button>
             </div>
             <!-- Modal de Edição -->
-            <form id="form-editar-autor" method="POST" class="p-4 md:p-5" enctype="multipart/form-data">
+            <form id="form-editar-autor" action="{{ route('autores-update', $autor->id) }}" method="POST" class="p-4 md:p-5" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <!-- ID oculto para ser usado no JS -->
