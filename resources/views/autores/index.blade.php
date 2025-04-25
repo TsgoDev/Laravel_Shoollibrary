@@ -38,7 +38,7 @@
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
                                         <button class="flex items-center gap-x-2">
-                                            <span>Nome</span>
+                                            <span>Autor</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                             </svg>
@@ -47,7 +47,7 @@
                                     <th scope="col"
                                         class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
                                         <button class="flex items-center gap-x-2">
-                                            <span>Situação</span>
+                                            <span>Status</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                             </svg>
@@ -97,7 +97,7 @@
                                         <div class="flex items-center gap-x-2">
                                             <!-- Botão Editar -->
                                             <button type="button"
-                                                class="btn-editar-autor px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-600 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                                                class="btn-editar-autor px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
                                                 data-id="{{ $autor->id }}"
                                                 data-nome="{{ $autor->nome_autor }}"
                                                 data-status="{{ $autor->status_autor }}"

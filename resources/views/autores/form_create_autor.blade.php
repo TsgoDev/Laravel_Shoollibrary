@@ -42,8 +42,8 @@
                         <select id="status_autor" name="status_autor"
                             class="bg-white text-black border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5">
                             <option selected>Escolha um opção</option>
-                            <option value="0">Indisponível</option>
                             <option value="1">Ativo</option>
+                            <option value="0">Indisponível</option>
                         </select>
                     </div>
                 </div>
