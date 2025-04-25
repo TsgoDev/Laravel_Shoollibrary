@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.btn-editar-autor').forEach(button => {
-        button.addEventListener('click', async function() {
+        button.addEventListener('click', function() {
             const autorId = this.dataset.id;
+            const nomeAutor = this.dataset.nome;
+            const statusAutor = this.dataset.status;
 
-            try {
-                const response = await fetch(`/autores/${autorId}/json`);
-                const autor = await response.json();
+            // Preenche os campos do modal diretamente com os dados
+            const modal = document.querySelector('#form-editar-autor');
+            modal.querySelector('#name').value = nomeAutor;
+            modal.querySelector('#autor_id').value = autorId;
+            modal.querySelector('#situacao').value = statusAutor;
+            modal.action = `/autores/${autorId}`;
 
-                // Preenche os campos do modal corretamente
-                const modal = document.querySelector('#form-editar-autor');
-                modal.querySelector('#name').value = autor.nome_autor;
-                modal.querySelector('#autor_id').value = autor.id;
-                modal.querySelector('#situacao').value = autor.status_autor;
-                modal.action = `/autores/${autor.id}`;
-
-                // Atualiza a action do formulário
-                document.getElementById('form-editar-autor').action = `/autores/${autor.id}`;
-            } catch (error) {
-                console.error('Erro ao buscar dados do autor:', error);
-                alert('Erro ao carregar dados do autor.');
+            // Exibe o modal com os dados preenchidos
+            const modalElement = document.querySelector('#crud-modal-edit');
+            if (modalElement) {
+                const modalInstance = window.flowbite.Modal.getInstance(modalElement);
+                if (modalInstance) {
+                    modalInstance.show();
+                }
             }
         });
     });
