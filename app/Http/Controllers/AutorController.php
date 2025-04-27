@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AutorController extends Controller
 {
     /**
-     * Listar todos autores
+     * Exibe a lista de todos os autores cadastrados, ordenados pela data de criação (mais recentes primeiro).
      */
     public function index()
     {
@@ -19,8 +19,11 @@ class AutorController extends Controller
 
 
     /**
-     * Editar autores
-     */
+     * Busca os dados de um autor específico para preenchimento do modal de edição.
+    *
+    * $id ID do autor
+    * Dados do autor em formato JSON
+    */
     public function edit($id)
     {
 
@@ -33,6 +36,10 @@ class AutorController extends Controller
     }
 
 
+
+    /**
+     * Atualiza as informações de um autor existente no banco de dados.
+     */
     public function update(Request $request, $id)
     {
         // Validação dos dados
@@ -44,7 +51,6 @@ class AutorController extends Controller
 
         // Buscar autor pelo ID
         $autor = Autor::find($id);
-
         if (!$autor) {
             return redirect()->route('autores.index')->with('error', 'Autor não encontrado');
         }
@@ -55,12 +61,14 @@ class AutorController extends Controller
             'status_autor' => $request->situacao,
         ]);
 
-        // Redirecionar corretamente
-        return redirect()->route('autores.index')->with('success', 'Autor atualizado com sucesso');
+        // Redirecionar para index
+        return back()->with('message', 'Autor atualizado com sucesso!');
     }
 
+
+    
     /**
-     * Salvar um novo produto no banco de dados.
+     * Armazena um novo autor no banco de dados.
      */
     public function store(Request $request)
     {

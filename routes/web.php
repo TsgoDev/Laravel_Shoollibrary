@@ -26,15 +26,12 @@ Route::middleware([
 // Rotas (Autenticada)
 Route::middleware(['auth'])->group(function () {
 
-    // Home Page
+    // Page index autor
     Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
-
-    //----Editar
+    //----Modal Editar
     Route::get('autores/{id}/json', [AutorController::class, 'edit'])->name('autores.json');
-
     //----Salvar
     Route::post('/autores', [AutorController::class, 'store'])->name('autores-store');
-
     //---Update
     Route::put('/autores/{id}', [AutorController::class, 'update'])->name('autores-update');
 

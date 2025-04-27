@@ -120,23 +120,4 @@
     </section>
     @include('autores.form_create_autor')
     @include('autores.form_edite_autor')
-    <!-----SweetAlert Insert autor------->
-    @if (Session::has('message'))
-    <script>
-        swal({
-            title: "Mensagem",
-            text: "{{ Session::get('message') }}",
-            icon: "success",
-            buttons: {
-                confirm: {
-                    text: "OK",
-                    value: true,
-                    visible: true,
-                    className: "btn btn-success",
-                    closeModal: true
-                }
-            }
-        });
-    </script>
-    @endif
     @endsection

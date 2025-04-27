@@ -46,7 +46,7 @@
                     <div class="col-span-2">
                         <label for="situacao" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
                         <select id="situacao" name="situacao"
-                            class="bg-white text-black border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-1/2 p-2.5">
+                            class="bg-white text-black border border-gray-300 text-sm rounded-lg block w-1/2 p-2.5">
                             <option value="1">Ativo</option>
                             <option value="0">Indisponível</option>
                         </select>
@@ -59,6 +59,25 @@
                     Atualizar
                 </button>
             </form>
+            <!-----SweetAlert Editar autor------->
+            @if (Session::has('message'))
+            <script>
+                swal({
+                    title: "Mensagem",
+                    text: "{{ Session::get('message') }}",
+                    icon: "success",
+                    buttons: {
+                        confirm: {
+                            text: "OK",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-success",
+                            closeModal: true
+                        }
+                    }
+                });
+            </script>
+            @endif
         </div>
     </div>
 </div>
