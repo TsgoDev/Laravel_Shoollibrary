@@ -9,14 +9,14 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    
+
     <!-- Incluindo o SweetAlert 2.1.2 no cabeçalho -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    
-    
+
+
     <!-- Vite CSS & JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+
     <!-- Styles -->
     @livewireStyles
 </head>
@@ -49,15 +49,16 @@
 
     <!-- Script de máscaras -->
     <script>
-    $(document).ready(function() {
-        $('.phone_with_ddd').mask('(00) 0000-00000'); // Mascara telefone
-    });
+        $(document).ready(function() {
+            $('.phone_with_ddd').mask('(00) 0000-00000'); // Mascara telefone
+        });
     </script>
-    
+
     @livewireScripts
     <!-- Seus scripts customizados -->
     <script src="/js/search_autores.js"></script>
     <script src="/js/preencher_input_autor_edit.js"></script>
+    @stack('scripts')
 </body>
 
 </html>

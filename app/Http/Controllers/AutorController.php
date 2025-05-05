@@ -20,19 +20,21 @@ class AutorController extends Controller
 
     /**
      * Busca os dados de um autor específico para preenchimento do modal de edição.
-    *
-    * $id ID do autor
-    * Dados do autor em formato JSON
-    */
+     *
+     * $id ID do autor
+     * Dados do autor em formato JSON
+     */
     public function edit($id)
     {
-
         $autor = Autor::findOrFail($id);
-        return response()->json([
-            'id' => $autor->id,
-            'nome_autor' => $autor->nome_autor,
-            'status_autor' => $autor->status_autor,
-        ]);
+
+        // Se a requisição for AJAX, retorna JSON
+        if (request()->ajax()) {
+            return response()->json($autor);
+        }
+
+        // Caso contrário, retorna a view
+        return view('autores.form_edite_autor', compact('autor'));
     }
 
 
@@ -66,7 +68,7 @@ class AutorController extends Controller
     }
 
 
-    
+
     /**
      * Armazena um novo autor no banco de dados.
      */
@@ -75,7 +77,7 @@ class AutorController extends Controller
         // Validação dos dados
         $request->validate([
             'nome_autor' => 'required|string|max:100',
-            'status_autor' => 'required|in:0,1', 
+            'status_autor' => 'required|in:0,1',
         ]);
 
         // Insert autor no banco

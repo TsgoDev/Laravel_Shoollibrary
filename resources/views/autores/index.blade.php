@@ -101,13 +101,11 @@
                                                 data-id="{{ $autor->id }}"
                                                 data-nome="{{ $autor->nome_autor }}"
                                                 data-status="{{ $autor->status_autor }}"
-                                                data-url="{{ route('autores.json', ['id' => $autor->id]) }}"
                                                 data-modal-target="crud-modal-edit"
                                                 data-modal-toggle="crud-modal-edit">
                                                 Editar
                                             </button>
                                         </div>
-                                    </td>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -121,3 +119,19 @@
     @include('autores.form_create_autor')
     @include('autores.form_edite_autor')
     @endsection
+
+    @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Quando o botão de editar for clicado
+            document.querySelectorAll('.btn-editar-autor').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Preenche os campos do formulário instantaneamente
+                    document.getElementById('autor_id').value = this.getAttribute('data-id');
+                    document.getElementById('name').value = this.getAttribute('data-nome');
+                    document.getElementById('situacao').value = this.getAttribute('data-status');
+                });
+            });
+        });
+    </script>
+    @endpush

@@ -16,7 +16,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 
-// Rota para o dashboard   
+    // Rota para o dashboard   
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
     // Page index autor
     Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
     //----Modal Editar
-    Route::get('autores/{id}/json', [AutorController::class, 'edit'])->name('autores.json');
+    Route::get('autores/{id}/edit', [AutorController::class, 'edit'])->name('autores.edit');
     //----Salvar
     Route::post('/autores', [AutorController::class, 'store'])->name('autores-store');
     //---Update
@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
 
     //----Salvar produto
     //Route::post('/products', [ProductController::class, 'store'])->name('products-store');
-    
+
     //----Atualizar status do produto
     //Route::post('/products/update-status/{product}', [ProductController::class, 'updateStatus'])->name('products.updateStatus');
 
