@@ -57,7 +57,6 @@
     @livewireScripts
     <!-- Seus scripts customizados -->
     <script src="/js/search_autores.js"></script>
-    <script src="/js/preencher_input_autor_edit.js"></script>
     @stack('scripts')
 </body>
 

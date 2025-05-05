@@ -126,8 +126,14 @@
             // Quando o botão de editar for clicado
             document.querySelectorAll('.btn-editar-autor').forEach(button => {
                 button.addEventListener('click', function() {
+                    const autorId = this.getAttribute('data-id');
+                    const form = document.getElementById('form-editar-autor');
+
+                    // Configura a action do formulário
+                    form.action = `/autores/${autorId}`;
+
                     // Preenche os campos do formulário instantaneamente
-                    document.getElementById('autor_id').value = this.getAttribute('data-id');
+                    document.getElementById('autor_id').value = autorId;
                     document.getElementById('name').value = this.getAttribute('data-nome');
                     document.getElementById('situacao').value = this.getAttribute('data-status');
                 });

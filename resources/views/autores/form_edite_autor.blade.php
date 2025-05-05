@@ -25,11 +25,11 @@
                 </button>
             </div>
             <!-- Modal de Edição -->
-            <form id="form-editar-autor" action="{{ route('autores-update', $autor->id) }}" method="POST" class="p-4 md:p-5" enctype="multipart/form-data">
+            <form id="form-editar-autor" action="" method="POST" class="p-4 md:p-5" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <!-- ID oculto para ser usado no JS -->
-                <input type="hidden" id="autor_id" name="autor_id" value="{{ $autor->id }}">
+                <input type="hidden" id="autor_id" name="autor_id">
 
                 <div class="grid gap-4 mb-6 grid-cols-2">
                     <!-- Nome do Autor -->
@@ -39,7 +39,7 @@
                         </label>
                         <input type="text" name="name" id="name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="100" placeholder="Ex: Machado de Assis" value="{{ old('name', $autor->nome_autor) }}">
+                            maxlength="100" placeholder="Ex: Machado de Assis">
                     </div>
 
                     <!-- Situação -->
@@ -47,8 +47,8 @@
                         <label for="situacao" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
                         <select id="situacao" name="situacao"
                             class="bg-white text-black border border-gray-300 text-sm rounded-lg block w-1/2 p-2.5">
-                            <option value="1" {{ old('situacao', $autor->status_autor) == 1 ? 'selected' : '' }}>Ativo</option>
-                            <option value="0" {{ old('situacao', $autor->status_autor) == 0 ? 'selected' : '' }}>Indisponível</option>
+                            <option value="1">Ativo</option>
+                            <option value="0">Indisponível</option>
                         </select>
                     </div>
                 </div>

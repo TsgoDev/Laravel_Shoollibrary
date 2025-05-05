@@ -50,12 +50,8 @@ class AutorController extends Controller
             'situacao' => 'required|in:0,1',
         ]);
 
-
         // Buscar autor pelo ID
-        $autor = Autor::find($id);
-        if (!$autor) {
-            return redirect()->route('autores.index')->with('error', 'Autor não encontrado');
-        }
+        $autor = Autor::findOrFail($id);
 
         // Atualizar dados
         $autor->update([
@@ -63,8 +59,8 @@ class AutorController extends Controller
             'status_autor' => $request->situacao,
         ]);
 
-        // Redirecionar para index
-        return back()->with('message', 'Autor atualizado com sucesso!');
+        // Redirecionar para index com mensagem de sucesso
+        return redirect()->route('autores.index')->with('message', 'Autor atualizado com sucesso!');
     }
 
 
