@@ -97,7 +97,8 @@
                                         <div class="flex items-center gap-x-2">
                                             <!-- Botão Editar -->
                                             <button type="button"
-                                                class="btn-editar-autor px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
+                                                class="btn-editar-autor px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform
+                                                bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
                                                 data-id="{{ $autor->id }}"
                                                 data-nome="{{ $autor->nome_autor }}"
                                                 data-status="{{ $autor->status_autor }}"
