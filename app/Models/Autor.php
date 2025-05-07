@@ -17,6 +17,7 @@ class Autor extends Model
 
     // Adicionando cast para o campo 'status' para garantir que seja tratado como um inteiro
     protected $casts = [
-        'status' => 'boolean',
+        'status_autor' => 'boolean',
     ];
+    
 }

@@ -28,6 +28,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Page index autor
     Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
+    // Página de autores inativos
+    Route::get('/autores/inativos', [AutorController::class, 'inativos'])->name('autores.inativos');
     //----Modal Editar
     Route::get('autores/{id}/edit', [AutorController::class, 'edit'])->name('autores.edit');
     //----Salvar

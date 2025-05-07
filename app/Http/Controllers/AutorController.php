@@ -8,11 +8,24 @@ use Illuminate\Http\Request;
 class AutorController extends Controller
 {
     /**
-     * Exibe a lista de todos os autores cadastrados, ordenados pela data de criação (mais recentes primeiro).
+     * Exibe a lista de todos os autores ativos cadastrados, ordenados pela data de criação.
      */
     public function index()
     {
-        $autores = Autor::orderBy('created_at', 'desc')->get();
+        $autores = Autor::where('status_autor', true) // apenas ativos
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        return view('autores.index', compact('autores'));
+    }
+
+
+    /**
+     * Exibe a lista de todos os autores inativos cadastrados, ordenados pela data de criação.
+     */
+    public function inativos()
+    {
+        $autores = Autor::where('status_autor', 0)->orderBy('created_at', 'desc')->get();
         return view('autores.index', compact('autores'));
     }
 
@@ -40,7 +53,7 @@ class AutorController extends Controller
 
 
     /**
-     * Atualiza as informações de um autor existente no banco de dados.
+     * Atualiza dados do autor existente no banco de dados.
      */
     public function update(Request $request, $id)
     {
@@ -66,7 +79,7 @@ class AutorController extends Controller
 
 
     /**
-     * Armazena um novo autor no banco de dados.
+     * Cadastra um novo autor no banco de dados.
      */
     public function store(Request $request)
     {

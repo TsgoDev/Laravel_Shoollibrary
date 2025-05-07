@@ -7,6 +7,7 @@ if (!function_exists('getPageTitle')) {
             'dashboard' => 'Painel de Controle',
             'products.index' => 'Produtos',
             'autores.index' => 'Autores',
+            'autores.inativos' => 'Autores Inativos',
             'profile.edit' => 'Perfil',
             'orders.index' => 'Pedidos',
         ];
