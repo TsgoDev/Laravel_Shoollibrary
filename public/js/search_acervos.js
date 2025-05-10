@@ -1,4 +1,4 @@
-// Input de pesquisar autores página index
+// Input de pesquisar acervos página index
 document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("searchInput");
     const tableRows = document.querySelectorAll("tbody tr");

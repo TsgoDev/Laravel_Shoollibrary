@@ -21,61 +21,13 @@ class AutorController extends Controller
 
 
     /**
-     * Exibe a lista de todos os autores inativos cadastrados, ordenados pela data de criação.
+     * Exibe a lista de todos os autores inativos.
      */
     public function inativos()
     {
         $autores = Autor::where('status_autor', 0)->orderBy('created_at', 'desc')->get();
         return view('autores.index', compact('autores'));
     }
-
-
-
-    /**
-     * Busca os dados de um autor específico para preenchimento do modal de edição.
-     *
-     * $id ID do autor
-     * Dados do autor em formato JSON
-     */
-    public function edit($id)
-    {
-        $autor = Autor::findOrFail($id);
-
-        // Se a requisição for AJAX, retorna JSON
-        if (request()->ajax()) {
-            return response()->json($autor);
-        }
-
-        // Caso contrário, retorna a view
-        return view('autores.form_edite_autor', compact('autor'));
-    }
-
-
-
-    /**
-     * Atualiza dados do autor existente no banco de dados.
-     */
-    public function update(Request $request, $id)
-    {
-        // Validação dos dados
-        $request->validate([
-            'name' => 'required|string|max:100',
-            'situacao' => 'required|in:0,1',
-        ]);
-
-        // Buscar autor pelo ID
-        $autor = Autor::findOrFail($id);
-
-        // Atualizar dados
-        $autor->update([
-            'nome_autor' => $request->name,
-            'status_autor' => $request->situacao,
-        ]);
-
-        // Redirecionar para index com mensagem de sucesso
-        return redirect()->route('autores.index')->with('message', 'Autor atualizado com sucesso!');
-    }
-
 
 
     /**
@@ -96,5 +48,32 @@ class AutorController extends Controller
         ]);
 
         return back()->with('message', 'Autor cadastrado com sucesso!');
+    }
+
+
+
+
+    /**
+     * Atualiza dados do autor no banco de dados.
+     */
+    public function update(Request $request, $id)
+    {
+        // Validação dos dados
+        $request->validate([
+            'autor' => 'required|string|max:100',
+            'situacao' => 'required|in:0,1',
+        ]);
+
+        // Buscar autor pelo ID
+        $autor = Autor::findOrFail($id);
+
+        // Atualizar dados
+        $autor->update([
+            'nome_autor' => $request->autor,
+            'status_autor' => $request->situacao,
+        ]);
+
+        // Redirecionar para index com mensagem de sucesso
+        return redirect()->route('autores.index')->with('message', 'Autor atualizado com sucesso!');
     }
 }

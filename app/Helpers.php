@@ -8,6 +8,8 @@ if (!function_exists('getPageTitle')) {
             'products.index' => 'Produtos',
             'autores.index' => 'Autores',
             'autores.inativos' => 'Autores Inativos',
+            'acervos.index' => 'Acervos',
+            'acervos.inativos' => 'Acervos Inativos',   
             'profile.edit' => 'Perfil',
             'orders.index' => 'Pedidos',
         ];

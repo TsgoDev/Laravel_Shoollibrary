@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('autores', function (Blueprint $table) {
-            $table->id(); // cria 'id' como primary key auto-increment
-            $table->string('nome_autor', 100);
-            $table->boolean('status_autor')->default(true); // Ativo/Indisponível
-            $table->timestamps(); // created_at e updated_at
-        });
+        if (!Schema::hasTable('autores')) {
+            Schema::create('autores', function (Blueprint $table) {
+                $table->id(); // cria 'id' como primary key auto-increment
+                $table->string('nome_autor', 100);
+                $table->boolean('status_autor')->default(true); // Ativo/Indisponível
+                $table->timestamps(); 
+            });
+        }
     }
 
     /**

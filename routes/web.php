@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProductController;
+//use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AutorController;
+use App\Http\Controllers\AcervoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -30,13 +31,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
     // Página de autores inativos
     Route::get('/autores/inativos', [AutorController::class, 'inativos'])->name('autores.inativos');
-    //----Modal Editar
-    Route::get('autores/{id}/edit', [AutorController::class, 'edit'])->name('autores.edit');
     //----Salvar
     Route::post('/autores', [AutorController::class, 'store'])->name('autores-store');
     //---Update
     Route::put('/autores/{id}', [AutorController::class, 'update'])->name('autores-update');
 
+    // Page index acervo
+    Route::get('/acervos', [AcervoController::class, 'index'])->name('acervos.index');
+    // Página de acervos inativos
+    Route::get('/acervos/inativos', [AcervoController::class, 'inativos'])->name('acervos.inativos');
+    //----Salvar
+    Route::post('/acervos', [AcervoController::class, 'store'])->name('acervos-store');
+    //---Update
+    Route::put('/acervos/{id}', [AcervoController::class, 'update'])->name('acervos-update');
 
     //Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 

@@ -1,4 +1,4 @@
-<!-----Modal create autor------->
+<!-----Modal create acervo------->
 <div id="crud-modal-create" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
@@ -10,7 +10,7 @@
                 class="flex items-center justify-between p-4 md:p-5 border-b rounded-t white:border-gray-600 border-gray-200">
                 <div>
                     <h3 class="text-lg font-semibold text-gray-900 white:text-white">
-                        Adicionar Autor
+                        Adicionar Acervo
                     </h3>
                 </div>
                 <button type="button"
@@ -25,22 +25,25 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{ route('autores-store') }}" method="POST"
+            <form class="p-4 md:p-5" action="{{ route('acervos-store') }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-6 grid-cols-2">
                     <div class="col-span-2">
-                        <label for="nome_autor" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome do autor</label>
-                        <input type="text" name="nome_autor" id="nome_autor"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="100" placeholder="Ex: Machado de Assis" autocomplete="nome_autor">
+                        <label for="nome_acervo" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome do acervo</label>
+                        <input type="text" name="nome_acervo" id="nome_acervo"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                            focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 
+                            white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 
+                            white:focus:border-primary-500"
+                            required="" maxlength="100" placeholder="Ex: CRTCB-LD-66A" autocomplete="nome_acervo">
                     </div>
 
                     <!-- Select com cor branca e largura reduzida -->
                     <div class="col-span-2">
-                        <label for="status_autor" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
-                        <select id="status_autor" name="status_autor" class="bg-white
-                         text-black border border-gray-300 text-sm rounded-lg block w-1/2 p-2.5" required>
+                        <label for="status_acervo" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
+                        <select id="status_acervo" name="status_acervo" class="bg-white text-black border
+                         border-gray-300 text-sm rounded-lg block w-1/2 p-2.5" required>
                             <option value="">Escolha um opção</option>
                             <option value="1">Ativo</option>
                             <option value="0">Indisponível</option>
@@ -59,7 +62,7 @@
                     Adicionar
                 </button>
             </form>
-            <!-----SweetAlert Insert autor------->
+            <!-----SweetAlert Insert acervo------->
             @if (Session::has('message'))
             <script>
                 swal({
@@ -72,6 +75,25 @@
                             value: true,
                             visible: true,
                             className: "btn btn-success",
+                            closeModal: true
+                        }
+                    }
+                });
+            </script>
+            @endif
+
+            @if (Session::has('error'))
+            <script>
+                swal({
+                    title: "Atenção",
+                    text: "{{ Session::get('error') }}",
+                    icon: "error",
+                    buttons: {
+                        confirm: {
+                            text: "OK",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-danger",
                             closeModal: true
                         }
                     }

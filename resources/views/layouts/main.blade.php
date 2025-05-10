@@ -57,6 +57,7 @@
     @livewireScripts
     <!-- Seus scripts customizados -->
     <script src="/js/search_autores.js"></script>
+    <script src="/js/search_acervos.js"></script>
     @stack('scripts')
 </body>
 

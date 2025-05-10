@@ -6,8 +6,8 @@
     <div class="mb-4 flex items-center gap-4 px-4">
         <input type="text" id="searchInput"
             class="w-full max-w-md px-3 py-2 border border-gray-600 rounded-lg bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
-            placeholder="Buscar autores...">
-        <!-- Botão Novo Autor -->
+            placeholder="Buscar acervos...">
+        <!-- Botão Novo Acervo -->
         <button data-modal-target="crud-modal-create" data-modal-toggle="crud-modal-create"
             class="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition">
             + Adicionar
@@ -18,23 +18,23 @@
     <section class="container px-7 mx-auto">
         <div class="flex items-center gap-x-3 mb-6">
             <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">
-                {{ count($autores) }} registros
+                {{ count($acervos) }} registros
             </span>
         </div>
-        
+
         <!-- Botão para alternar entre listas -->
         <div class="mb-6">
-            @if(request()->routeIs('autores.inativos'))
-            <a href="{{ route('autores.index') }}"
+            @if(request()->routeIs('acervos.inativos'))
+            <a href="{{ route('acervos.index') }}"
                 class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500 transition">
-                
-                Ver Autores Ativos
+
+                Ver Acervos Ativos
             </a>
             @else
-            <a href="{{ route('autores.inativos') }}"
+            <a href="{{ route('acervos.inativos') }}"
                 class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
-                
-                Ver Autores Inativos
+
+                Ver Acervos Inativos
             </a>
             @endif
         </div>
@@ -82,30 +82,30 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 white:divide-gray-700 white:bg-gray-900">
-                                @foreach ($autores as $autor)
+                                @foreach ($acervos as $acervo)
                                 <tr>
                                     <td
                                         class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                        {{ $autor->id }}
+                                        {{ $acervo->id }}
                                     </td>
 
                                     <td
                                         class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                        {{ $autor->nome_autor }}
+                                        {{ $acervo->nome_acervo }}
                                     </td>
 
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300"
-                                        data-status-id="{{ $autor->id }}">
+                                        data-status-id="{{ $acervo->id }}">
                                         <div
                                             class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 
-                                                {{ $autor->status_autor ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
+                                                {{ $acervo->status_acervo ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
                                             <span
                                                 class="h-1.5 w-1.5 rounded-full 
-                                                    {{ $autor->status_autor ? 'bg-emerald-600' : 'bg-red-600' }}">
+                                                    {{ $acervo->status_acervo ? 'bg-emerald-600' : 'bg-red-600' }}">
                                             </span> <span
                                                 class="text-sm font-semibold 
-                                                    {{ $autor->status_autor ? 'text-emerald-600 white:text-emerald-600' : 'text-red-600 white:text-red-300' }}">
-                                                {{ $autor->status_autor ? 'Ativo' : 'Indisponível' }}
+                                                    {{ $acervo->status_acervo ? 'text-emerald-600 white:text-emerald-600' : 'text-red-600 white:text-red-300' }}">
+                                                {{ $acervo->status_acervo ? 'Ativo' : 'Indisponível' }}
                                             </span>
                                         </div>
                                     </td>
@@ -114,11 +114,11 @@
                                         <div class="flex items-center gap-x-2">
                                             <!-- Botão Editar -->
                                             <button type="button"
-                                                class="btn-editar-autor px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform
+                                                class="btn-editar-acervo px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform
                                                 bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-                                                data-id="{{ $autor->id }}"
-                                                data-nome="{{ $autor->nome_autor }}"
-                                                data-status="{{ $autor->status_autor ? '1' : '0' }}"
+                                                data-id="{{ $acervo->id }}"
+                                                data-nome="{{ $acervo->nome_acervo }}"
+                                                data-status="{{ $acervo->status_acervo ? '1' : '0' }}"
                                                 data-modal-target="crud-modal-edit"
                                                 data-modal-toggle="crud-modal-edit">
                                                 Editar
@@ -134,25 +134,25 @@
             </div>
         </div>
     </section>
-    @include('autores.form_create_autor')
-    @include('autores.form_edite_autor')
+    @include('acervos.form_create_acervo')
+    @include('acervos.form_edite_acervo')
     @endsection
 
     @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Quando o botão de editar for clicado
-            document.querySelectorAll('.btn-editar-autor').forEach(button => {
+            document.querySelectorAll('.btn-editar-acervo').forEach(button => {
                 button.addEventListener('click', function() {
-                    const autorId = this.getAttribute('data-id');
-                    const form = document.getElementById('form-editar-autor');
+                    const acervoId = this.getAttribute('data-id');
+                    const form = document.getElementById('form-editar-acervo');
 
                     // Configura a action do formulário
-                    form.action = `/autores/${autorId}`;
+                    form.action = `/acervos/${acervoId}`;
 
                     // Preenche os campos do formulário instantaneamente
-                    document.getElementById('autor_id').value = autorId;
-                    document.getElementById('autor').value = this.getAttribute('data-nome');
+                    document.getElementById('acervo_id').value = acervoId;
+                    document.getElementById('acervo').value = this.getAttribute('data-nome');
                     document.getElementById('situacao').value = this.getAttribute('data-status');
                 });
             });
