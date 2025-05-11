@@ -45,7 +45,7 @@ class EditoraController extends Controller
             'status_editora' => 'required|in:0,1',
         ]);
 
-        // Verifica se a editora já existe com mesmo nome, cidade e estado
+        
         // Verifica se a editora já existe com mesmo nome, cidade e estado
         $editoraExistente = Editora::where('nome_editora', $request->input('nome_editora'))
             ->where('cidade_editora', $request->input('nome_cidade'))
@@ -53,9 +53,8 @@ class EditoraController extends Controller
             ->first();
 
         if ($editoraExistente) {
-            return redirect()->back()->with('error', 'Essa Editora já está cadastrada para essa cidade e estado!');
+            return redirect()->back()->with('error', 'Editora já cadastrada nesta cidade e estado!');
         }
-
 
         // Insert genero no banco
         $editora = Editora::create([

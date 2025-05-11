@@ -21,19 +21,19 @@
                 {{ count($autores) }} registros
             </span>
         </div>
-        
+
         <!-- Botão para alternar entre listas -->
         <div class="mb-6">
             @if(request()->routeIs('autores.inativos'))
             <a href="{{ route('autores.index') }}"
                 class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500 transition">
-                
+
                 Ver Autores Ativos
             </a>
             @else
             <a href="{{ route('autores.inativos') }}"
                 class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
-                
+
                 Ver Autores Inativos
             </a>
             @endif
