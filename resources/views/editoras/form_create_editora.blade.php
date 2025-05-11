@@ -53,13 +53,16 @@
 
                     <!-- Estado da Editora -->
                     <div class="col-span-2">
-                        <label for="nome_estado" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Estado da Editora</label>
-                        <input type="text" name="nome_estado" id="nome_estado"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                            focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600     
-                            white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 
-                            white:focus:border-primary-500"
-                            required="" maxlength="2" placeholder="Ex: SP" autocomplete="nome_estado">
+                        <label for="estado_id" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Estado da Editora</label>
+                        <select id="estado_id" name="estado_id" class="bg-white text-black border
+                         border-gray-300 text-sm rounded-lg block w-72 p-2.5" required>
+                            <option value="">Escolha um estado</option>
+                            @foreach($estados as $estado)
+                            <option value="{{ $estado->id }}" {{ old('estado_id') == $estado->id ? 'selected' : '' }}>
+                                {{ $estado->nome_estado }}
+                            </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <!-- Situacao da Editora -->

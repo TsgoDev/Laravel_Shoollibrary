@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Editora;
+
+use App\Models\Estado;
 use Illuminate\Http\Request;
 
 class EditoraController extends Controller
@@ -16,7 +18,10 @@ class EditoraController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('editoras.index', compact('editoras'));
+        // Buscar estados da tabela estados
+        $estados = Estado::orderBy('nome_estado')->get();
+
+        return view('editoras.index', compact('editoras', 'estados'));
     }
 
 
@@ -26,8 +31,14 @@ class EditoraController extends Controller
      */
     public function inativos()
     {
-        $editoras = Editora::where('status_editora', 0)->orderBy('created_at', 'desc')->get();
-        return view('editoras.index', compact('editoras'));
+        $editoras = Editora::where('status_editora', 0)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        // Buscar estados da tabela estados
+        $estados = Estado::orderBy('nome_estado')->get();
+
+        return view('editoras.index', compact('editoras', 'estados'));
     }
 
 
@@ -41,26 +52,26 @@ class EditoraController extends Controller
         $request->validate([
             'nome_editora' => 'required|string|max:100',
             'nome_cidade' => 'required|string|max:70',
-            'nome_estado' => 'required|string|max:2',
+            'estado_id' => 'required|exists:estados,id',
             'status_editora' => 'required|in:0,1',
         ]);
 
-        
+
         // Verifica se a editora já existe com mesmo nome, cidade e estado
         $editoraExistente = Editora::where('nome_editora', $request->input('nome_editora'))
             ->where('cidade_editora', $request->input('nome_cidade'))
-            ->where('estado_editora', $request->input('nome_estado'))
+            ->where('estado_id', $request->input('estado_id'))
             ->first();
 
         if ($editoraExistente) {
             return redirect()->back()->with('error', 'Editora já cadastrada nesta cidade e estado!');
         }
 
-        // Insert genero no banco
+        // Insert editora no banco
         $editora = Editora::create([
             'nome_editora' => $request->input('nome_editora'),
             'cidade_editora' => $request->input('nome_cidade'),
-            'estado_editora' => $request->input('nome_estado'),
+            'estado_id' => $request->input('estado_id'),
             'status_editora' => $request->input('status_editora'),
         ]);
 
@@ -77,8 +88,8 @@ class EditoraController extends Controller
         // Validação dos dados
         $request->validate([
             'editora_nome' => 'required|string|max:100',
-            'editora_cidade' => 'required|string|max:100',
-            'editora_estado' => 'required|string|max:100',
+            'editora_cidade' => 'required|string|max:70',
+            'editora_estado' => 'required|string|max:30',
             'editora_status' => 'required|in:0,1',
         ]);
 
@@ -90,7 +101,7 @@ class EditoraController extends Controller
         $editora->update([
             'nome_editora' => $request->editora_nome,
             'cidade_editora' => $request->editora_cidade,
-            'estado_editora' => $request->editora_estado,
+            'estado_id' => $request->editora_estado,
             'status_editora' => $request->editora_status,
         ]);
 

@@ -77,8 +77,8 @@ class GeneroController extends Controller
 
         // Verifica se o gênero já existe (excluindo o próprio registro)
         $generoExistente = Genero::where('nome_genero', $request->genero)
-        ->where('id', '!=', $id)
-        ->first();
+            ->where('id', '!=', $id)
+            ->first();
 
         if ($generoExistente) {
             return back()->with('error', 'Gênero já existe!');

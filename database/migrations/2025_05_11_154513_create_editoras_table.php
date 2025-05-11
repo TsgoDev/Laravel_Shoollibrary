@@ -12,15 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('editoras', function (Blueprint $table) {
-            $table->id(); // cria 'id' como primary key auto-increment
+            $table->id();
             $table->string('nome_editora', 100);
             $table->string('cidade_editora', 70);
-            $table->string('estado_editora', 2);
-            $table->boolean('status_editora')->default(true); // Ativo/Indisponível
+
+            // Substituir 'estado_editora' por 'estado_id'
+            $table->foreignId('estado_id')->constrained('estados')->onDelete('restrict');
+
+            $table->boolean('status_editora')->default(true);
             $table->timestamps();
-        
-            // Índice único para evitar duplicatas com mesma combinação
-            $table->unique(['nome_editora', 'cidade_editora', 'estado_editora'], 'editoras_unique_index');
+
+            $table->unique(['nome_editora', 'cidade_editora', 'estado_id'], 'editoras_unique_index');
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('editoras');
+        Schema::dropIfExists('editora');
     }
 };

@@ -13,8 +13,8 @@ class AutorController extends Controller
     public function index()
     {
         $autores = Autor::where('status_autor', true) // apenas ativos
-        ->orderBy('created_at', 'desc')
-        ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('autores.index', compact('autores'));
     }
@@ -48,7 +48,7 @@ class AutorController extends Controller
 
         if ($autorExistente) {
             return back()->with('error', 'Esse Autor já existe!');
-        }       
+        }
 
         // Insert autor no banco
         $autor = Autor::create([
@@ -60,7 +60,7 @@ class AutorController extends Controller
     }
 
 
-    
+
     /**
      * Atualiza dados do autor no banco de dados.
      */
@@ -77,8 +77,8 @@ class AutorController extends Controller
 
         // Verifica se o gênero já existe (excluindo o próprio registro)
         $autorExistente = Autor::where('nome_autor', $request->autor)
-        ->where('id', '!=', $id)
-        ->first();
+            ->where('id', '!=', $id)
+            ->first();
 
         if ($autorExistente) {
             return back()->with('error', 'Autor já existe!');

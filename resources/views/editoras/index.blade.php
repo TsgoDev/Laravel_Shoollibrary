@@ -119,7 +119,7 @@
 
                                     <td
                                         class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                        {{ $editora->estado_editora }}
+                                        {{ $editora->estado->nome_estado }}
                                     </td>
 
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300"
@@ -147,7 +147,7 @@
                                                 data-id="{{ $editora->id }}"
                                                 data-nome="{{ $editora->nome_editora }}"
                                                 data-cidade="{{ $editora->cidade_editora }}"
-                                                data-estado="{{ $editora->estado_editora }}"
+                                                data-estado="{{ $editora->estado_id }}"
                                                 data-status="{{ $editora->status_editora ? '1' : '0' }}"
                                                 data-modal-target="crud-modal-edit"
                                                 data-modal-toggle="crud-modal-edit">

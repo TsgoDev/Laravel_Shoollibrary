@@ -59,15 +59,16 @@
 
                     <!-- Estado da Editora -->
                     <div class="col-span-2">
-                        <label for="estado" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">
-                            Estado da Editora
-                        </label>
-                        <input type="text" name="editora_estado" id="editora_estado"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 
-                            text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 
-                            block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 
-                            white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="2">
+                        <label for="editora_estado" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Estado da Editora</label>
+                        <select id="editora_estado" name="editora_estado" class="bg-white text-black border
+                         border-gray-300 text-sm rounded-lg block w-72 p-2.5" required>
+                            <option value="">Escolha um estado</option>
+                            @foreach($estados as $estado)
+                            <option value="{{ $estado->id }}" {{ old('estado_id') == $estado->id ? 'selected' : '' }}>
+                                {{ $estado->nome_estado }}
+                            </option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <!-- Situacao da Editora -->
@@ -84,7 +85,7 @@
                 <!-- Botão -->
                 <button type="submit" name="submit"
                     class="text-white inline-flex items-center bg-blue-700
-                     hover:bg-blue-800 focus:ring-4 focus:outline-none
+                    hover:bg-blue-800 focus:ring-4 focus:outline-none
                     focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 
                     text-center white:bg-blue-600 white:hover:bg-blue-700 white:focus:ring-blue-800">
                     Atualizar

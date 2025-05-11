@@ -13,8 +13,8 @@ class AcervoController extends Controller
     public function index()
     {
         $acervos = Acervo::where('status_acervo', true) // apenas ativos
-        ->orderBy('created_at', 'desc')
-        ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('acervos.index', compact('acervos'));
     }
@@ -60,7 +60,7 @@ class AcervoController extends Controller
     }
 
 
-    
+
     /**
      * Atualiza dados do acervo no banco de dados.
      */
@@ -76,8 +76,8 @@ class AcervoController extends Controller
 
         // Verifica se o acervo já existe (excluindo o próprio registro)
         $acervoExistente = Acervo::where('nome_acervo', $request->acervo)
-        ->where('id', '!=', $id)
-        ->first();
+            ->where('id', '!=', $id)
+            ->first();
 
         if ($acervoExistente) {
             return back()->with('error', 'Acervo já existe!');
@@ -92,6 +92,4 @@ class AcervoController extends Controller
         // Redirecionar para index com mensagem de sucesso
         return redirect()->route('acervos.index')->with('message', 'Acervo atualizado com sucesso!');
     }
-
-
 }
