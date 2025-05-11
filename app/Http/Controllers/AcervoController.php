@@ -18,7 +18,8 @@ class AcervoController extends Controller
 
         return view('acervos.index', compact('acervos'));
     }
-    
+
+
 
     /**
      * Exibe a lista de todos os acervos inativos.
@@ -28,6 +29,7 @@ class AcervoController extends Controller
         $acervos = Acervo::where('status_acervo', 0)->orderBy('created_at', 'desc')->get();
         return view('acervos.index', compact('acervos'));
     }
+
 
 
     /**
@@ -45,7 +47,7 @@ class AcervoController extends Controller
         $acervoExistente = Acervo::where('nome_acervo', $request->input('nome_acervo'))->first();
 
         if ($acervoExistente) {
-            return back()->with('error', 'Acervo já existe!');
+            return back()->with('error', 'Esse Acervo já existe!');
         }
 
         // Insert acervo no banco
@@ -56,6 +58,7 @@ class AcervoController extends Controller
 
         return back()->with('message', 'Acervo cadastrado com sucesso!');
     }
+
 
     
     /**
@@ -82,28 +85,4 @@ class AcervoController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

@@ -3,6 +3,8 @@
 //use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AutorController;
 use App\Http\Controllers\AcervoController;
+use App\Http\Controllers\GeneroController;
+use App\Http\Controllers\EditoraController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,7 +22,7 @@ Route::middleware([
     // Rota para o dashboard   
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+    return view('dashboard');
     })->name('dashboard');
 });
 
@@ -45,7 +47,25 @@ Route::middleware(['auth'])->group(function () {
     //---Update
     Route::put('/acervos/{id}', [AcervoController::class, 'update'])->name('acervos-update');
 
-    //Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+
+    // Page index genero
+    Route::get('/generos', [GeneroController::class, 'index'])->name('generos.index');
+    // Página de generos inativos
+    Route::get('/generos/inativos', [GeneroController::class, 'inativos'])->name('generos.inativos');
+    //----Salvar
+    Route::post('/generos', [GeneroController::class, 'store'])->name('generos-store');
+    //---Update
+    Route::put('/generos/{id}', [GeneroController::class, 'update'])->name('generos-update');
+
+
+    // Page index editora
+    Route::get('/editoras', [EditoraController::class, 'index'])->name('editoras.index');
+    // Página de editoras inativos
+    Route::get('/editoras/inativos', [EditoraController::class, 'inativos'])->name('editoras.inativos');
+    //----Salvar
+    Route::post('/editoras', [EditoraController::class, 'store'])->name('editoras-store');
+    //---Update
+    Route::put('/editoras/{id}', [EditoraController::class, 'update'])->name('editoras-update');    
 
     //----Excluir autores
     //Route::delete('/autores/{id}', [AutorController::class, 'destroy'])->name('autores-destroy');

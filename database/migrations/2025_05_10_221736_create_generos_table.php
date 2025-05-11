@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('acervos')) {
-            Schema::create('acervos', function (Blueprint $table) {
+        if (!Schema::hasTable('generos')) {
+            Schema::create('generos', function (Blueprint $table) {
                 $table->id(); // cria 'id' como primary key auto-increment
-                $table->string('nome_acervo', 100);
-                $table->boolean('status_acervo')->default(true); // Ativo/Indisponível
+                $table->string('nome_genero', 100);
+                $table->boolean('status_genero')->default(true); // Ativo/Indisponível
                 $table->timestamps();
             });
         }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('acervos');
+        Schema::dropIfExists('generos');
     }
 };

@@ -6,7 +6,7 @@
     <div class="mb-4 flex items-center gap-4 px-4">
         <input type="text" id="searchInput"
             class="w-full max-w-md px-3 py-2 border border-gray-600 rounded-lg bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
-            placeholder="Buscar autores...">
+            placeholder="Buscar autores..." autocomplete="off">
         <!-- Botão Novo Autor -->
         <button data-modal-target="crud-modal-create" data-modal-toggle="crud-modal-create"
             class="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition">

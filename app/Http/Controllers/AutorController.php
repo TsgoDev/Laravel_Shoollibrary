@@ -20,6 +20,7 @@ class AutorController extends Controller
     }
 
 
+
     /**
      * Exibe a lista de todos os autores inativos.
      */
@@ -28,6 +29,7 @@ class AutorController extends Controller
         $autores = Autor::where('status_autor', 0)->orderBy('created_at', 'desc')->get();
         return view('autores.index', compact('autores'));
     }
+
 
 
     /**
@@ -51,8 +53,7 @@ class AutorController extends Controller
     }
 
 
-
-
+    
     /**
      * Atualiza dados do autor no banco de dados.
      */

@@ -58,6 +58,8 @@
     <!-- Seus scripts customizados -->
     <script src="/js/search_autores.js"></script>
     <script src="/js/search_acervos.js"></script>
+    <script src="/js/search_generos.js"></script>
+    <script src="/js/search_editoras.js"></script>
     @stack('scripts')
 </body>
 
