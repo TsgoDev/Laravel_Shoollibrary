@@ -13,14 +13,14 @@ class GeneroController extends Controller
     public function index()
     {
         $generos = Genero::where('status_genero', true) // apenas ativos
-        ->orderBy('created_at', 'desc')
-        ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('generos.index', compact('generos'));
     }
 
 
-    
+
     /**
      * Exibe a lista de todos os autores inativos.
      */
@@ -71,8 +71,18 @@ class GeneroController extends Controller
             'genero' => 'required|string|max:100',
             'situacao' => 'required|in:0,1',
         ]);
+
         // Buscar gênero pelo ID
         $genero = Genero::findOrFail($id);
+
+        // Verifica se o gênero já existe (excluindo o próprio registro)
+        $generoExistente = Genero::where('nome_genero', $request->genero)
+        ->where('id', '!=', $id)
+        ->first();
+
+        if ($generoExistente) {
+            return back()->with('error', 'Gênero já existe!');
+        }
 
         // Atualizar dados
         $genero->update([
@@ -83,5 +93,4 @@ class GeneroController extends Controller
         // Redirecionar para index com mensagem de sucesso
         return redirect()->route('generos.index')->with('message', 'Gênero atualizado com sucesso!');
     }
-
 }

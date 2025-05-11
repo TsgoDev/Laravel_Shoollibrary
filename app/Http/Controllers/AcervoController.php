@@ -74,6 +74,15 @@ class AcervoController extends Controller
         // Buscar acervo pelo ID
         $acervo = Acervo::findOrFail($id);
 
+        // Verifica se o acervo já existe (excluindo o próprio registro)
+        $acervoExistente = Acervo::where('nome_acervo', $request->acervo)
+        ->where('id', '!=', $id)
+        ->first();
+
+        if ($acervoExistente) {
+            return back()->with('error', 'Acervo já existe!');
+        }
+
         // Atualizar dados
         $acervo->update([
             'nome_acervo' => $request->acervo,

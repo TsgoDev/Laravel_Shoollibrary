@@ -81,6 +81,24 @@
                 });
             </script>
             @endif
+            @if (Session::has('error'))
+            <script>
+                swal({
+                    title: "Atenção",
+                    text: "{{ Session::get('error') }}",
+                    icon: "error",
+                    buttons: {
+                        confirm: {
+                            text: "OK",
+                            value: true,
+                            visible: true,
+                            className: "btn btn-danger",
+                            closeModal: true
+                        }
+                    }
+                });
+            </script>
+            @endif
         </div>
     </div>
 </div>

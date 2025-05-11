@@ -43,6 +43,13 @@ class AutorController extends Controller
             'status_autor' => 'required|in:0,1',
         ]);
 
+        // Verifica se o autor já existe
+        $autorExistente = Autor::where('nome_autor', $request->input('nome_autor'))->first();
+
+        if ($autorExistente) {
+            return back()->with('error', 'Esse Autor já existe!');
+        }       
+
         // Insert autor no banco
         $autor = Autor::create([
             'nome_autor' => $request->input('nome_autor'),
@@ -67,6 +74,15 @@ class AutorController extends Controller
 
         // Buscar autor pelo ID
         $autor = Autor::findOrFail($id);
+
+        // Verifica se o gênero já existe (excluindo o próprio registro)
+        $autorExistente = Autor::where('nome_autor', $request->autor)
+        ->where('id', '!=', $id)
+        ->first();
+
+        if ($autorExistente) {
+            return back()->with('error', 'Autor já existe!');
+        }
 
         // Atualizar dados
         $autor->update([
