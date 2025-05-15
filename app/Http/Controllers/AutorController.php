@@ -68,15 +68,15 @@ class AutorController extends Controller
     {
         // Validação dos dados
         $request->validate([
-            'autor' => 'required|string|max:100',
-            'situacao' => 'required|in:0,1',
+            'edit_autor' => 'required|string|max:100',
+            'status_autor' => 'required|in:0,1',
         ]);
 
         // Buscar autor pelo ID
         $autor = Autor::findOrFail($id);
 
         // Verifica se o gênero já existe (excluindo o próprio registro)
-        $autorExistente = Autor::where('nome_autor', $request->autor)
+        $autorExistente = Autor::where('nome_autor', $request->edit_autor)
             ->where('id', '!=', $id)
             ->first();
 
@@ -86,8 +86,8 @@ class AutorController extends Controller
 
         // Atualizar dados
         $autor->update([
-            'nome_autor' => $request->autor,
-            'status_autor' => $request->situacao,
+            'nome_autor' => $request->edit_autor,
+            'status_autor' => $request->status_autor,
         ]);
 
         // Redirecionar para index com mensagem de sucesso

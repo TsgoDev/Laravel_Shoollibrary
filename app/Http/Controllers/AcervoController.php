@@ -68,14 +68,14 @@ class AcervoController extends Controller
     {
         // Validação dos dados
         $request->validate([
-            'acervo' => 'required|string|max:100',
-            'situacao' => 'required|in:0,1',
+            'edit_acervo' => 'required|string|max:100',
+            'status_acervo' => 'required|in:0,1',
         ]);
         // Buscar acervo pelo ID
         $acervo = Acervo::findOrFail($id);
 
         // Verifica se o acervo já existe (excluindo o próprio registro)
-        $acervoExistente = Acervo::where('nome_acervo', $request->acervo)
+        $acervoExistente = Acervo::where('nome_acervo', $request->edit_acervo)
             ->where('id', '!=', $id)
             ->first();
 
@@ -85,8 +85,8 @@ class AcervoController extends Controller
 
         // Atualizar dados
         $acervo->update([
-            'nome_acervo' => $request->acervo,
-            'status_acervo' => $request->situacao,
+            'nome_acervo' => $request->edit_acervo,
+            'status_acervo' => $request->status_acervo,
         ]);
 
         // Redirecionar para index com mensagem de sucesso

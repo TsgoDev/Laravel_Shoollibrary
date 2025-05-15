@@ -18,6 +18,9 @@ if (!function_exists('getPageTitle')) {
             'editoras.index' => 'Editoras',
             'editoras.inativos' => 'Editoras Inativos',
 
+            'alunos.index' => 'Alunos',
+            'alunos.inativos' => 'Alunos Inativos',
+
             'profile.edit' => 'Perfil',
 
             'orders.index' => 'Pedidos',
@@ -38,6 +41,7 @@ if (!function_exists('getMainMenu')) {
             ['route' => 'acervos.index', 'label' => 'Acervos'],
             ['route' => 'generos.index', 'label' => 'Gêneros'],
             ['route' => 'editoras.index', 'label' => 'Editoras'],
+            ['route' => 'alunos.index', 'label' => 'Alunos'],
             // Adicione outros menus principais aqui
         ];
     }

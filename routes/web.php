@@ -5,6 +5,7 @@ use App\Http\Controllers\AutorController;
 use App\Http\Controllers\AcervoController;
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\EditoraController;
+use App\Http\Controllers\AlunoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,7 +20,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 
-    // Rota para o dashboard   
+    // Rota para o dashboard
 ])->group(function () {
     Route::get('/dashboard', function () {
     return view('dashboard');
@@ -65,7 +66,18 @@ Route::middleware(['auth'])->group(function () {
     //----Salvar
     Route::post('/editoras', [EditoraController::class, 'store'])->name('editoras-store');
     //---Update
-    Route::put('/editoras/{id}', [EditoraController::class, 'update'])->name('editoras-update');    
+    Route::put('/editoras/{id}', [EditoraController::class, 'update'])->name('editoras-update');
+
+
+    // Page index aluno
+    Route::get('/alunos', [AlunoController::class, 'index'])->name('alunos.index');
+    // Página de alunos inativos
+    Route::get('/alunos/inativos', [AlunoController::class, 'inativos'])->name('alunos.inativos');
+    //----Salvar
+    Route::post('/alunos', [AlunoController::class, 'store'])->name('alunos-store');
+    //---Update
+    Route::put('/alunos/{id}', [AlunoController::class, 'update'])->name('alunos-update');
+
 
     //----Excluir autores
     //Route::delete('/autores/{id}', [AutorController::class, 'destroy'])->name('autores-destroy');

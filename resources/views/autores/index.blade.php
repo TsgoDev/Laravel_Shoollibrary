@@ -97,13 +97,13 @@
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300"
                                         data-status-id="{{ $autor->id }}">
                                         <div
-                                            class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 
+                                            class="inline-flex items-center px-3 py-1 rounded-full gap-x-2
                                                 {{ $autor->status_autor ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
                                             <span
-                                                class="h-1.5 w-1.5 rounded-full 
+                                                class="h-1.5 w-1.5 rounded-full
                                                     {{ $autor->status_autor ? 'bg-emerald-600' : 'bg-red-600' }}">
                                             </span> <span
-                                                class="text-sm font-semibold 
+                                                class="text-sm font-semibold
                                                     {{ $autor->status_autor ? 'text-emerald-600 white:text-emerald-600' : 'text-red-600 white:text-red-300' }}">
                                                 {{ $autor->status_autor ? 'Ativo' : 'Indisponível' }}
                                             </span>
@@ -152,8 +152,8 @@
 
                     // Preenche os campos do formulário instantaneamente
                     document.getElementById('autor_id').value = autorId;
-                    document.getElementById('autor').value = this.getAttribute('data-nome');
-                    document.getElementById('situacao').value = this.getAttribute('data-status');
+                    document.getElementById('edit_autor').value = this.getAttribute('data-nome');
+                    document.getElementById('status_autor').value = this.getAttribute('data-status');
                 });
             });
         });

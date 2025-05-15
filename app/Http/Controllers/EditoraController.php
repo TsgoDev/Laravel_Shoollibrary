@@ -87,10 +87,10 @@ class EditoraController extends Controller
     {
         // Validação dos dados
         $request->validate([
-            'editora_nome' => 'required|string|max:100',
-            'editora_cidade' => 'required|string|max:70',
-            'editora_estado' => 'required|string|max:30',
-            'editora_status' => 'required|in:0,1',
+            'edit_editora' => 'required|string|max:100',
+            'edit_cidade' => 'required|string|max:70',
+            'edit_estado' => 'required|string|max:30',
+            'status_editora' => 'required|in:0,1',
         ]);
 
 
@@ -99,10 +99,10 @@ class EditoraController extends Controller
 
         // Atualizar dados
         $editora->update([
-            'nome_editora' => $request->editora_nome,
-            'cidade_editora' => $request->editora_cidade,
-            'estado_id' => $request->editora_estado,
-            'status_editora' => $request->editora_status,
+            'nome_editora' => $request->edit_editora,
+            'cidade_editora' => $request->edit_cidade,
+            'estado_id' => $request->edit_estado,
+            'status_editora' => $request->status_editora,
         ]);
 
         return redirect()->route('editoras.index')->with('message', 'Editora atualizada com sucesso!');

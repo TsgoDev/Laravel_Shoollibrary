@@ -68,15 +68,15 @@ class GeneroController extends Controller
     {
         // Validação dos dados
         $request->validate([
-            'genero' => 'required|string|max:100',
-            'situacao' => 'required|in:0,1',
+            'edit_genero' => 'required|string|max:100',
+            'status_genero' => 'required|in:0,1',
         ]);
 
         // Buscar gênero pelo ID
         $genero = Genero::findOrFail($id);
 
         // Verifica se o gênero já existe (excluindo o próprio registro)
-        $generoExistente = Genero::where('nome_genero', $request->genero)
+        $generoExistente = Genero::where('nome_genero', $request->edit_genero)
             ->where('id', '!=', $id)
             ->first();
 
@@ -86,8 +86,8 @@ class GeneroController extends Controller
 
         // Atualizar dados
         $genero->update([
-            'nome_genero' => $request->genero,
-            'status_genero' => $request->situacao,
+            'nome_genero' => $request->edit_genero,
+            'status_genero' => $request->status_genero,
         ]);
 
         // Redirecionar para index com mensagem de sucesso

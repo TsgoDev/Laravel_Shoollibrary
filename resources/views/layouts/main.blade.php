@@ -60,6 +60,7 @@
     <script src="/js/search_acervos.js"></script>
     <script src="/js/search_generos.js"></script>
     <script src="/js/search_editoras.js"></script>
+    <script src="/js/search_alunos.js"></script>
     @stack('scripts')
 </body>
 

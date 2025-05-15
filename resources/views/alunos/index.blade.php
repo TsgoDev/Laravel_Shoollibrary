@@ -6,8 +6,8 @@
     <div class="mb-4 flex items-center gap-4 px-4">
         <input type="text" id="searchInput"
             class="w-full max-w-md px-3 py-2 border border-gray-600 rounded-lg bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
-            placeholder="Buscar editoras..." autocomplete="off">
-        <!-- Botão Novo Editora -->
+            placeholder="Buscar alunos..." autocomplete="off">
+        <!-- Botão Novo Aluno -->
         <button data-modal-target="crud-modal-create" data-modal-toggle="crud-modal-create"
             class="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition">
             + Adicionar
@@ -18,23 +18,23 @@
     <section class="container px-7 mx-auto">
         <div class="flex items-center gap-x-3 mb-6">
             <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">
-                {{ count($editoras) }} registros
+                {{ count($alunos) }} registros
             </span>
         </div>
 
         <!-- Botão para alternar entre listas -->
         <div class="mb-6">
-            @if(request()->routeIs('editoras.inativos'))
-            <a href="{{ route('editoras.index') }}"
+            @if(request()->routeIs('alunos.inativos'))
+            <a href="{{ route('alunos.index') }}"
                 class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500 transition">
 
-                Ver Editoras Ativos
+                Ver Alunos Ativos
             </a>
             @else
-            <a href="{{ route('editoras.inativos') }}"
+            <a href="{{ route('alunos.inativos') }}"
                 class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
 
-                Ver Editoras Inativos
+                Ver Alunos Inativos
             </a>
             @endif
         </div>
@@ -55,25 +55,16 @@
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
                                         <button class="flex items-center gap-x-2">
-                                            <span>Editora</span>
+                                            <span>Matricula</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                             </svg>
                                         </button>
                                     </th>
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        class="px-3 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
                                         <button class="flex items-center gap-x-2">
-                                            <span>Cidade</span>
-                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                            </svg>
-                                        </button>
-                                    </th>
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                        <button class="flex items-center gap-x-2">
-                                            <span>Estado</span>
+                                            <span>Turma</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                             </svg>
@@ -81,7 +72,34 @@
                                     </th>
                                     <th scope="col"
                                         class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
-                                        <button class="flex items-center gap-x-2">
+                                        <button class="flex items-center gap-x-50">
+                                            <span>Nome</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-50">
+                                            <span>Telefone</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-50">
+                                            <span>Email</span>
+                                            <svg class="h-3" viewBox="0 0 10 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th scope="col"
+                                        class="px-8 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
+                                        <button class="flex items-center gap-x-50">
                                             <span>Status</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -100,40 +118,50 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 white:divide-gray-700 white:bg-gray-900">
-                                @foreach ($editoras as $editora)
+                                @foreach ($alunos as $aluno)
                                 <tr>
                                     <td
                                         class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                        {{ $editora->id }}
+                                        {{ $aluno->id }}
                                     </td>
 
                                     <td
                                         class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                        {{ $editora->nome_editora }}
+                                        {{ $aluno->matricula_aluno }}
                                     </td>
 
                                     <td
                                         class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                        {{ $editora->cidade_editora }}
+                                        {{ $aluno->turma_aluno }}
                                     </td>
 
                                     <td
                                         class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                        {{ $editora->estado->nome_estado }}
+                                        {{ $aluno->nome_aluno }}
+                                    </td>
+
+                                    <td
+                                        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
+                                        {{ $aluno->telefone_aluno }}
+                                    </td>
+
+                                    <td
+                                        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
+                                        {{ $aluno->email_aluno }}
                                     </td>
 
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300"
-                                        data-status-id="{{ $editora->id }}">
+                                        data-status-id="{{ $aluno->id }}">
                                         <div
                                             class="inline-flex items-center px-3 py-1 rounded-full gap-x-2
-                                                {{ $editora->status_editora ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
+                                                {{ $aluno->status_aluno ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
                                             <span
                                                 class="h-1.5 w-1.5 rounded-full
-                                                    {{ $editora->status_editora ? 'bg-emerald-600' : 'bg-red-600' }}">
+                                                    {{ $aluno->status_aluno ? 'bg-emerald-600' : 'bg-red-600' }}">
                                             </span> <span
                                                 class="text-sm font-semibold
-                                                    {{ $editora->status_editora ? 'text-emerald-600 white:text-emerald-600' : 'text-red-600 white:text-red-300' }}">
-                                                {{ $editora->status_editora ? 'Ativo' : 'Indisponível' }}
+                                                    {{ $aluno->status_aluno ? 'text-emerald-600 white:text-emerald-600' : 'text-red-600 white:text-red-300' }}">
+                                                {{ $aluno->status_aluno ? 'Ativo' : 'Indisponível' }}
                                             </span>
                                         </div>
                                     </td>
@@ -142,13 +170,15 @@
                                         <div class="flex items-center gap-x-2">
                                             <!-- Botão Editar -->
                                             <button type="button"
-                                                class="btn-editar-editora px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform
+                                                class="btn-editar-aluno px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform
                                                 bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-                                                data-id="{{ $editora->id }}"
-                                                data-nome="{{ $editora->nome_editora }}"
-                                                data-cidade="{{ $editora->cidade_editora }}"
-                                                data-estado="{{ $editora->estado_id }}"
-                                                data-status="{{ $editora->status_editora ? '1' : '0' }}"
+                                                data-id="{{ $aluno->id }}"
+                                                data-matricula="{{ $aluno->matricula_aluno }}"
+                                                data-turma="{{ $aluno->turma_aluno }}"
+                                                data-nome="{{ $aluno->nome_aluno }}"
+                                                data-telefone="{{ $aluno->telefone_aluno }}"
+                                                data-email="{{ $aluno->email_aluno }}"
+                                                data-status="{{ $aluno->status_aluno ? '1' : '0' }}"
                                                 data-modal-target="crud-modal-edit"
                                                 data-modal-toggle="crud-modal-edit">
                                                 Editar
@@ -164,29 +194,30 @@
             </div>
         </div>
     </section>
-    @include('editoras.form_create_editora')
-    @include('editoras.form_edite_editora')
+    @include('alunos.form_create_aluno')
+    @include('alunos.form_edite_aluno')
     @endsection
 
     @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Quando o botão de editar for clicado
-            document.querySelectorAll('.btn-editar-editora').forEach(button => {
+            document.querySelectorAll('.btn-editar-aluno').forEach(button => {
                 button.addEventListener('click', function() {
-                    const editoraId = this.getAttribute('data-id');
-                    const form = document.getElementById('form-editar-editora');
+                    const alunoId = this.getAttribute('data-id');
+                    const form = document.getElementById('form-editar-aluno');
 
                     // Configura a action do formulário
-                    form.action = `/editoras/${editoraId}`;
+                    form.action = `/alunos/${alunoId}`;
 
-                    // Preenche os campos do formulário
-                    document.getElementById('editora_id').value = editoraId;
-                    document.getElementById('edit_editora').value = this.getAttribute('data-nome');
-                    document.getElementById('edit_cidade').value = this.getAttribute('data-cidade');
-                    document.getElementById('edit_estado').value = this.getAttribute('data-estado');
-                    document.getElementById('status_editora').value = this.getAttribute('data-status');
-
+                    // Preenche os campos do formulário instantaneamente
+                    document.getElementById('aluno_id').value = alunoId;
+                    document.getElementById('edit_matricula').value = this.getAttribute('data-matricula');
+                    document.getElementById('edit_turma').value = this.getAttribute('data-turma');
+                    document.getElementById('edit_nome').value = this.getAttribute('data-nome');
+                    document.getElementById('edit_telefone').value = this.getAttribute('data-telefone');
+                    document.getElementById('edit_email').value = this.getAttribute('data-email');
+                    document.getElementById('status_aluno').value = this.getAttribute('data-status');
                 });
             });
         });

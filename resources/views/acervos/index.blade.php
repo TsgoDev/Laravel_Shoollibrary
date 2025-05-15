@@ -97,13 +97,13 @@
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300"
                                         data-status-id="{{ $acervo->id }}">
                                         <div
-                                            class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 
+                                            class="inline-flex items-center px-3 py-1 rounded-full gap-x-2
                                                 {{ $acervo->status_acervo ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
                                             <span
-                                                class="h-1.5 w-1.5 rounded-full 
+                                                class="h-1.5 w-1.5 rounded-full
                                                     {{ $acervo->status_acervo ? 'bg-emerald-600' : 'bg-red-600' }}">
                                             </span> <span
-                                                class="text-sm font-semibold 
+                                                class="text-sm font-semibold
                                                     {{ $acervo->status_acervo ? 'text-emerald-600 white:text-emerald-600' : 'text-red-600 white:text-red-300' }}">
                                                 {{ $acervo->status_acervo ? 'Ativo' : 'Indisponível' }}
                                             </span>
@@ -152,8 +152,8 @@
 
                     // Preenche os campos do formulário instantaneamente
                     document.getElementById('acervo_id').value = acervoId;
-                    document.getElementById('acervo').value = this.getAttribute('data-nome');
-                    document.getElementById('situacao').value = this.getAttribute('data-status');
+                    document.getElementById('edit_acervo').value = this.getAttribute('data-nome');
+                    document.getElementById('status_acervo').value = this.getAttribute('data-status');
                 });
             });
         });
