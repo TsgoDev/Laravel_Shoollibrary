@@ -1,7 +1,7 @@
 <!-----Modal edite aluno------->
 <div id="crud-modal-edit" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-md max-h-full">
+    <div class="relative p-4 w-full max-w-4xl max-h-full">
         <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm"></div>
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow-sm white:bg-gray-700">
@@ -30,37 +30,36 @@
                 @method('PUT')
                 <!-- ID oculto para ser usado no JS -->
                 <input type="hidden" id="aluno_id" name="aluno_id">
-                <div class="grid gap-4 mb-6 grid-cols-2">
-
-                    <!-- Matricula do Aluno -->
-                    <div class="col-span-2">
+                <div class="grid gap-4 mb-4 grid-cols-3">
+                    <!-- Matrícula do Aluno -->
+                    <div>
                         <label for="edit_matricula"
-                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Matricula</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Matrícula</label>
                         <input type="text" name="edit_matricula" id="edit_matricula"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             maxlength="9" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                     </div>
 
-                    <!-- Turma do Aluno -->
-                    <div class="col-span-2">
-                        <label for="edit_turma"
-                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Turma</label>
-                        <input type="text" name="edit_turma" id="edit_turma"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="5">
-                    </div>
-
                     <!-- Nome do Aluno -->
-                    <div class="col-span-2">
+                    <div>
                         <label for="edit_nome"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome do aluno</label>
                         <input type="text" name="edit_nome" id="edit_nome"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="60">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            maxlength="100">
+                    </div>
+
+                    <!-- Turma do Aluno -->
+                    <div>
+                        <label for="edit_turma"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Turma</label>
+                        <input type="text" name="edit_turma" id="edit_turma"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            maxlength="2">
                     </div>
 
                     <!-- Telefone do Aluno -->
-                    <div class="col-span-2">
+                    <div>
                         <label for="edit_telefone"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Telefone</label>
                         <input type="text" name="edit_telefone" id="edit_telefone"
@@ -69,23 +68,32 @@
                     </div>
 
                     <!-- Email do Aluno -->
-                    <div class="col-span-2">
+                    <div class="col-span-1">
                         <label for="edit_email"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Email</label>
                         <input type="email" name="edit_email" id="edit_email"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="80" autocomplete="email">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            maxlength="100">
                     </div>
 
-                    <!-- Situacao do Aluno -->
-                    <div class="col-span-2">
+                    <!-- Status do Aluno -->
+                    <div class="col-span-1">
                         <label for="status_aluno"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
-                        <select id="status_aluno" name="status_aluno"
-                            class="bg-white text-black border border-gray-300 text-sm rounded-lg block w-1/2 p-2.5">
+                        <select id="edit_status_aluno" name="edit_status_aluno"
+                            class="bg-white text-black border border-gray-300 text-sm rounded-lg block w-48 p-2.5">
                             <option value="1">Ativo</option>
                             <option value="0">Indisponível</option>
                         </select>
+                    </div>
+
+                    <!-- Observações do Aluno (linha inteira) -->
+                    <div class="col-span-2">
+                        <label for="edit_observacoes"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Observações</label>
+                        <input type="text" name="edit_observacoes" id="edit_observacoes"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            maxlength="200">
                     </div>
                 </div>
 

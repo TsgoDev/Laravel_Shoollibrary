@@ -1,7 +1,7 @@
 <!-----Modal create aluno------->
 <div id="crud-modal-create" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-md max-h-full">
+    <div class="relative p-4 w-full max-w-4xl max-h-full">
         <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm"></div>
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow-sm white:bg-gray-700">
@@ -25,62 +25,73 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" action="{{ route('alunos-store') }}" method="POST"
-                enctype="multipart/form-data">
+            <form class="p-4 md:p-5" action="{{ route('alunos-store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="grid gap-4 mb-6 grid-cols-2">
-                    <!-- Matricula do Aluno -->
-                    <div class="col-span-2">
-                        <label for="matricula_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Matricula</label>
+                <div class="grid gap-4 mb-4 grid-cols-3">
+                    <!-- Matrícula do Aluno -->
+                    <div>
+                        <label for="matricula_aluno"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Matrícula</label>
                         <input type="text" name="matricula_aluno" id="matricula_aluno"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="9" placeholder="Ex: 123456789" autocomplete="matricula" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            required maxlength="9" placeholder="Ex: 123456789" autocomplete="matricula"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    </div>
+                    <!-- Nome do Aluno -->
+                    <div>
+                        <label for="nome_aluno"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome do aluno</label>
+                        <input type="text" name="nome_aluno" id="nome_aluno"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            required maxlength="100" placeholder="Ex: João da Silva" autocomplete="nome_aluno">
                     </div>
 
                     <!-- Turma do Aluno -->
-                    <div class="col-span-2">
-                        <label for="turma_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Turma</label>
+                    <div>
+                        <label for="turma_aluno"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Turma</label>
                         <input type="text" name="turma_aluno" id="turma_aluno"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="2" placeholder="Ex: 3A" autocomplete="turma">
-                    </div>
-
-                    <!-- Nome do Aluno -->
-                    <div class="col-span-2">
-                        <label for="nome_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome do aluno</label>
-                        <input type="text" name="nome_aluno" id="nome_aluno"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="100" placeholder="Ex: João da Silva" autocomplete="nome_aluno">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            required maxlength="2" placeholder="Ex: 3A" autocomplete="turma">
                     </div>
 
                     <!-- Telefone do Aluno -->
-                    <div class="col-span-2">
-                        <label for="telefone_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Telefone</label>
+                    <div>
+                        <label for="telefone_aluno"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Telefone</label>
                         <input type="text" name="telefone_aluno" id="telefone_aluno"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500 phone_with_ddd"
-                        maxlength="15" placeholder="Ex: (11) 99999-9999" autocomplete="telefone">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500 phone_with_ddd"
+                            maxlength="15" placeholder="Ex: (11) 99999-9999" autocomplete="telefone">
                     </div>
-
                     <!-- Email do Aluno -->
-                    <div class="col-span-2">
-                        <label for="email_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Email</label>
+                    <div class="col-span-1">
+                        <label for="email_aluno"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Email</label>
                         <input type="email" name="email_aluno" id="email_aluno"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="100" placeholder="Ex: joao@gmail.com" autocomplete="email">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            required maxlength="100" placeholder="Ex: joao@gmail.com" autocomplete="email">
                     </div>
-
                     <!-- Status do Aluno -->
-                    <div class="col-span-2">
-                        <label for="status_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
-                        <select id="status_aluno" name="status_aluno" class="bg-white
-                         text-black border border-gray-300 text-sm rounded-lg block w-1/2 p-2.5" required>
-                            <option value="">Escolha um opção</option>
+                    <div class="col-span-1">
+                        <label for="status_aluno"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
+                        <select id="status_aluno" name="status_aluno"
+                            class="bg-white text-black border border-gray-300 text-sm rounded-lg block w-48 p-2.5"
+                            required>
+                            <option value="">Escolha uma opção</option>
                             <option value="1">Ativo</option>
                             <option value="0">Indisponível</option>
                         </select>
                     </div>
+                    <!-- Observações do Aluno (linha inteira) -->
+                    <div class="col-span-2">
+                        <label for="observacoes_aluno"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Observações</label>
+                        <input type="tex" name="observacoes_aluno" id="observacoes_aluno"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            maxlength="200" placeholder="Observações">
+                    </div>
                 </div>
-
                 <button type="submit" name="submit"
                     class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center white:bg-blue-600 white:hover:bg-blue-700 white:focus:ring-blue-800">
                     <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -94,22 +105,22 @@
             </form>
             <!-----SweetAlert Insert aluno------->
             @if (Session::has('message'))
-            <script>
-                swal({
-                    title: "Mensagem",
-                    text: "{{ Session::get('message') }}",
-                    icon: "success",
-                    buttons: {
-                        confirm: {
-                            text: "OK",
-                            value: true,
-                            visible: true,
-                            className: "btn btn-success",
-                            closeModal: true
+                <script>
+                    swal({
+                        title: "Mensagem",
+                        text: "{{ Session::get('message') }}",
+                        icon: "success",
+                        buttons: {
+                            confirm: {
+                                text: "OK",
+                                value: true,
+                                visible: true,
+                                className: "btn btn-success",
+                                closeModal: true
+                            }
                         }
-                    }
-                });
-            </script>
+                    });
+                </script>
             @endif
         </div>
     </div>

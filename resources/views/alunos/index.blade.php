@@ -217,7 +217,7 @@
                     document.getElementById('edit_nome').value = this.getAttribute('data-nome');
                     document.getElementById('edit_telefone').value = this.getAttribute('data-telefone');
                     document.getElementById('edit_email').value = this.getAttribute('data-email');
-                    document.getElementById('status_aluno').value = this.getAttribute('data-status');
+                    document.getElementById('edit_status_aluno').value = this.getAttribute('data-status');
                 });
             });
         });

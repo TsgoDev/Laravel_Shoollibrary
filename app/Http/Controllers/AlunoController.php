@@ -100,7 +100,7 @@ class AlunoController extends Controller
             'edit_nome' => 'required|string|max:60',
             'edit_telefone' => 'required|string|max:15',
             'edit_email' => 'required|string|max:80',
-            'status_aluno' => 'required|in:0,1',
+            'edit_status_aluno' => 'required|in:0,1',
         ]);
 
         // Buscar aluno pelo ID
@@ -112,7 +112,7 @@ class AlunoController extends Controller
             ->first();
 
         if ($alunoExistente) {
-            return back()->with('error', 'Essa matrícula já existe!');  
+            return back()->with('error', 'Essa matrícula já existe!');
         }
 
         // Verifica se o email já existe (excluindo o próprio registro)
@@ -140,7 +140,7 @@ class AlunoController extends Controller
             'nome_aluno' => $request->edit_nome,
             'telefone_aluno' => $request->edit_telefone,
             'email_aluno' => $request->edit_email,
-            'status_aluno' => $request->status_aluno,
+            'status_aluno' => $request->edit_status_aluno,
         ]);
 
         // Redirecionar para index com mensagem de sucesso
