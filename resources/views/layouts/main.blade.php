@@ -13,7 +13,6 @@
     <!-- Incluindo o SweetAlert 2.1.2 no cabeçalho -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-
     <!-- Vite CSS & JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

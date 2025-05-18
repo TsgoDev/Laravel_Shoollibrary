@@ -38,7 +38,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Matricula</label>
                         <input type="text" name="edit_matricula" id="edit_matricula"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="9" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                            maxlength="9" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                     </div>
 
                     <!-- Turma do Aluno -->
@@ -47,7 +47,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Turma</label>
                         <input type="text" name="edit_turma" id="edit_turma"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="5">
+                            maxlength="5">
                     </div>
 
                     <!-- Nome do Aluno -->
@@ -56,7 +56,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome do aluno</label>
                         <input type="text" name="edit_nome" id="edit_nome"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="60">
+                            maxlength="60">
                     </div>
 
                     <!-- Telefone do Aluno -->
@@ -64,8 +64,8 @@
                         <label for="edit_telefone"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Telefone</label>
                         <input type="text" name="edit_telefone" id="edit_telefone"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="15">
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500 phone_with_ddd"
+                            maxlength="15">
                     </div>
 
                     <!-- Email do Aluno -->
@@ -74,7 +74,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Email</label>
                         <input type="email" name="edit_email" id="edit_email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="80" autocomplete="email">
+                            maxlength="80" autocomplete="email">
                     </div>
 
                     <!-- Situacao do Aluno -->

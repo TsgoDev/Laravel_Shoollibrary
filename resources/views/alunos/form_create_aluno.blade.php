@@ -29,42 +29,47 @@
                 enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-6 grid-cols-2">
+                    <!-- Matricula do Aluno -->
                     <div class="col-span-2">
-                        <label for="matricula" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Matricula</label>
-                        <input type="text" name="matricula" id="matricula"
+                        <label for="matricula_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Matricula</label>
+                        <input type="text" name="matricula_aluno" id="matricula_aluno"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             required="" maxlength="9" placeholder="Ex: 123456789" autocomplete="matricula" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                     </div>
 
+                    <!-- Turma do Aluno -->
                     <div class="col-span-2">
-                        <label for="turma" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Turma</label>
-                        <input type="text" name="turma" id="turma"
+                        <label for="turma_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Turma</label>
+                        <input type="text" name="turma_aluno" id="turma_aluno"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             required="" maxlength="2" placeholder="Ex: 3A" autocomplete="turma">
                     </div>
 
+                    <!-- Nome do Aluno -->
                     <div class="col-span-2">
-                        <label for="nome" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome do aluno</label>
-                        <input type="text" name="nome" id="nome"
+                        <label for="nome_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Nome do aluno</label>
+                        <input type="text" name="nome_aluno" id="nome_aluno"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             required="" maxlength="100" placeholder="Ex: João da Silva" autocomplete="nome_aluno">
                     </div>
 
+                    <!-- Telefone do Aluno -->
                     <div class="col-span-2">
-                        <label for="telefone" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Telefone</label>
-                        <input type="text" name="telefone" id="telefone"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            required="" maxlength="15" placeholder="Ex: (11) 99999-9999" autocomplete="telefone" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                        <label for="telefone_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Telefone</label>
+                        <input type="text" name="telefone_aluno" id="telefone_aluno"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500 phone_with_ddd"
+                        maxlength="15" placeholder="Ex: (11) 99999-9999" autocomplete="telefone">
                     </div>
 
+                    <!-- Email do Aluno -->
                     <div class="col-span-2">
-                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Email</label>
-                        <input type="email" name="email" id="email"
+                        <label for="email_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Email</label>
+                        <input type="email" name="email_aluno" id="email_aluno"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             required="" maxlength="100" placeholder="Ex: joao@gmail.com" autocomplete="email">
                     </div>
 
-                    <!-- Situacao do Aluno -->
+                    <!-- Status do Aluno -->
                     <div class="col-span-2">
                         <label for="status_aluno" class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
                         <select id="status_aluno" name="status_aluno" class="bg-white
