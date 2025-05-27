@@ -6,6 +6,7 @@ use App\Http\Controllers\AcervoController;
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\EditoraController;
 use App\Http\Controllers\AlunoController;
+use App\Http\Controllers\ObraController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -77,6 +78,16 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/alunos', [AlunoController::class, 'store'])->name('alunos-store');
     //---Update
     Route::put('/alunos/{id}', [AlunoController::class, 'update'])->name('alunos-update');
+
+
+    // Page index obra
+    Route::get('/obras', [ObraController::class, 'index'])->name('obras.index');
+    // Página de obras inativos
+    Route::get('/obras/inativos', [ObraController::class, 'inativos'])->name('obras.inativos');
+    //----Salvar
+    Route::post('/obras', [ObraController::class, 'store'])->name('obras-store');
+    //---Update
+    Route::put('/obras/{id}', [ObraController::class, 'update'])->name('obras-update');
 
 
     //----Excluir autores

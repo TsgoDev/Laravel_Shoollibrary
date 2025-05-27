@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/05/2025 às 18:48
+-- Tempo de geração: 20/05/2025 às 19:27
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `acervos` (
 --
 
 INSERT INTO `acervos` (`id`, `nome_acervo`, `status_acervo`, `created_at`, `updated_at`) VALUES
-(1, 'CRTCB-LD-66A', 1, '2025-05-10 13:27:38', '2025-05-10 13:27:38'),
+(1, 'CRTCB-LD-66U', 1, '2025-05-10 13:27:38', '2025-05-15 05:50:58'),
 (2, 'CRTCB-LD-66B', 1, '2025-05-10 13:27:38', '2025-05-11 07:44:09'),
 (3, 'CRTCB-LD-66C', 1, '2025-05-10 13:27:38', '2025-05-10 18:24:59'),
 (4, 'CRTCB-LD-66D', 1, '2025-05-10 13:27:38', '2025-05-10 13:27:38'),
@@ -49,6 +49,45 @@ INSERT INTO `acervos` (`id`, `nome_acervo`, `status_acervo`, `created_at`, `upda
 (7, 'CRTCB-LD-66G', 1, '2025-05-10 13:27:38', '2025-05-10 13:27:38'),
 (8, 'CRTCB-LD-66H', 1, '2025-05-10 13:27:38', '2025-05-10 13:27:38'),
 (9, 'CRTCB-LD-66X', 0, '2025-05-10 17:15:49', '2025-05-10 18:25:14');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `alunos`
+--
+
+CREATE TABLE `alunos` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `matricula_aluno` varchar(9) NOT NULL,
+  `turma_aluno` varchar(5) NOT NULL,
+  `nome_aluno` varchar(60) NOT NULL,
+  `telefone_aluno` varchar(15) NOT NULL,
+  `email_aluno` varchar(80) NOT NULL,
+  `status_aluno` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `alunos`
+--
+
+INSERT INTO `alunos` (`id`, `matricula_aluno`, `turma_aluno`, `nome_aluno`, `telefone_aluno`, `email_aluno`, `status_aluno`, `created_at`, `updated_at`) VALUES
+(1, '202300001', '3º A', 'Ana Beatriz Souza', '(62) 9925-94657', 'ana.souza@example.com', 0, '2025-05-14 03:47:13', '2025-05-18 20:48:02'),
+(2, '202300002', '3º A', 'Lucas Henrique Lima', '(11) 92345-6789', 'lucas.henrique@example.com', 0, '2025-05-14 03:47:13', '2025-05-15 05:51:37'),
+(3, '202300003', '2º C', 'Maria Clara Oliveira', '(11) 93456-7890', 'maria.oliveira@example.com', 1, '2025-05-14 03:47:13', '2025-05-15 05:57:49'),
+(4, '202300004', '2º B', 'João Pedro Alves', '(11) 94567-8901', 'joao.alves@example.com', 1, '2025-05-14 03:47:13', '2025-05-14 03:47:13'),
+(5, '202300005', '1º C', 'Beatriz Martins', '(11) 95678-9012', 'beatriz.martins@example.com', 1, '2025-05-14 03:47:13', '2025-05-14 03:47:13'),
+(6, '202300006', '1º C', 'Gabriel Silva', '(11) 96789-0123', 'gabriel.silva@example.com', 1, '2025-05-14 03:47:13', '2025-05-14 03:47:13'),
+(7, '202300007', '3º B', 'Larissa Rocha', '(11) 97890-1234', 'larissa.rocha@example.com', 1, '2025-05-14 03:47:13', '2025-05-14 03:47:13'),
+(8, '202300008', '2º A', 'Pedro Lucas Ribeiro', '(11) 98901-2345', 'pedro.ribeiro@example.com', 1, '2025-05-14 03:47:13', '2025-05-14 03:47:13'),
+(9, '202300009', '1º A', 'Isabela Fernandes', '(11) 99012-3456', 'isabela.fernandes@example.com', 1, '2025-05-14 03:47:13', '2025-05-14 03:47:13'),
+(10, '202300010', '1º B', 'Matheus Gonçalves', '(11) 90123-4567', 'matheus.goncalves@example.com', 1, '2025-05-14 03:47:13', '2025-05-14 03:47:13'),
+(11, '20230010', '3A', 'Jessica Silva', '(69) 2455-49392', 'jessica.silva@email.com', 0, '2025-05-18 19:09:37', '2025-05-18 19:25:51'),
+(12, '202120120', '3C', 'Maria Silva', '(11) 9012-34567', 'maria.silva@email.com', 0, '2025-05-18 19:14:10', '2025-05-18 19:25:41'),
+(13, '20230000', '3B', 'Lucas Silva', '(62) 9959-69403', 'lucas.moreira@email.com', 0, '2025-05-18 20:26:31', '2025-05-18 20:47:47'),
+(14, '202344234', '3B', 'Lis Soares', '(11) 9345-67890', 'lis.soares@email.com', 1, '2025-05-18 20:50:57', '2025-05-18 20:50:57'),
+(15, '202521204', '3B', 'Marcos pereira', '(62) 5696-59431', 'marcos.pereira@email.com', 1, '2025-05-18 20:53:08', '2025-05-18 20:53:08');
 
 -- --------------------------------------------------------
 
@@ -81,7 +120,7 @@ INSERT INTO `autores` (`id`, `nome_autor`, `status_autor`, `created_at`, `update
 (13, 'Iza Soares', 0, '2025-04-27 17:39:55', '2025-05-07 06:13:23'),
 (14, 'Marcos silva', 1, '2025-05-06 00:23:44', '2025-05-10 18:18:38'),
 (15, 'Lidia Silva', 0, '2025-05-07 05:30:46', '2025-05-10 18:15:36'),
-(16, 'Julião Brito', 1, '2025-05-10 18:19:13', '2025-05-10 18:24:00'),
+(16, 'Julião Brito', 1, '2025-05-10 18:19:13', '2025-05-15 05:28:04'),
 (17, 'Ana Reis', 1, '2025-05-10 18:31:03', '2025-05-11 07:28:13'),
 (18, 'Rebeca Oliveira', 1, '2025-05-11 07:28:50', '2025-05-11 07:28:50');
 
@@ -102,12 +141,8 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('3d354e836ac568c4e2d2e8516c1377b6', 'i:1;', 1746974161),
-('3d354e836ac568c4e2d2e8516c1377b6:timer', 'i:1746974161;', 1746974161),
-('c6cb8c25011f7b27bc892dd90e835ac6', 'i:2;', 1745589987),
-('c6cb8c25011f7b27bc892dd90e835ac6:timer', 'i:1745589987;', 1745589987),
-('tiago.soares@gmail.com|127.0.0.1', 'i:2;', 1745589987),
-('tiago.soares@gmail.com|127.0.0.1:timer', 'i:1745589987;', 1745589987);
+('3d354e836ac568c4e2d2e8516c1377b6', 'i:1;', 1747611962),
+('3d354e836ac568c4e2d2e8516c1377b6:timer', 'i:1747611962;', 1747611962);
 
 -- --------------------------------------------------------
 
@@ -168,7 +203,7 @@ INSERT INTO `editoras` (`id`, `nome_editora`, `cidade_editora`, `estado_id`, `st
 (52, 'Paulista Editora', 'São Paulo', 25, 1, '2025-05-11 16:04:20', '2025-05-11 16:04:20'),
 (53, 'Sergipe Livros', 'Aracaju', 26, 1, '2025-05-11 16:04:20', '2025-05-11 16:04:20'),
 (54, 'Editora Tocantins', 'Palmas', 27, 1, '2025-05-11 16:04:20', '2025-05-11 16:04:20'),
-(56, 'Saberes do Norte', 'Rio Branco', 1, 1, '2025-05-11 19:23:44', '2025-05-11 19:45:37'),
+(56, 'Saberes do Norte', 'Rio Branco', 1, 1, '2025-05-11 19:23:44', '2025-05-15 05:47:01'),
 (57, 'Editora A', 'São paualo', 25, 0, '2025-05-11 19:46:25', '2025-05-11 19:46:35');
 
 -- --------------------------------------------------------
@@ -260,7 +295,7 @@ INSERT INTO `generos` (`id`, `nome_genero`, `status_genero`, `created_at`, `upda
 (16, 'Humor', 1, '2025-05-10 22:23:32', '2025-05-10 22:23:32'),
 (17, 'Poesia', 1, '2025-05-10 22:23:32', '2025-05-10 22:23:32'),
 (18, 'Clássicos Infantis', 1, '2025-05-10 22:23:32', '2025-05-10 22:23:32'),
-(19, 'Aventura', 1, '2025-05-10 22:23:32', '2025-05-11 07:29:31'),
+(19, 'Aventura', 1, '2025-05-10 22:23:32', '2025-05-15 05:48:40'),
 (20, 'História em Quadrinhos', 1, '2025-05-10 22:23:32', '2025-05-10 22:23:32'),
 (21, 'Sportes', 0, '2025-05-11 02:03:30', '2025-05-11 02:03:39');
 
@@ -329,29 +364,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (15, '2025_05_10_234618_create_editoras_table', 6),
 (16, '2025_05_11_020611_create_editoras_table', 7),
 (17, '2025_05_11_154406_create_estados_table', 8),
-(18, '2025_05_11_154513_create_editora_table', 8);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `obras`
---
-
-CREATE TABLE `obras` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `isbn` varchar(20) DEFAULT NULL,
-  `titulo` varchar(100) NOT NULL,
-  `autor` varchar(100) DEFAULT NULL,
-  `edicao` int(11) DEFAULT NULL,
-  `ano` year(4) DEFAULT NULL,
-  `copia` int(11) NOT NULL,
-  `acervo` varchar(20) DEFAULT NULL,
-  `genero` varchar(100) DEFAULT NULL,
-  `editora` varchar(60) DEFAULT NULL,
-  `situacao` varchar(15) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(18, '2025_05_11_154513_create_editora_table', 8),
+(19, '2025_05_11_154513_create_editoras_table', 9),
+(20, '2025_05_14_005614_create_alunos_table', 9);
 
 -- --------------------------------------------------------
 
@@ -431,7 +446,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('rzFbggMPOnNA6rBd1q6ZBdgR6mUJ3XQsSRMLbkbi', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTElRUVBIMFdPS1lFWENZZmJMMHNkcDRCanRGQ1RrYVJVWkdtODF2YiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hdXRvcmVzIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMiQ5dXJtTmVEbmF3ei5wQS85NnlXcC9PQWVSN2lCc3dKLzlPOUw5NzRBSld6Y2tQS1dsUUxPNiI7fQ==', 1746982082);
+('CIIEX3MmTQndGlEQgDh6udYW2dJPa2PCe1aXP6Iv', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiMFRJMDBPR1dpYlFJUlhUd2oyV1JiRFRZa2gwQXM5YTZPZVF5cEcwdiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1747612528);
 
 -- --------------------------------------------------------
 
@@ -460,7 +475,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Tiago Soares', 'tsgo.soares@gmail.com', NULL, '$2y$12$9urmNeDnawz.pA/96yWp/OAeR7iBswJ/9O9L974AJWzckPKWlQLO6', NULL, NULL, NULL, 'vKiyzkbu8PmwQzTKYhQDE2NY7kxee1U35KD9PISRNESDNRNI4Y24XRml0g14', NULL, NULL, '2025-03-28 18:44:48', '2025-03-28 19:14:32');
+(1, 'Tiago Soares', 'tsgo.soares@gmail.com', NULL, '$2y$12$9urmNeDnawz.pA/96yWp/OAeR7iBswJ/9O9L974AJWzckPKWlQLO6', NULL, NULL, NULL, 'NEbfeL5W940YgQDOKFEQQ4boSmNvjv4Vci3OgeG05H1n1jK9uQdhwr6UMDNg', NULL, NULL, '2025-03-28 18:44:48', '2025-03-28 19:14:32');
 
 --
 -- Índices para tabelas despejadas
@@ -470,6 +485,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tw
 -- Índices de tabela `acervos`
 --
 ALTER TABLE `acervos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `alunos`
+--
+ALTER TABLE `alunos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -537,12 +558,6 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `obras`
---
-ALTER TABLE `obras`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Índices de tabela `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
@@ -588,6 +603,12 @@ ALTER TABLE `acervos`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT de tabela `alunos`
+--
+ALTER TABLE `alunos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT de tabela `autores`
 --
 ALTER TABLE `autores`
@@ -627,13 +648,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT de tabela `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT de tabela `obras`
---
-ALTER TABLE `obras`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `personal_access_tokens`

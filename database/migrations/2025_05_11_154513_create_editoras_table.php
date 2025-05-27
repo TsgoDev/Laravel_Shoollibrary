@@ -15,12 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nome_editora', 100);
             $table->string('cidade_editora', 70);
-
-            // Substituir 'estado_editora' por 'estado_id'
-            $table->foreignId('estado_id')->constrained('estados')->onDelete('restrict');
-
             $table->boolean('status_editora')->default(true);
             $table->timestamps();
+            $table->foreignId('estado_id')->constrained('estados')->onDelete('restrict');
+
 
             $table->unique(['nome_editora', 'cidade_editora', 'estado_id'], 'editoras_unique_index');
         });

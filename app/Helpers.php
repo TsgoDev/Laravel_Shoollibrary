@@ -21,6 +21,9 @@ if (!function_exists('getPageTitle')) {
             'alunos.index' => 'Alunos',
             'alunos.inativos' => 'Alunos Inativos',
 
+            'obras.index' => 'Obras',
+            'obras.inativos' => 'Obras Inativas',
+
             'profile.edit' => 'Perfil',
 
             'orders.index' => 'Pedidos',
@@ -42,6 +45,7 @@ if (!function_exists('getMainMenu')) {
             ['route' => 'generos.index', 'label' => 'Gêneros'],
             ['route' => 'editoras.index', 'label' => 'Editoras'],
             ['route' => 'alunos.index', 'label' => 'Alunos'],
+            ['route' => 'obras.index', 'label' => 'Obras'],
             // Adicione outros menus principais aqui
         ];
     }
