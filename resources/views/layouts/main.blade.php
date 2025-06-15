@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     @livewireStyles
+
 </head>
 
 <body>
@@ -54,12 +55,22 @@
     </script>
 
     @livewireScripts
+    
     <!-- Seus scripts customizados -->
-    <script src="/js/search_autores.js"></script>
-    <script src="/js/search_acervos.js"></script>
-    <script src="/js/search_generos.js"></script>
-    <script src="/js/search_editoras.js"></script>
-    <script src="/js/search_alunos.js"></script>
+    <script src="/js/search-autores.js"></script>
+    <script src="/js/search-acervos.js"></script>
+    <script src="/js/search-generos.js"></script>
+    <script src="/js/search-editoras.js"></script>
+    <script src="/js/search-alunos.js"></script>
+    <script src="/js/search-obras.js"></script>
+    <!-- Reinicialização do Alpine após navegação Turbo -->
+    <script>
+        document.addEventListener("turbo:load", () => {
+            if (window.Alpine && Alpine.initTree) {
+                Alpine.initTree(document.body);
+            }
+        });
+    </script>
     @stack('scripts')
 </body>
 

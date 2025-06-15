@@ -16,7 +16,7 @@ class AutorController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('autores.index', compact('autores'));
+        return view('pages.autores.index', compact('autores'));
     }
 
 
@@ -27,7 +27,7 @@ class AutorController extends Controller
     public function inativos()
     {
         $autores = Autor::where('status_autor', 0)->orderBy('created_at', 'desc')->get();
-        return view('autores.index', compact('autores'));
+        return view('pages.autores.index', compact('autores'));
     }
 
 

@@ -16,7 +16,7 @@ class ObraController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('obras.index', compact('obras'));
+        return view('pages.obras.index', compact('obras'));
     }
 
 
@@ -28,7 +28,7 @@ class ObraController extends Controller
     public function inativos()
     {
         $obras = Obra::where('status_obra', 0)->orderBy('created_at', 'desc')->get();
-        return view('obras.index', compact('obras'));
+        return view('pages.obras.index', compact('obras'));
     }
 
     /**

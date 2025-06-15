@@ -21,7 +21,7 @@ class EditoraController extends Controller
         // Buscar estados da tabela estados
         $estados = Estado::orderBy('nome_estado')->get();
 
-        return view('editoras.index', compact('editoras', 'estados'));
+        return view('pages.editoras.index', compact('editoras', 'estados'));
     }
 
 
@@ -38,7 +38,7 @@ class EditoraController extends Controller
         // Buscar estados da tabela estados
         $estados = Estado::orderBy('nome_estado')->get();
 
-        return view('editoras.index', compact('editoras', 'estados'));
+        return view('pages.editoras.index', compact('editoras', 'estados'));
     }
 
 

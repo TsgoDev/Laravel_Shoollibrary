@@ -164,8 +164,8 @@
             </div>
         </div>
     </section>
-    @include('editoras.form_create_editora')
-    @include('editoras.form_edite_editora')
+    @include('pages.editoras.form_create_editora')
+    @include('pages.editoras.form_edite_editora')
     @endsection
 
     @push('scripts')

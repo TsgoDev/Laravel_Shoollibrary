@@ -16,7 +16,7 @@ class AlunoController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('alunos.index', compact('alunos'));
+        return view('pages.alunos.index', compact('alunos'));
     }
 
 
@@ -27,7 +27,7 @@ class AlunoController extends Controller
     public function inativos()
     {
         $alunos = Aluno::where('status_aluno', 0)->orderBy('created_at', 'desc')->get();
-        return view('alunos.index', compact('alunos'));
+        return view('pages.alunos.index', compact('alunos'));
     }
 
 

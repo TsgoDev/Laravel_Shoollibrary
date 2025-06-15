@@ -16,7 +16,7 @@ class GeneroController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('generos.index', compact('generos'));
+        return view('pages.generos.index', compact('generos'));
     }
 
 
@@ -27,7 +27,7 @@ class GeneroController extends Controller
     public function inativos()
     {
         $generos = Genero::where('status_genero', 0)->orderBy('created_at', 'desc')->get();
-        return view('generos.index', compact('generos'));
+        return view('pages.generos.index', compact('generos'));
     }
 
 

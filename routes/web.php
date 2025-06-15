@@ -104,7 +104,4 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-//----------Page 404------------>
-Route::fallback(function () {
-    return view('layouts.404');
-});
+

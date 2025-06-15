@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    
     <header>
         @livewire('navigation-menu') <!-- Inclui o navbar de navegação -->
     </header>

@@ -16,7 +16,7 @@ class AcervoController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('acervos.index', compact('acervos'));
+        return view('pages.acervos.index', compact('acervos'));
     }
 
 
@@ -27,7 +27,7 @@ class AcervoController extends Controller
     public function inativos()
     {
         $acervos = Acervo::where('status_acervo', 0)->orderBy('created_at', 'desc')->get();
-        return view('acervos.index', compact('acervos'));
+        return view('pages.acervos.index', compact('acervos'));
     }
 
 

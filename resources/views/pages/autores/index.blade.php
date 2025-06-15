@@ -134,8 +134,8 @@
             </div>
         </div>
     </section>
-    @include('autores.form_create_autor')
-    @include('autores.form_edite_autor')
+    @include('pages.autores.form_create_autor')
+    @include('pages.autores.form_edite_autor')
     @endsection
 
     @push('scripts')

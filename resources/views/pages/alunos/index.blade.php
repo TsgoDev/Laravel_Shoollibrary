@@ -194,8 +194,8 @@
             </div>
         </div>
     </section>
-    @include('alunos.form_create_aluno')
-    @include('alunos.form_edite_aluno')
+    @include('pages.alunos.form_create_aluno')
+    @include('pages.alunos.form_edite_aluno')
     @endsection
 
     @push('scripts')

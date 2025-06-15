@@ -6,8 +6,8 @@
     <div class="mb-4 flex items-center gap-4 px-4">
         <input type="text" id="searchInput"
             class="w-full max-w-md px-3 py-2 border border-gray-600 rounded-lg bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
-            placeholder="Buscar acervos..." autocomplete="off">
-        <!-- Botão Novo Acervo -->
+            placeholder="Buscar generos..." autocomplete="off">
+        <!-- Botão Novo Genero -->
         <button data-modal-target="crud-modal-create" data-modal-toggle="crud-modal-create"
             class="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition">
             + Adicionar
@@ -18,23 +18,23 @@
     <section class="container px-7 mx-auto">
         <div class="flex items-center gap-x-3 mb-6">
             <span class="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full white:bg-gray-800 white:text-blue-400">
-                {{ count($acervos) }} registros
+                {{ count($generos) }} registros
             </span>
         </div>
 
         <!-- Botão para alternar entre listas -->
         <div class="mb-6">
-            @if(request()->routeIs('acervos.inativos'))
-            <a href="{{ route('acervos.index') }}"
+            @if(request()->routeIs('generos.inativos'))
+            <a href="{{ route('generos.index') }}"
                 class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500 transition">
 
-                Ver Acervos Ativos
+                Ver Generos Ativos
             </a>
             @else
-            <a href="{{ route('acervos.inativos') }}"
+            <a href="{{ route('generos.inativos') }}"
                 class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
 
-                Ver Acervos Inativos
+                Ver Generos Inativos
             </a>
             @endif
         </div>
@@ -55,7 +55,7 @@
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
                                         <button class="flex items-center gap-x-2">
-                                            <span>Autor</span>
+                                            <span>Genero</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                             </svg>
@@ -82,30 +82,30 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 white:divide-gray-700 white:bg-gray-900">
-                                @foreach ($acervos as $acervo)
+                                @foreach ($generos as $genero)
                                 <tr>
                                     <td
                                         class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                        {{ $acervo->id }}
+                                        {{ $genero->id }}
                                     </td>
 
                                     <td
                                         class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                        {{ $acervo->nome_acervo }}
+                                        {{ $genero->nome_genero }}
                                     </td>
 
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300"
-                                        data-status-id="{{ $acervo->id }}">
+                                        data-status-id="{{ $genero->id }}">
                                         <div
                                             class="inline-flex items-center px-3 py-1 rounded-full gap-x-2
-                                                {{ $acervo->status_acervo ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
+                                                {{ $genero->status_genero ? 'bg-emerald-100/60 white:bg-gray-600' : 'bg-red-100/60 white:bg-gray-800' }}">
                                             <span
                                                 class="h-1.5 w-1.5 rounded-full
-                                                    {{ $acervo->status_acervo ? 'bg-emerald-600' : 'bg-red-600' }}">
+                                                    {{ $genero->status_genero ? 'bg-emerald-600' : 'bg-red-600' }}">
                                             </span> <span
                                                 class="text-sm font-semibold
-                                                    {{ $acervo->status_acervo ? 'text-emerald-600 white:text-emerald-600' : 'text-red-600 white:text-red-300' }}">
-                                                {{ $acervo->status_acervo ? 'Ativo' : 'Indisponível' }}
+                                                    {{ $genero->status_genero ? 'text-emerald-600 white:text-emerald-600' : 'text-red-600 white:text-red-300' }}">
+                                                {{ $genero->status_genero ? 'Ativo' : 'Indisponível' }}
                                             </span>
                                         </div>
                                     </td>
@@ -114,11 +114,11 @@
                                         <div class="flex items-center gap-x-2">
                                             <!-- Botão Editar -->
                                             <button type="button"
-                                                class="btn-editar-acervo px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform
+                                                class="btn-editar-genero px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform
                                                 bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
-                                                data-id="{{ $acervo->id }}"
-                                                data-nome="{{ $acervo->nome_acervo }}"
-                                                data-status="{{ $acervo->status_acervo ? '1' : '0' }}"
+                                                data-id="{{ $genero->id }}"
+                                                data-nome="{{ $genero->nome_genero }}"
+                                                data-status="{{ $genero->status_genero ? '1' : '0' }}"
                                                 data-modal-target="crud-modal-edit"
                                                 data-modal-toggle="crud-modal-edit">
                                                 Editar
@@ -134,26 +134,26 @@
             </div>
         </div>
     </section>
-    @include('acervos.form_create_acervo')
-    @include('acervos.form_edite_acervo')
+    @include('pages.generos.form_create_genero')
+    @include('pages.generos.form_edite_genero')
     @endsection
 
     @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Quando o botão de editar for clicado
-            document.querySelectorAll('.btn-editar-acervo').forEach(button => {
+            document.querySelectorAll('.btn-editar-genero').forEach(button => {
                 button.addEventListener('click', function() {
-                    const acervoId = this.getAttribute('data-id');
-                    const form = document.getElementById('form-editar-acervo');
+                    const generoId = this.getAttribute('data-id');
+                    const form = document.getElementById('form-editar-genero');
 
                     // Configura a action do formulário
-                    form.action = `/acervos/${acervoId}`;
+                    form.action = `/generos/${generoId}`;
 
                     // Preenche os campos do formulário instantaneamente
-                    document.getElementById('acervo_id').value = acervoId;
-                    document.getElementById('edit_acervo').value = this.getAttribute('data-nome');
-                    document.getElementById('status_acervo').value = this.getAttribute('data-status');
+                    document.getElementById('genero_id').value = generoId;
+                    document.getElementById('edit_genero').value = this.getAttribute('data-nome');
+                    document.getElementById('status_genero').value = this.getAttribute('data-status');
                 });
             });
         });
