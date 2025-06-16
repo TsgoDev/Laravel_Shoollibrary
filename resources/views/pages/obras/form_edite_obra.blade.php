@@ -9,8 +9,8 @@
             <div
                 class="flex items-center justify-between p-4 md:p-5 border-b rounded-t white:border-gray-600 border-gray-200">
                 <div>
-                    <h3 class="text-lg font-semibold text-gray-900 white:text-white">
-                        Editar Obra
+                    <h3 class="text-lg font-semibold text-gray-900 white:text-white"></h3>
+                    Editar Obra
                     </h3>
                 </div>
                 <button type="button"
@@ -25,25 +25,25 @@
                 </button>
             </div>
             <!-- Modal de Edição -->
-            <form id="form-editar-aluno" action="" method="POST" class="p-4 md:p-5" enctype="multipart/form-data">
+            <form id="form-editar-obra" action="" method="POST" class="p-4 md:p-5" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <!-- ID oculto para ser usado no JS -->
                 <input type="hidden" id="obra_id" name="obra_id">
                 <div class="grid gap-4 mb-4 grid-cols-3">
-                    <!-- Matrícula da Obra -->
+                    <!-- ISBN -->
                     <div>
-                        <label for="edit_matricula"
-                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Matrícula</label>
-                        <input type="text" name="edit_matricula" id="edit_matricula"
+                        <label for="edit_isbn"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">ISBN</label>
+                        <input type="text" name="edit_isbn" id="edit_isbn"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="9" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                            maxlength="13">
                     </div>
 
-                    <!-- Titulo da Obra -->
+                    <!-- Título da Obra -->
                     <div>
                         <label for="edit_titulo"
-                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Titulo</label>
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Título</label>
                         <input type="text" name="edit_titulo" id="edit_titulo"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             maxlength="100">
@@ -55,45 +55,81 @@
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Autor</label>
                         <input type="text" name="edit_autor" id="edit_autor"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="2">
+                            maxlength="100">
                     </div>
 
-                    <!-- Telefone do Aluno -->
+                    <!-- Edição -->
                     <div>
-                        <label for="edit_telefone"
-                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Telefone</label>
-                        <input type="text" name="edit_telefone" id="edit_telefone"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500 phone_with_ddd"
-                            maxlength="15">
+                        <label for="edit_edicao"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Edição</label>
+                        <input type="text" name="edit_edicao" id="edit_edicao"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            maxlength="50">
                     </div>
 
-                    <!-- Email do Aluno -->
-                    <div class="col-span-1">
-                        <label for="edit_email"
-                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Email</label>
-                        <input type="email" name="edit_email" id="edit_email"
+                    <!-- Ano -->
+                    <div>
+                        <label for="edit_ano"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Ano</label>
+                        <input type="number" name="edit_ano" id="edit_ano"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            maxlength="4">
+                    </div>
+
+                    <!-- Editora -->
+                    <div>
+                        <label for="edit_editora"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Editora</label>
+                        <input type="text" name="edit_editora" id="edit_editora"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             maxlength="100">
                     </div>
 
-                    <!-- Status do Aluno -->
-                    <div class="col-span-1">
-                        <label for="status_aluno"
+                    <!-- Acervo -->
+                    <div>
+                        <label for="edit_acervo"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Acervo</label>
+                        <input type="text" name="edit_acervo" id="edit_acervo"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            maxlength="100">
+                    </div>
+
+                    <!-- Gênero -->
+                    <div>
+                        <label for="edit_obras"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Gênero</label>
+                        <input type="text" name="edit_genero" id="edit_genero"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            maxlength="100">
+                    </div>
+
+                    <!-- Cópia -->
+                    <div>
+                        <label for="edit_copia"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Cópia</label>
+                        <input type="text" name="edit_copia" id="edit_copia"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
+                            maxlength="50">
+                    </div>
+
+                    <!-- Status da Obra -->
+                    <div>
+                        <label for="edit_status_obra"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Status</label>
-                        <select id="edit_status_aluno" name="edit_status_aluno"
+                        <select id="edit_status_obra" name="edit_status_obra"
                             class="bg-white text-black border border-gray-300 text-sm rounded-lg block w-48 p-2.5">
                             <option value="1">Ativo</option>
                             <option value="0">Indisponível</option>
                         </select>
                     </div>
 
-                    <!-- Observações do Aluno (linha inteira) -->
-                    <div class="col-span-2">
-                        <label for="edit_observacoes"
+                    <!-- Observações -->
+                    <div class="col-span-3">
+                        <label for="edit_observacao"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Observações</label>
-                        <input type="text" name="edit_observacoes" id="edit_observacoes"
+                        <textarea name="edit_observacao" id="edit_observacao" rows="3"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="200">
+                            maxlength="200"></textarea>
                     </div>
                 </div>
 
@@ -103,7 +139,7 @@
                     Atualizar
                 </button>
             </form>
-            <!-----SweetAlert Editar aluno------->
+            <!-----SweetAlert Editar obra------->
             @if (Session::has('message'))
                 <script>
                     swal({
@@ -143,3 +179,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelectorAll('.btn-editar-obra').forEach(button => {
+        button.addEventListener('click', function() {
+            const obraId = this.getAttribute('data-id');
+            const form = document.getElementById('form-editar-obra');
+            form.action = `/obras/${obraId}`;
+
+            // Preenche os campos do formulário
+            document.getElementById('obra_id').value = obraId;
+            document.getElementById('edit_isbn').value = this.getAttribute('data-isbn');
+            document.getElementById('edit_titulo').value = this.getAttribute('data-titulo');
+            document.getElementById('edit_autor').value = this.getAttribute('data-autor');
+            document.getElementById('edit_edicao').value = this.getAttribute('data-edicao');
+            document.getElementById('edit_ano').value = this.getAttribute('data-ano');
+            document.getElementById('edit_editora').value = this.getAttribute('data-editora');
+            document.getElementById('edit_acervo').value = this.getAttribute('data-acervo');
+            document.getElementById('edit_genero').value = this.getAttribute('data-genero');
+            document.getElementById('edit_copia').value = this.getAttribute('data-copia');
+            document.getElementById('edit_status_obra').value = this.getAttribute('data-status');
+            document.getElementById('edit_observacao').value = this.getAttribute('data-observacao');
+        });
+    });
+</script>

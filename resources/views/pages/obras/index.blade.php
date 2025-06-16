@@ -153,8 +153,12 @@
                                                     class="btn-editar-obra px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform
                                                     bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
                                                     data-id="{{ $obra->id }}" data-isbn="{{ $obra->isbn }}"
+                                                    data-autor="{{ $obra->autor->nome_autor ?? '—' }}"
                                                     data-titulo="{{ $obra->titulo }}" data-edicao="{{ $obra->edicao }}"
                                                     data-ano="{{ $obra->ano }}" data-copia="{{ $obra->copia }}"
+                                                    data-editora="{{ $obra->editora->nome_editora ?? '—' }}"
+                                                    data-acervo="{{ $obra->acervo->nome_acervo ?? '—' }}"
+                                                    data-genero="{{ $obra->genero->nome_genero ?? '—' }}"
                                                     data-observacao="{{ $obra->observacao }}"
                                                     data-status="{{ $obra->status_obra }}"
                                                     data-modal-target="crud-modal-edit" data-modal-toggle="crud-modal-edit">
