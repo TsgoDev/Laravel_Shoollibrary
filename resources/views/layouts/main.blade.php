@@ -55,7 +55,7 @@
     </script>
 
     @livewireScripts
-    
+
     <!-- Seus scripts customizados -->
     <script src="/js/search-autores.js"></script>
     <script src="/js/search-acervos.js"></script>
@@ -63,6 +63,7 @@
     <script src="/js/search-editoras.js"></script>
     <script src="/js/search-alunos.js"></script>
     <script src="/js/search-obras.js"></script>
+    <script src="/js/modal-busca-obras.js"></script>
     <!-- Reinicialização do Alpine após navegação Turbo -->
     <script>
         document.addEventListener("turbo:load", () => {

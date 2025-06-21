@@ -55,7 +55,7 @@
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left text-gray-500 white:text-gray-400">
                                         <button class="flex items-center gap-x-2">
-                                            <span>Autor</span>
+                                            <span>Acervo</span>
                                             <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                             </svg>

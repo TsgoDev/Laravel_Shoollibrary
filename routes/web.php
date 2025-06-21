@@ -7,6 +7,7 @@ use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\EditoraController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ObraController;
+use App\Http\Controllers\BuscaController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,7 +25,7 @@ Route::middleware([
     // Rota para o dashboard
 ])->group(function () {
     Route::get('/dashboard', function () {
-    return view('dashboard');
+        return view('dashboard');
     })->name('dashboard');
 });
 
@@ -90,6 +91,13 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/obras/{id}', [ObraController::class, 'update'])->name('obras-update');
 
 
+    // Rotas para busca de dados
+    Route::get('/buscar-editoras', [BuscaController::class, 'buscarEditoras'])->name('buscar-editoras');
+    Route::get('/buscar-acervos', [BuscaController::class, 'buscarAcervos'])->name('buscar-acervos');
+    Route::get('/buscar-generos', [BuscaController::class, 'buscarGeneros'])->name('buscar-generos');
+    Route::get('/buscar-autores', [BuscaController::class, 'buscarAutores'])->name('buscar-autores');
+
+
     //----Excluir autores
     //Route::delete('/autores/{id}', [AutorController::class, 'destroy'])->name('autores-destroy');
 
@@ -103,5 +111,3 @@ Route::middleware(['auth'])->group(function () {
     //Route::post('/products/update-status/{product}', [ProductController::class, 'updateStatus'])->name('products.updateStatus');
 
 });
-
-
