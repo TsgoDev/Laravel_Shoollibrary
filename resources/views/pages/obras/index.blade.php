@@ -201,7 +201,7 @@
                                                     data-genero-id="{{ $obra->genero_id }}"
                                                     data-genero-nome="{{ $obra->genero->nome_genero ?? '—' }}"
                                                     data-observacao="{{ $obra->observacoes }}"
-                                                    data-status="{{ $obra->status_obra }}"
+                                                    data-status="{{ (int) $obra->status_obra }}"
                                                     data-modal-target="crud-modal-edit"
                                                     data-modal-toggle="crud-modal-edit">
                                                     Editar
@@ -248,7 +248,7 @@
                     </div>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
-                        data-modal-hide="detalhes-modal">
+                        data-modal-toggle="detalhes-modal">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
                                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -289,7 +289,7 @@
                 button.addEventListener('click', function() {
                     const obraId = this.getAttribute('data-id');
                     const form = document.getElementById('form-editar-obra');
-                    form.action = `/obras/${obraId}`;
+                    form.action = `/obras/update/${obraId}`;
 
                     // Popula os campos normais
                     document.getElementById('obra_id').value = obraId;
@@ -298,22 +298,18 @@
                     document.getElementById('edit_edicao').value = this.getAttribute('data-edicao');
                     document.getElementById('edit_ano').value = this.getAttribute('data-ano');
                     document.getElementById('edit_copia').value = this.getAttribute('data-copia');
-
                     document.getElementById('edit_editora_id').value = this.getAttribute(
                         'data-editora-id');
                     document.getElementById('edit_editora_nome').value = this.getAttribute(
                         'data-editora-nome');
-
                     document.getElementById('edit_acervo_id').value = this.getAttribute(
                         'data-acervo-id');
                     document.getElementById('edit_acervo_nome').value = this.getAttribute(
                         'data-acervo-nome');
-
                     document.getElementById('edit_genero_id').value = this.getAttribute(
                         'data-genero-id');
                     document.getElementById('edit_genero_nome').value = this.getAttribute(
                         'data-genero-nome');
-
                     document.getElementById('edit_observacao').value = this.getAttribute(
                         'data-observacao');
                     document.getElementById('edit_status_obra').value = this.getAttribute(
