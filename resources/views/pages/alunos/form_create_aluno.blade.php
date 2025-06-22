@@ -83,13 +83,13 @@
                             <option value="0">Indisponível</option>
                         </select>
                     </div>
-                    <!-- Observações do Aluno (linha inteira) -->
+                    <!-- Observações do Aluno (textarea) -->
                     <div class="col-span-2">
-                        <label for="observacoes_aluno"
+                        <label for="observacoes"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Observações</label>
-                        <input type="tex" name="observacoes_aluno" id="observacoes_aluno"
+                        <textarea name="observacoes" id="observacoes" rows="3"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="200" placeholder="Observações">
+                            maxlength="200" placeholder="Observações sobre o aluno"></textarea>
                     </div>
                 </div>
                 <button type="submit" name="submit"

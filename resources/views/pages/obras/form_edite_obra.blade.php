@@ -51,11 +51,21 @@
 
                     <!-- Autor da Obra -->
                     <div>
-                        <label for="edit_autor"
-                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Autor</label>
-                        <input type="text" name="edit_autor" id="edit_autor"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="100">
+                        <label for="edit_autores"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Autor(es)</label>
+                        <div class="flex">
+                            <input type="text" name="edit_autores" id="edit_autores"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="Selecione um ou mais autores">
+                            <button type="button" data-modal-target="modal-busca-autor"
+                                data-modal-toggle="modal-busca-autor"
+                                class="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Edição -->
@@ -78,36 +88,69 @@
 
                     <!-- Editora -->
                     <div>
-                        <label for="edit_editora"
+                        <label for="edit_editora_nome"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Editora</label>
-                        <input type="text" name="edit_editora" id="edit_editora"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="100">
+                        <div class="flex">
+                            <input type="text" name="edit_editora_nome" id="edit_editora_nome" readonly
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="Selecione uma editora">
+                            <button type="button" data-modal-target="modal-busca-editora"
+                                data-modal-toggle="modal-busca-editora"
+                                class="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <input type="hidden" name="edit_editora_id" id="edit_editora_id">
                     </div>
 
                     <!-- Acervo -->
                     <div>
-                        <label for="edit_acervo"
+                        <label for="edit_acervo_nome"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Acervo</label>
-                        <input type="text" name="edit_acervo" id="edit_acervo"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="100">
+                        <div class="flex">
+                            <input type="text" name="edit_acervo_nome" id="edit_acervo_nome" readonly
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="Selecione um acervo">
+                            <button type="button" data-modal-target="modal-busca-acervo"
+                                data-modal-toggle="modal-busca-acervo"
+                                class="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <input type="hidden" name="edit_acervo_id" id="edit_acervo_id">
                     </div>
 
                     <!-- Gênero -->
                     <div>
-                        <label for="edit_obras"
+                        <label for="edit_genero_nome"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Gênero</label>
-                        <input type="text" name="edit_genero" id="edit_genero"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
-                            maxlength="100">
+                        <div class="flex">
+                            <input type="text" name="edit_genero_nome" id="edit_genero_nome" readonly
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="Selecione um gênero">
+                            <button type="button" data-modal-target="modal-busca-genero"
+                                data-modal-toggle="modal-busca-genero"
+                                class="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <input type="hidden" name="edit_genero_id" id="edit_genero_id">
                     </div>
 
                     <!-- Cópia -->
                     <div>
                         <label for="edit_copia"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Cópia</label>
-                        <input type="text" name="edit_copia" id="edit_copia"
+                        <input type="number" name="edit_copia" id="edit_copia"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             maxlength="50">
                     </div>
@@ -134,7 +177,7 @@
                 </div>
 
                 <!-- Botão -->
-                <button type="submit" name="submit"
+                <button type="submit"
                     class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center white:bg-blue-600 white:hover:bg-blue-700 white:focus:ring-blue-800">
                     Atualizar
                 </button>
@@ -179,27 +222,56 @@
         </div>
     </div>
 </div>
-
 <script>
-    document.querySelectorAll('.btn-editar-obra').forEach(button => {
-        button.addEventListener('click', function() {
-            const obraId = this.getAttribute('data-id');
-            const form = document.getElementById('form-editar-obra');
-            form.action = `/obras/${obraId}`;
+    document.addEventListener('DOMContentLoaded', function() {
+        var autoresEditInput = document.querySelector('#edit_autores');
+        if (autoresEditInput) {
+            var tagifyEdit = new Tagify(autoresEditInput, {
+                whitelist: [], // A lista será preenchida dinamicamente
+                dropdown: {
+                    maxItems: 20,
+                    classname: 'tags-look',
+                    enabled: 0,
+                    closeOnSelect: false
+                }
+            });
 
-            // Preenche os campos do formulário
-            document.getElementById('obra_id').value = obraId;
-            document.getElementById('edit_isbn').value = this.getAttribute('data-isbn');
-            document.getElementById('edit_titulo').value = this.getAttribute('data-titulo');
-            document.getElementById('edit_autor').value = this.getAttribute('data-autor');
-            document.getElementById('edit_edicao').value = this.getAttribute('data-edicao');
-            document.getElementById('edit_ano').value = this.getAttribute('data-ano');
-            document.getElementById('edit_editora').value = this.getAttribute('data-editora');
-            document.getElementById('edit_acervo').value = this.getAttribute('data-acervo');
-            document.getElementById('edit_genero').value = this.getAttribute('data-genero');
-            document.getElementById('edit_copia').value = this.getAttribute('data-copia');
-            document.getElementById('edit_status_obra').value = this.getAttribute('data-status');
-            document.getElementById('edit_observacao').value = this.getAttribute('data-observacao');
-        });
+            // Função global para popular as tags
+            window.popularAutores = function(autores) {
+                tagifyEdit.removeAllTags();
+                tagifyEdit.addTags(autores);
+            };
+
+            // Adiciona autores selecionados no modal de busca
+            window.adicionarAutorEdit = function(id, nome) {
+                tagifyEdit.addTags([{
+                    value: nome,
+                    id: id
+                }]);
+                // Fecha o modal de busca de autor
+                document.querySelector('[data-modal-hide="modal-busca-autor"]').click();
+            };
+
+            var formEdit = document.querySelector('#form-editar-obra');
+            formEdit.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var autoresValues = tagifyEdit.value.map(item => item.id);
+
+                // Limpa inputs antigos se existirem
+                formEdit.querySelectorAll('input[name="edit_autores[]"]').forEach(el => el.remove());
+
+                autoresValues.forEach(function(id) {
+                    var hiddenInput = document.createElement('input');
+                    hiddenInput.type = 'hidden';
+                    hiddenInput.name = 'edit_autores[]';
+                    hiddenInput.value = id;
+                    formEdit.appendChild(hiddenInput);
+                });
+
+                autoresEditInput.name = '';
+                formEdit.submit();
+            });
+        }
     });
 </script>

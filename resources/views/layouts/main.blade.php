@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -18,6 +19,22 @@
 
     <!-- Styles -->
     @livewireStyles
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ asset('css/sytle.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/microtip/microtip.css">
+
+    <!-- CDNS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        [role~="tooltip"]::after {
+            white-space: pre-line !important;
+            text-align: left;
+            min-width: 180px;
+        }
+    </style>
 
 </head>
 
@@ -39,6 +56,8 @@
 
     <!-- Modal site flowbite -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 
     <!-- Incluindo o SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -57,13 +76,12 @@
     @livewireScripts
 
     <!-- Seus scripts customizados -->
-    <script src="/js/search-autores.js"></script>
     <script src="/js/search-acervos.js"></script>
     <script src="/js/search-generos.js"></script>
     <script src="/js/search-editoras.js"></script>
     <script src="/js/search-alunos.js"></script>
     <script src="/js/search-obras.js"></script>
-    <script src="/js/modal-busca-obras.js"></script>
+    <script src="/js/modal-buscar-obras.js"></script>
     <!-- Reinicialização do Alpine após navegação Turbo -->
     <script>
         document.addEventListener("turbo:load", () => {

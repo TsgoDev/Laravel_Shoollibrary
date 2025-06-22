@@ -14,7 +14,11 @@ class AlunoController extends Controller
     {
         $alunos = Aluno::where('status_aluno', true) // apenas ativos
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->get()
+            ->map(function ($aluno) {
+                $aluno->tem_observacao = !empty($aluno->observacoes);
+                return $aluno;
+            });
 
         return view('pages.alunos.index', compact('alunos'));
     }
@@ -26,7 +30,11 @@ class AlunoController extends Controller
      */
     public function inativos()
     {
-        $alunos = Aluno::where('status_aluno', 0)->orderBy('created_at', 'desc')->get();
+        $alunos = Aluno::where('status_aluno', 0)->orderBy('created_at', 'desc')->get()
+            ->map(function ($aluno) {
+                $aluno->tem_observacao = !empty($aluno->observacoes);
+                return $aluno;
+            });
         return view('pages.alunos.index', compact('alunos'));
     }
 
@@ -46,6 +54,7 @@ class AlunoController extends Controller
             'telefone_aluno' => 'required|string|max:15',
             'email_aluno' => 'required|string|max:80',
             'status_aluno' => 'required|in:0,1',
+            'observacoes' => 'nullable|string|max:200',
         ]);
 
 
@@ -77,6 +86,7 @@ class AlunoController extends Controller
             'telefone_aluno' => $request->telefone_aluno,
             'email_aluno' => $request->email_aluno,
             'status_aluno' => $request->status_aluno,
+            'observacoes' => $request->observacoes,
         ]);
 
         // Redirecionar para index com mensagem de sucesso
@@ -101,6 +111,7 @@ class AlunoController extends Controller
             'edit_telefone' => 'required|string|max:15',
             'edit_email' => 'required|string|max:80',
             'edit_status_aluno' => 'required|in:0,1',
+            'edit_observacoes' => 'nullable|string|max:200',
         ]);
 
         // Buscar aluno pelo ID
@@ -141,6 +152,7 @@ class AlunoController extends Controller
             'telefone_aluno' => $request->edit_telefone,
             'email_aluno' => $request->edit_email,
             'status_aluno' => $request->edit_status_aluno,
+            'observacoes' => $request->edit_observacoes,
         ]);
 
         // Redirecionar para index com mensagem de sucesso

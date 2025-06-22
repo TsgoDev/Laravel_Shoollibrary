@@ -1,18 +1,18 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container mx-auto mt-5 p-6">
-    <!-- Input Pesquisa -->
-    <div class="mb-4 flex items-center gap-4 px-4">
-        <input type="text" id="searchInput"
-            class="w-full max-w-md px-3 py-2 border border-gray-600 rounded-lg bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
-            placeholder="Buscar obras..." autocomplete="off">
-        <!-- Botão Novo Autor -->
-        <button data-modal-target="crud-modal-create" data-modal-toggle="crud-modal-create"
-            class="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition">
-            + Adicionar
-        </button>
-    </div>
+    <div class="container mx-auto mt-5 p-6">
+        <!-- Input Pesquisa -->
+        <div class="mb-4 flex items-center gap-4 px-4">
+            <input type="text" id="searchInput"
+                class="w-full max-w-md px-3 py-2 border border-gray-600 rounded-lg bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md"
+                placeholder="Buscar obras..." autocomplete="off">
+            <!-- Botão Novo Autor -->
+            <button data-modal-target="crud-modal-create" data-modal-toggle="crud-modal-create"
+                class="px-4 py-2 bg-gray-700 text-white rounded-lg shadow-lg hover:bg-gray-800 transition">
+                + Adicionar
+            </button>
+        </div>
 
         <!-- Tabela -->
         <section class="container px-7 mx-auto">
@@ -106,12 +106,50 @@
 
                                         <td
                                             class="px-2 py-2 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                            {{ $obra->titulo }}
+                                            <div class="flex items-center">
+                                                <span>{{ $obra->titulo }}</span>
+                                                @if ($obra->tem_observacao)
+                                                    <span class="ml-2" aria-label="{{ $obra->observacoes }}"
+                                                        data-microtip-position="top" role="tooltip">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-5 w-5 text-orange-500" viewBox="0 0 20 20"
+                                                            fill="currentColor">
+                                                            <path fill-rule="evenodd"
+                                                                d="M18 10c0 3.866-3.582 7-8 7a8.948 8.948 0 01-4.131-1.033l-3.21.942a.5.5 0 00-.559.559l.942-3.21A8.948 8.948 0 012 10c0-4.418 4.477-8 10-8s8 3.582 8 8zM6 10a1 1 0 11-2 0 1 1 0 012 0zm4 0a1 1 0 11-2 0 1 1 0 012 0zm4 0a1 1 0 11-2 0 1 1 0 012 0z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                    </span>
+                                                @else
+                                                    <span class="ml-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                            class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                                                            fill="currentColor">
+                                                            <path fill-rule="evenodd"
+                                                                d="M18 10c0 3.866-3.582 7-8 7a8.948 8.948 0 01-4.131-1.033l-3.21.942a.5.5 0 00-.559.559l.942-3.21A8.948 8.948 0 012 10c0-4.418 4.477-8 10-8s8 3.582 8 8zM6 10a1 1 0 11-2 0 1 1 0 012 0zm4 0a1 1 0 11-2 0 1 1 0 012 0zm4 0a1 1 0 11-2 0 1 1 0 012 0z"
+                                                                clip-rule="evenodd" />
+                                                        </svg>
+                                                    </span>
+                                                @endif
+                                            </div>
                                         </td>
 
                                         <td
                                             class="px-2 py-2 text-sm font-medium text-gray-700 whitespace-nowrap white:text-gray-300">
-                                            {{ $obra->autor->nome_autor ?? '—' }}
+                                            <div class="flex items-center">
+                                                @if ($obra->autores->isNotEmpty())
+                                                    <span>{{ $obra->autores->first()->nome_autor }}</span>
+                                                    @if ($obra->autores->count() > 1)
+                                                        <span
+                                                            class="ml-2 px-2 py-0.5 text-xs font-semibold text-gray-700 bg-gray-200 rounded-full cursor-pointer"
+                                                            aria-label="{!! $obra->autores->pluck('nome_autor')->implode('&#10;') !!}"
+                                                            data-microtip-position="bottom" role="tooltip">
+                                                            +{{ $obra->autores->count() - 1 }}
+                                                        </span>
+                                                    @endif
+                                                @else
+                                                    —
+                                                @endif
+                                            </div>
                                         </td>
 
                                         <td
@@ -153,15 +191,19 @@
                                                     class="btn-editar-obra px-6 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-300 transform
                                                     bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-80"
                                                     data-id="{{ $obra->id }}" data-isbn="{{ $obra->isbn }}"
-                                                    data-autor="{{ $obra->autor->nome_autor ?? '—' }}"
+                                                    data-autores="{{ json_encode($obra->autores->map(function ($autor) {return ['id' => $autor->id, 'value' => $autor->nome_autor];})) }}"
                                                     data-titulo="{{ $obra->titulo }}" data-edicao="{{ $obra->edicao }}"
                                                     data-ano="{{ $obra->ano }}" data-copia="{{ $obra->copia }}"
-                                                    data-editora="{{ $obra->editora->nome_editora ?? '—' }}"
-                                                    data-acervo="{{ $obra->acervo->nome_acervo ?? '—' }}"
-                                                    data-genero="{{ $obra->genero->nome_genero ?? '—' }}"
-                                                    data-observacao="{{ $obra->observacao }}"
+                                                    data-editora-id="{{ $obra->editora_id }}"
+                                                    data-editora-nome="{{ $obra->editora->nome_editora ?? '—' }}"
+                                                    data-acervo-id="{{ $obra->acervo_id }}"
+                                                    data-acervo-nome="{{ $obra->acervo->nome_acervo ?? '—' }}"
+                                                    data-genero-id="{{ $obra->genero_id }}"
+                                                    data-genero-nome="{{ $obra->genero->nome_genero ?? '—' }}"
+                                                    data-observacao="{{ $obra->observacoes }}"
                                                     data-status="{{ $obra->status_obra }}"
-                                                    data-modal-target="crud-modal-edit" data-modal-toggle="crud-modal-edit">
+                                                    data-modal-target="crud-modal-edit"
+                                                    data-modal-toggle="crud-modal-edit">
                                                     Editar
                                                 </button>
                                                 <!-- Botão Detalhes -->
@@ -248,16 +290,40 @@
                     const obraId = this.getAttribute('data-id');
                     const form = document.getElementById('form-editar-obra');
                     form.action = `/obras/${obraId}`;
+
+                    // Popula os campos normais
                     document.getElementById('obra_id').value = obraId;
                     document.getElementById('edit_isbn').value = this.getAttribute('data-isbn');
                     document.getElementById('edit_titulo').value = this.getAttribute('data-titulo');
                     document.getElementById('edit_edicao').value = this.getAttribute('data-edicao');
                     document.getElementById('edit_ano').value = this.getAttribute('data-ano');
                     document.getElementById('edit_copia').value = this.getAttribute('data-copia');
+
+                    document.getElementById('edit_editora_id').value = this.getAttribute(
+                        'data-editora-id');
+                    document.getElementById('edit_editora_nome').value = this.getAttribute(
+                        'data-editora-nome');
+
+                    document.getElementById('edit_acervo_id').value = this.getAttribute(
+                        'data-acervo-id');
+                    document.getElementById('edit_acervo_nome').value = this.getAttribute(
+                        'data-acervo-nome');
+
+                    document.getElementById('edit_genero_id').value = this.getAttribute(
+                        'data-genero-id');
+                    document.getElementById('edit_genero_nome').value = this.getAttribute(
+                        'data-genero-nome');
+
                     document.getElementById('edit_observacao').value = this.getAttribute(
                         'data-observacao');
                     document.getElementById('edit_status_obra').value = this.getAttribute(
                         'data-status');
+
+                    // Popula o campo de autores com Tagify
+                    const autoresData = JSON.parse(this.getAttribute('data-autores'));
+                    if (window.popularAutores) {
+                        window.popularAutores(autoresData);
+                    }
                 });
             });
 

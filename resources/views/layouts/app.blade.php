@@ -13,12 +13,14 @@
     <!-- Vite CSS & JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    <link rel="stylesheet" href="https://unpkg.com/microtip/microtip.css">
+
     <!-- Styles -->
     @livewireStyles
 </head>
 
 <body>
-    
+
     <header>
         @livewire('navigation-menu') <!-- Inclui o navbar de navegação -->
     </header>

@@ -48,12 +48,12 @@
 
                     <!-- Autor da Obra -->
                     <div>
-                        <label for="autor"
-                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Autor</label>
+                        <label for="autores"
+                            class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Autor(es)</label>
                         <div class="flex">
-                            <input type="text" name="autor" id="autor" readonly
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-48 p-2.5"
-                                placeholder="Selecione um autor">
+                            <input type="text" name="autores" id="autores"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                placeholder="Selecione um ou mais autores" required>
                             <button type="button" data-modal-target="modal-busca-autor"
                                 data-modal-toggle="modal-busca-autor"
                                 class="ml-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center">
@@ -100,6 +100,7 @@
                                 </svg>
                             </button>
                         </div>
+                        <input type="hidden" name="editora_id" id="editora_id">
                     </div>
 
                     <!-- Acervo -->
@@ -119,6 +120,7 @@
                                 </svg>
                             </button>
                         </div>
+                        <input type="hidden" name="acervo_id" id="acervo_id">
                     </div>
 
                     <!-- Gênero -->
@@ -138,13 +140,14 @@
                                 </svg>
                             </button>
                         </div>
+                        <input type="hidden" name="genero_id" id="genero_id">
                     </div>
 
                     <!-- Cópia -->
                     <div>
                         <label for="copia"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Cópia</label>
-                        <input type="text" name="copia" id="copia"
+                        <input type="number" name="copia" id="copia"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-64 p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             maxlength="50" placeholder="Ex: Cópia 1">
                     </div>
@@ -164,16 +167,16 @@
 
                     <!-- Observações -->
                     <div class="col-span-3">
-                        <label for="observacao"
+                        <label for="observacoes"
                             class="block mb-2 text-sm font-medium text-gray-900 white:text-white">Observações</label>
-                        <textarea name="observacao" id="observacao" rows="3"
+                        <textarea name="observacoes" id="observacoes" rows="3"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 white:bg-gray-600 white:border-gray-500 white:placeholder-gray-400 white:text-white white:focus:ring-primary-500 white:focus:border-primary-500"
                             maxlength="200" placeholder="Observações sobre a obra"></textarea>
                     </div>
                 </div>
 
                 <!-- Botão -->
-                <button type="submit" name="submit"
+                <button type="submit"
                     class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center white:bg-blue-600 white:hover:bg-blue-700 white:focus:ring-blue-800">
                     <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -227,7 +230,7 @@
 
 <!-- Modal de Busca de Editora -->
 <div id="modal-busca-editora" tabindex="-1" aria-hidden="true"
-    class="hidden flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    class="hidden flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-[100] justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-2xl max-h-full">
         <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm"></div>
         <div class="relative bg-white rounded-lg shadow-sm white:bg-gray-700">
@@ -256,9 +259,44 @@
     </div>
 </div>
 
+<!-- Botão oculto para acionar o modal de autor via script -->
+<button type="button" data-modal-target="modal-busca-autor" data-modal-toggle="modal-busca-autor"
+    class="hidden"></button>
+
+<!-- Modal de Busca de Autor -->
+<div id="modal-busca-autor" tabindex="-1" aria-hidden="true"
+    class="hidden flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-[100] justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-2xl max-h-full">
+        <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm"></div>
+        <div class="relative bg-white rounded-lg shadow-sm white:bg-gray-700">
+            <div
+                class="flex items-center justify-between p-4 md:p-5 border-b rounded-t white:border-gray-600 border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900 white:text-white">Selecionar Autor</h3>
+                <button type="button" data-modal-hide="modal-busca-autor"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center white:hover:bg-gray-600 white:hover:text-white">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+            <div class="p-4 md:p-5">
+                <div class="mb-4">
+                    <input type="text" id="busca-autor" placeholder="Digite para buscar autores..."
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                </div>
+                <div id="lista-autores" class="max-h-60 overflow-y-auto">
+                    <!-- Lista será carregada via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Modal de Busca de Acervo -->
 <div id="modal-busca-acervo" tabindex="-1" aria-hidden="true"
-    class="hidden flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    class="hidden flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-[100] justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-2xl max-h-full">
         <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm"></div>
         <div class="relative bg-white rounded-lg shadow-sm white:bg-gray-700">
@@ -289,7 +327,7 @@
 
 <!-- Modal de Busca de Gênero -->
 <div id="modal-busca-genero" tabindex="-1" aria-hidden="true"
-    class="hidden flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    class="hidden flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-[100] justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-2xl max-h-full">
         <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm"></div>
         <div class="relative bg-white rounded-lg shadow-sm white:bg-gray-700">
@@ -318,33 +356,58 @@
     </div>
 </div>
 
-<!-- Modal de Busca de Autor -->
-<div id="modal-busca-autor" tabindex="-1" aria-hidden="true"
-    class="hidden flex overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative p-4 w-full max-w-2xl max-h-full">
-        <div class="fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm"></div>
-        <div class="relative bg-white rounded-lg shadow-sm white:bg-gray-700">
-            <div
-                class="flex items-center justify-between p-4 md:p-5 border-b rounded-t white:border-gray-600 border-gray-200">
-                <h3 class="text-lg font-semibold text-gray-900 white:text-white">Selecionar Autor</h3>
-                <button type="button" data-modal-hide="modal-busca-autor"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center white:hover:bg-gray-600 white:hover:text-white">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                </button>
-            </div>
-            <div class="p-4 md:p-5">
-                <div class="mb-4">
-                    <input type="text" id="busca-autor" placeholder="Digite para buscar autores..."
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
-                </div>
-                <div id="lista-autores" class="max-h-60 overflow-y-auto">
-                    <!-- Lista será carregada via JavaScript -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Adicione este script no final do seu arquivo de view -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializa o Tagify no campo de autores
+        var autoresInput = document.querySelector('#autores');
+        var tagify = new Tagify(autoresInput, {
+            whitelist: [], // A lista de autores será preenchida dinamicamente
+            dropdown: {
+                maxItems: 20,
+                classname: 'tags-look',
+                enabled: 0,
+                closeOnSelect: false
+            }
+        });
+
+        // Evento para abrir o modal de busca de autores
+        /* autoresInput.addEventListener('focus', function() {
+            document.querySelector('[data-modal-target="modal-busca-autor"]').click();
+        }); */
+
+        // Função para adicionar autores do modal para o Tagify
+        window.adicionarAutorCreate = function(id, nome) {
+            tagify.addTags([{
+                value: nome,
+                id: id
+            }]);
+            // Fecha o modal após a seleção
+            document.querySelector('[data-modal-hide="modal-busca-autor"]').click();
+        };
+
+        // Sobrescreve o formulário para enviar os IDs
+        var form = document.querySelector('form[action="{{ route('obras-store') }}"]');
+        form.addEventListener('submit', function(e) {
+            // Previne o envio do formulário, para que possamos modificar o valor
+            e.preventDefault();
+
+            var autoresValues = tagify.value.map(item => item.id);
+            // Cria um input hidden para enviar os IDs como um array
+            var hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'autores[]';
+            autoresValues.forEach(function(id) {
+                var newHidden = hiddenInput.cloneNode();
+                newHidden.value = id;
+                form.appendChild(newHidden);
+            });
+
+            // Remove o campo original do tagify do envio
+            autoresInput.name = '';
+
+            // Envia o formulário
+            form.submit();
+        });
+    });
+</script>

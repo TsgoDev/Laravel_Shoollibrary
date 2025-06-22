@@ -19,5 +19,12 @@ class Autor extends Model
     protected $casts = [
         'status_autor' => 'boolean',
     ];
-    
+
+    // RELACIONAMENTOS
+
+    // Autor pode ter várias obras
+    public function obras()
+    {
+        return $this->belongsToMany(Obra::class, 'autor_obra');
+    }
 }

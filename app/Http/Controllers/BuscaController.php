@@ -7,35 +7,30 @@ use App\Models\Editora;
 use App\Models\Genero;
 use App\Models\Autor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class BuscaController extends Controller
 {
     public function buscarEditoras()
     {
-        $editoras = Editora::where('status_editora', true)->get();
-        Log::info('Buscando Editoras:', $editoras->toArray());
+        $editoras = Editora::where('status_editora', true)->orderBy('created_at', 'desc')->get();
         return response()->json($editoras);
     }
 
     public function buscarAcervos()
     {
-        $acervos = Acervo::where('status_acervo', true)->get();
-        Log::info('Buscando Acervos:', $acervos->toArray());
+        $acervos = Acervo::where('status_acervo', true)->orderBy('created_at', 'desc')->get();
         return response()->json($acervos);
     }
 
     public function buscarGeneros()
     {
-        $generos = Genero::where('status_genero', true)->get();
-        Log::info('Buscando Gêneros:', $generos->toArray());
+        $generos = Genero::where('status_genero', true)->orderBy('created_at', 'desc')->get();
         return response()->json($generos);
     }
 
     public function buscarAutores()
     {
-        $autores = Autor::where('status_autor', true)->get();
-        Log::info('Buscando Autores:', $autores->toArray());
+        $autores = Autor::where('status_autor', true)->orderBy('created_at', 'desc')->get();
         return response()->json($autores);
     }
 }

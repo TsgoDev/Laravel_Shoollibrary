@@ -11,8 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable('alunos')) {
-            Schema::create('alunos', function (Blueprint $table) {
+        Schema::create('alunos', function (Blueprint $table) {
             $table->id(); // cria 'id' como primary key auto-increment
             $table->string('matricula_aluno',9);
             $table->string('turma_aluno',5);
@@ -20,9 +19,9 @@ return new class extends Migration
             $table->string('telefone_aluno',15);
             $table->string('email_aluno',80);
             $table->boolean('status_aluno')->default(true); // Ativo/Indisponível
+            $table->text('observacoes')->nullable();
             $table->timestamps();
-            });
-        }
+        });
     }
 
     /**

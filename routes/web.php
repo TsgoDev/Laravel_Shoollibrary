@@ -41,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
     //---Update
     Route::put('/autores/{id}', [AutorController::class, 'update'])->name('autores-update');
 
+    
+
     // Page index acervo
     Route::get('/acervos', [AcervoController::class, 'index'])->name('acervos.index');
     // Página de acervos inativos
@@ -97,17 +99,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/buscar-generos', [BuscaController::class, 'buscarGeneros'])->name('buscar-generos');
     Route::get('/buscar-autores', [BuscaController::class, 'buscarAutores'])->name('buscar-autores');
 
-
-    //----Excluir autores
-    //Route::delete('/autores/{id}', [AutorController::class, 'destroy'])->name('autores-destroy');
-
-    //----Excluir produto
-    //Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products-destroy');
-
-    //----Salvar produto
-    //Route::post('/products', [ProductController::class, 'store'])->name('products-store');
-
-    //----Atualizar status do produto
-    //Route::post('/products/update-status/{product}', [ProductController::class, 'updateStatus'])->name('products.updateStatus');
 
 });

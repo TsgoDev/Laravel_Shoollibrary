@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,7 +21,6 @@ class Obra extends Model
         'copia',
         'observacoes',
         'status_obra',
-        'autor_id',
         'acervo_id',
         'genero_id',
         'editora_id'
@@ -33,10 +33,10 @@ class Obra extends Model
 
     // RELACIONAMENTOS
 
-    // Obra pertence a um autor
-    public function autor()
+    // Obra pertence a muitos autores
+    public function autores()
     {
-        return $this->belongsTo(Autor::class);
+        return $this->belongsToMany(Autor::class, 'autor_obra');
     }
 
     // Obra pertence a um acervo
@@ -56,5 +56,4 @@ class Obra extends Model
     {
         return $this->belongsTo(Editora::class);
     }
-
 }
