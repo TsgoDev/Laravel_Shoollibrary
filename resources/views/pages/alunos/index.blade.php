@@ -209,6 +209,26 @@
                                                         data-modal-toggle="crud-modal-edit">
                                                         Editar
                                                     </button>
+
+                                                    <!-- Botão de Visualização -->
+                                                    <button type="button" title="Dados aluno"
+                                                        class="btn-view-aluno p-2 text-gray-500 transition-colors duration-200 rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                                        data-modal-target="view-aluno-modal"
+                                                        data-modal-toggle="view-aluno-modal"
+                                                        data-nome="{{ $aluno->nome_aluno }}"
+                                                        data-matricula="{{ $aluno->matricula_aluno }}"
+                                                        data-turma="{{ $aluno->turma_aluno }}"
+                                                        data-telefone="{{ $aluno->telefone_aluno }}"
+                                                        data-email="{{ $aluno->email_aluno }}"
+                                                        data-status="{{ $aluno->status_aluno ? 'Ativo' : 'Inativo' }}"
+                                                        data-data-cadastro="{{ $aluno->created_at->format('d/m/Y') }}"
+                                                        data-observacoes="{{ $aluno->observacoes ?? 'Nenhuma' }}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="lucide lucide-info-icon lucide-info"><circle cx="12" cy="12"
+                                                        r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -222,6 +242,7 @@
         </section>
         @include('pages.alunos.form_create_aluno')
         @include('pages.alunos.form_edite_aluno')
+        @include('pages.alunos.view_aluno_modal')
     @endsection
 
     @push('scripts')
@@ -238,13 +259,51 @@
 
                         // Preenche os campos do formulário instantaneamente
                         document.getElementById('aluno_id').value = alunoId;
-                        document.getElementById('edit_matricula').value = this.getAttribute('data-matricula');
+                        document.getElementById('edit_matricula').value = this.getAttribute(
+                            'data-matricula');
                         document.getElementById('edit_turma').value = this.getAttribute('data-turma');
                         document.getElementById('edit_nome').value = this.getAttribute('data-nome');
-                        document.getElementById('edit_telefone').value = this.getAttribute('data-telefone');
+                        document.getElementById('edit_telefone').value = this.getAttribute(
+                            'data-telefone');
                         document.getElementById('edit_email').value = this.getAttribute('data-email');
-                        document.getElementById('edit_status_aluno').value = this.getAttribute('data-status');
-                        document.getElementById('edit_observacoes').value = this.getAttribute('data-observacoes');
+                        document.getElementById('edit_status_aluno').value = this.getAttribute(
+                            'data-status');
+                        document.getElementById('edit_observacoes').value = this.getAttribute(
+                            'data-observacoes');
+                    });
+                });
+
+                // Script para o modal de visualização
+                document.querySelectorAll('.btn-view-aluno').forEach(button => {
+                    button.addEventListener('click', function() {
+                        document.getElementById('view_nome').textContent = this.getAttribute(
+                            'data-nome');
+                        document.getElementById('view_matricula').textContent = this.getAttribute(
+                            'data-matricula');
+                        document.getElementById('view_turma').textContent = this.getAttribute(
+                            'data-turma');
+                        document.getElementById('view_telefone').textContent = this.getAttribute(
+                            'data-telefone');
+                        document.getElementById('view_email').textContent = this.getAttribute(
+                            'data-email');
+                        document.getElementById('view_status').textContent = this.getAttribute(
+                            'data-status');
+                        document.getElementById('view_data_cadastro').textContent = this.getAttribute(
+                            'data-data-cadastro');
+                        document.getElementById('view_observacoes').textContent = this.getAttribute(
+                            'data-observacoes');
+                    });
+                });
+
+                // Script para copiar dados do modal
+                document.getElementById('copy-button').addEventListener('click', function() {
+                    const details = document.getElementById('aluno-details').innerText;
+                    navigator.clipboard.writeText(details).then(() => {
+                        // Feedback para o usuário que o texto foi copiado
+                        this.innerText = 'Copiado!';
+                        setTimeout(() => {
+                            this.innerText = 'Copiar Dados';
+                        }, 2000);
                     });
                 });
             });
