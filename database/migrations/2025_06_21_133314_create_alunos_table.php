@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('alunos')) {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id(); // cria 'id' como primary key auto-increment
             $table->string('matricula_aluno',9);
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+}
 
     /**
      * Reverse the migrations.

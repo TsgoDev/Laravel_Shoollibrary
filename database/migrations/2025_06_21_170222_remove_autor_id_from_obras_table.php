@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::hasTable('obras')) {
         Schema::table('obras', function (Blueprint $table) {
             // Remove a chave estrangeira antes de remover a coluna
             $table->dropForeign(['autor_id']);
             $table->dropColumn('autor_id');
         });
+        }
     }
 
     /**
@@ -23,9 +25,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        if (Schema::hasTable('obras')) {
         Schema::table('obras', function (Blueprint $table) {
             $table->unsignedBigInteger('autor_id')->nullable();
             $table->foreign('autor_id')->references('id')->on('autores');
         });
+        }
     }
 };

@@ -10,8 +10,31 @@ class Emprestimo extends Model
     use HasFactory;
 
     // Definindo a tabela que a model irá utilizar
-    protected $table = 'obras';
+    protected $table = 'emprestimos';
 
     // Definindo os campos que podem ser atribuídos em massa (mass assignment)
-    protected $fillable = ['isbn', 'titulo', 'autor', 'edicao', 'edicao', 'ano','copia','acervo','genero','editora','situacao'];
+    protected $fillable = [
+        'aluno_id',
+        'obra_id',
+        'data_emprestimo',
+        'data_devolucao',
+        'status_emprestimo',
+        'observacoes'
+    ];
+
+    protected $casts = [
+        'data_emprestimo' => 'date',
+        'data_devolucao' => 'date',
+    ];
+
+    // Relacionamentos
+    public function aluno()
+    {
+        return $this->belongsTo(Aluno::class);
+    }
+
+    public function obra()
+    {
+        return $this->belongsTo(Obra::class);
+    }
 }

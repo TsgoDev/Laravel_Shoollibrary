@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('autor_obra')) {
         Schema::create('autor_obra', function (Blueprint $table) {
             $table->unsignedBigInteger('autor_id');
             $table->unsignedBigInteger('obra_id');
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->primary(['autor_id', 'obra_id']);
         });
     }
+}
 
     /**
      * Reverse the migrations.

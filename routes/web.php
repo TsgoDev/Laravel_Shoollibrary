@@ -8,6 +8,7 @@ use App\Http\Controllers\EditoraController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\ObraController;
 use App\Http\Controllers\BuscaController;
+use App\Http\Controllers\EmprestimoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -41,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
     //---Update
     Route::put('/autores/{id}', [AutorController::class, 'update'])->name('autores-update');
 
-    
+
 
     // Page index acervo
     Route::get('/acervos', [AcervoController::class, 'index'])->name('acervos.index');
@@ -91,6 +92,17 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/obras', [ObraController::class, 'store'])->name('obras-store');
     //---Update
     Route::put('/obras/{id}', [ObraController::class, 'update'])->name('obras-update');
+
+
+
+    // Page index emprestimo
+    Route::get('/emprestimos', [EmprestimoController::class, 'index'])->name('emprestimos.index');
+    // Página de emprestimos inativos
+    Route::get('/emprestimos/inativos', [EmprestimoController::class, 'inativos'])->name('emprestimos.inativos');
+    //----Salvar
+    Route::post('/emprestimos', [EmprestimoController::class, 'store'])->name('emprestimos-store');
+    //---Update
+    Route::put('/emprestimos/{id}', [EmprestimoController::class, 'update'])->name('emprestimos-update');
 
 
     // Rotas para busca de dados

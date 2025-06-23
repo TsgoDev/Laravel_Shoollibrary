@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('editoras')) {
         Schema::create('editoras', function (Blueprint $table) {
             $table->id();
             $table->string('nome_editora', 100);
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->unique(['nome_editora', 'cidade_editora', 'estado_id'], 'editoras_unique_index');
         });
     }
+}
 
     /**
      * Reverse the migrations.

@@ -9,8 +9,8 @@
             <div
                 class="flex items-center justify-between p-4 md:p-5 border-b rounded-t white:border-gray-600 border-gray-200">
                 <div>
-                    <h3 class="text-lg font-semibold text-gray-900 white:text-white"></h3>
-                    Editar Obra
+                    <h3 class="text-lg font-semibold text-gray-900 white:text-white">
+                        Editar Obra
                     </h3>
                 </div>
                 <button type="button"

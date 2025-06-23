@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('obras')) {
         Schema::create('obras', function (Blueprint $table) {
         $table->id();
         $table->string('isbn', 20)->nullable();
@@ -30,6 +31,7 @@ return new class extends Migration
         $table->foreignId('editora_id')->constrained('editoras')->onDelete('restrict');
         });
     }
+}
 
     /**
      * Reverse the migrations.
